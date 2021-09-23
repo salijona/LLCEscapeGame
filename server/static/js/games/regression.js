@@ -24,29 +24,6 @@ const prepareData = async () => {
   return csv.data;
 };
 
-const renderHistogram = (container, data, column, config) => {
-  const columnData = data.map(r => r[column]);
-
-  const columnTrace = {
-    name: column,
-    x: columnData,
-    type: "histogram",
-    opacity: 0.7,
-    marker: {
-      color: "dodgerblue"
-    }
-  };
-
-  Plotly.newPlot(container, [columnTrace], {
-    xaxis: {
-      title: config.xLabel,
-      range: config.range
-    },
-    yaxis: { title: "Count" },
-    title: config.title
-  });
-};
-
 const renderScatter = (container, data, columns, config) => {
   var trace = {
     x: data.map(r => r[columns[0]]),
@@ -70,11 +47,12 @@ const renderScatter = (container, data, columns, config) => {
   });
 };
 
-const renderPredictions = (trueValues, slmPredictions, lmPredictions) => {
+const renderPredictions = (trueValues, slmPredictions, xTestSimple, xTest, bias, weight,preds_x,pred_y) => {
+
   var trace = {
-    x: [...Array(trueValues.length).keys()],
+    x: xTest.dataSync(),
     y: trueValues,
-    mode: "lines+markers",
+    mode: "markers",
     type: "scatter",
     name: "true",
     opacity: 0.5,
@@ -83,8 +61,28 @@ const renderPredictions = (trueValues, slmPredictions, lmPredictions) => {
     }
   };
 
+  const inputMax = xTest.max();
+  const inputMin = xTest.min();
+
+  const original_preds = preds_x.mul(inputMax.sub(inputMin))
+        .add(inputMin);
+
+
   var slmTrace = {
-    x: [...Array(trueValues.length).keys()],
+    x: original_preds,
+    y: pred_y,
+    name: "linear regression",
+    mode: "markers",
+    type: "scatter",
+    opacity: 0.5,
+    marker: {
+      color: "forestgreen"
+    }
+  };
+
+
+  var regressionTrace = {
+    x: xTest.dataSync(),
     y: slmPredictions,
     name: "pred",
     mode: "lines+markers",
@@ -95,27 +93,24 @@ const renderPredictions = (trueValues, slmPredictions, lmPredictions) => {
     }
   };
 
-  var lmTrace = {
-    x: [...Array(trueValues.length).keys()],
-    y: lmPredictions,
-    name: "pred",
-    mode: "lines+markers",
-    type: "scatter",
-    opacity: 0.5,
-    marker: {
-      color: "forestgreen"
-    }
-  };
+  //const m = tf.variable(tf.scalar(weight));
+  //const b = tf.variable(tf.scalar(bias));
 
-  Plotly.newPlot("slm-predictions-cont", [trace, slmTrace], {
+  /*let lin_vals = weight.mul(xTestSimple).add(bias)
+  console.log(bias.dataSync(),lin_vals.dataSync())
+  var linear_regression = {
+    x: xTest.dataSync(),
+    y: lin_vals.dataSync(),
+    name: "regression",
+    mode: 'lines'
+  };*/
+
+
+  Plotly.newPlot("slm-predictions-cont", [trace, slmTrace,regressionTrace], {
     title: "Simple Linear Regression predictions",
     yaxis: { title: "Price" }
   });
 
-  Plotly.newPlot("lm-predictions-cont", [trace, lmTrace], {
-    title: "Linear Regression predictions",
-    yaxis: { title: "Price" }
-  });
 };
 
 const VARIABLE_CATEGORY_COUNT = {
@@ -152,8 +147,9 @@ const createDataSets = (data, features, categoricalFeatures, testSize) => {
 
   const [xTrain, xTest] = tf.split(X_t, [splitIdx, data.length - splitIdx]);
   const [yTrain, yTest] = tf.split(y, [splitIdx, data.length - splitIdx]);
+  const [XTrain, XTest] = tf.split(X, [splitIdx, data.length - splitIdx]);
 
-  return [xTrain, xTest, yTrain, yTest];
+  return [xTrain, xTest, yTrain, yTest,XTrain, XTest];
 };
 
 const trainLinearModel = async (xTrain, yTrain) => {
@@ -163,10 +159,10 @@ const trainLinearModel = async (xTrain, yTrain) => {
     tf.layers.dense({
       inputShape: [xTrain.shape[1]],
       units: xTrain.shape[1],
-      activation: "sigmoid"
+      //activation: "sigmoid"
     })
   );
-  model.add(tf.layers.dense({ units: 1 }));
+  //model.add(tf.layers.dense({ units: 1 }));
 
   model.compile({
     optimizer: tf.train.sgd(0.001),
@@ -176,23 +172,22 @@ const trainLinearModel = async (xTrain, yTrain) => {
 
   const trainLogs = [];
   const lossContainer = document.getElementById("loss-cont");
-  const accContainer = document.getElementById("acc-cont");
 
   await model.fit(xTrain, yTrain, {
     batchSize: 32,
-    epochs: 100,
+    epochs: 50,
     shuffle: true,
     validationSplit: 0.1,
     callbacks: {
       onEpochEnd: async (epoch, logs) => {
         trainLogs.push({
-          rmse: Math.sqrt(logs.loss),
-          val_rmse: Math.sqrt(logs.val_loss),
+          "error": Math.sqrt(logs.loss),
+          "val_error": Math.sqrt(logs.val_loss),
           mae: logs.meanAbsoluteError,
           val_mae: logs.val_meanAbsoluteError
         });
-        tfvis.show.history(lossContainer, trainLogs, ["rmse", "val_rmse"]);
-        tfvis.show.history(accContainer, trainLogs, ["mae", "val_mae"]);
+        tfvis.show.history(lossContainer, trainLogs, ["val_error"]);
+
       }
     }
   });
@@ -202,33 +197,6 @@ const trainLinearModel = async (xTrain, yTrain) => {
 
 const run = async () => {
   const data = await prepareData();
-
-  renderHistogram("qual-cont", data, "OverallQual", {
-    title: "Overall material and finish quality (0-10)",
-    xLabel: "Score"
-  });
-
-  renderHistogram("liv-area-cont", data, "GrLivArea", {
-    title: "Above grade (ground) living area square feet",
-    xLabel: "Area (sq. ft)"
-  });
-
-  renderHistogram("year-cont", data, "YearBuilt", {
-    title: "Original construction date",
-    xLabel: "Year"
-  });
-
-  renderScatter("year-price-cont", data, ["YearBuilt", "SalePrice"], {
-    title: "Year Built vs Price",
-    xLabel: "Year",
-    yLabel: "Price"
-  });
-
-  renderScatter("qual-price-cont", data, ["OverallQual", "SalePrice"], {
-    title: "Quality vs Price",
-    xLabel: "Quality",
-    yLabel: "Price"
-  });
 
   renderScatter("livarea-price-cont", data, ["GrLivArea", "SalePrice"], {
     title: "Living Area vs Price",
@@ -240,36 +208,26 @@ const run = async () => {
     xTrainSimple,
     xTestSimple,
     yTrainSimple,
-    yTestIgnored
+    yTest,
+    XTrain, XTest
   ] = createDataSets(data, ["GrLivArea"], new Set(), 0.1);
   const simpleLinearModel = await trainLinearModel(xTrainSimple, yTrainSimple);
 
-  const features = [
-    "OverallQual",
-    "GrLivArea",
-    "GarageCars",
-    "TotalBsmtSF",
-    "FullBath",
-    "YearBuilt"
-  ];
-  const categoricalFeatures = new Set([
-    "OverallQual",
-    "GarageCars",
-    "FullBath"
-  ]);
-  const [xTrain, xTest, yTrain, yTest] = createDataSets(
-    data,
-    features,
-    categoricalFeatures,
-    0.1
-  );
-  const linearModel = await trainLinearModel(xTrain, yTrain);
-
   const trueValues = yTest.dataSync();
   const slmPreds = simpleLinearModel.predict(xTestSimple).dataSync();
-  const lmPreds = linearModel.predict(xTest).dataSync();
+  const xs = tf.linspace(0, 1, 100);
+  const preds = simpleLinearModel.predict(xs.reshape([100, 1]));
 
-  renderPredictions(trueValues, slmPreds, lmPreds);
+
+
+  let  weight = simpleLinearModel.getWeights()[0]
+  let  bias = simpleLinearModel.getWeights()[1]
+
+  for (let i = 0; i < simpleLinearModel.getWeights().length; i++) {
+      console.log(i,simpleLinearModel.getWeights()[i].dataSync());
+  }
+
+  renderPredictions(trueValues, slmPreds, xTestSimple, XTest,bias, weight,preds);
 };
 
 if (document.readyState !== "loading") {
