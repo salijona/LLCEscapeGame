@@ -100,12 +100,12 @@ const App: React.FC = () => (
         <IonTabBar slot="bottom">
           <IonTabButton tab="tabstory" href="/story">
             <IonIcon icon={peopleOutline} />
-            <IonLabel>Aventure</IonLabel>
+            <IonLabel>Story</IonLabel>
           </IonTabButton>
 
           <IonTabButton tab="tab1" href="/map">
             <IonIcon icon={mapOutline} />
-            <IonLabel>Carte</IonLabel>
+            <IonLabel>Map</IonLabel>
           </IonTabButton>
 
           <IonTabButton tab="tab2" href="/missions">
