@@ -204,6 +204,17 @@ const run = async () => {
     yLabel: "Price"
   });
 
+  var distributionPlot = document.getElementById('livarea-price-cont')
+  distributionPlot.on('plotly_click', function(data){
+    console.log(data)
+    var pts = '';
+    for(var i=0; i < data.points.length; i++){
+        pts = 'x = '+data.points[i].x +'\ny = '+
+            data.points[i].y.toPrecision(4) + '\n\n';
+    }
+    alert('Closest point clicked:\n\n'+pts);
+});
+
   const [
     xTrainSimple,
     xTestSimple,
