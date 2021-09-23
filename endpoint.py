@@ -1,14 +1,18 @@
 import json
-from flask import Flask, request, jsonify, send_from_directory
+from flask import Flask, request, jsonify, send_from_directory, render_template
 import hashlib
 import re
+import mimetypes
+mimetypes.add_type('text/css', '.css')
+mimetypes.add_type('application/javascript', ".js")
 
 from flask_cors import CORS
 
 base_folder="./public"
 #scaler, mlp_clf, merged, yvar, columns = get_artifacts_from_config()
 
-app = Flask(__name__, static_url_path="")
+app = Flask(__name__, static_url_path="",static_folder='server/static',
+            template_folder='server/templates')
 CORS(app)
 
 @app.route('/predict', methods=['POST'])
@@ -36,7 +40,7 @@ def send_area(sim_id):
 @app.route('/game/<path:sim_id>')
 def send_game(sim_id):
     sim_id = re.sub('[\W_]+', '', sim_id)
-    return send_from_directory( "{}/{}".format(base_folder,sim_id),"game.csv")
+    return render_template('{}/index.html'.format(sim_id))
 
 @app.route('/', defaults={'path': ''})
 @app.route('/<path:path>')
@@ -45,4 +49,5 @@ def catch_all(path):
      
 if __name__ == '__main__':
      #clf = joblib.load('modelRt.pkl')
-     app.run(host="0.0.0.0",port=8080)
+     app.debug = True
+     app.run(host="0.0.0.0",port=80)
