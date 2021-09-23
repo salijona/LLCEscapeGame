@@ -1,0 +1,485 @@
+{
+  "id": "demo",
+  "name": "Luxembourg - Qui a volé le Diadème de la Duchesse?",
+  "scenes": {
+    "start": {
+      "name": "Explications",
+      "id": "start",
+      "image": "https://www.jci.lu/wp-content/uploads/2016/03/JCI_Luxembourg-team2016.png",
+      "texts": [
+        {
+          "text": "Bonjour, bienvenue dans cette enquete:  Le Diadème Perdu de la Grande-Duchesse Charlotte!"
+        },
+         {
+          "text": "Cette enquete, organisée par la Jeune Chambre Economique du Luxembourg vous fera explorer quelques lieux marquants de la ville"
+        },
+        {
+          "text": "à la recherche du Criminel qui a dérobé l'incroyable 'Diadème Imperial'."
+        },
+         {
+          "text": "Ce parcours devrait durer 1h30. Si vous ne connaissez pas le principe, nous allons vous expliquer l'interface."
+        }
+      ],
+      "buttons": [
+        {
+          "text": "M'expliquer comment jouer",
+          "redirectId": "scene_explain"
+        }
+
+      ]
+    },
+    "scene_explain": {
+      "id": "scene_explain",
+      "visible": 0,
+      "image": "https://www.jci.lu/wp-content/uploads/2016/03/JCI_Luxembourg-team2016.png",
+      "texts": [
+        {
+          "text": "L'application se compose de 3 parties auquelles vous accédez par le menu inférieur. Vous pouvez naviguer librement d'un écran à un autre sans perdre votre avancement."
+        },
+        {
+          "text": "C'est là où vous êtes. C'est celui qui vous donnera les instructions, les énigmes et les informations de la visite.",
+          "nickname": "L'écran 'Aventure'"
+        },
+        {
+          "text": "En cliquant sur le bouton carte, vous accédez à une carte de Luxembourg. Sur cette vue, utilisez vos 2 doigts pour glisser la carte",
+          "nickname": "L'écran 'Carte'"
+        },
+        {
+          "text": "Le bouton à gauche vous permet de vous géolocaliser et centrer la carte autour de vous.",
+          "nickname": "L'écran 'Carte'"
+        }
+        ,
+        {
+          "text": "En cliquant sur un lieu de la carte, vous allez poser un petit symbole 'i'. C'est ainsi que vous allez répondre à des énigmes ou indiquer à l'application où vous êtes pour lancer des activités",
+          "nickname": "L'écran 'Carte'"
+        },
+        {
+          "text": "Cet écran vous permet de sauter directement d'une mission à une autre, sans avoir à faire tous les dialogues. Il vous permettra aussi de retrouver les anciennes réponses données par les personnages que vous rencontrer pour vous aider dans la suite",
+          "nickname": "L'écran 'Missions'"
+        },
+
+        {
+          "text": "Dans une mission, vous pouvez avoir à répondre à une question pour continuer. Il suffit de cliquer sur la bonne réponse pour continuer. Par exemple: 1+1=",
+          "nickname": "L'écran 'Missions'"
+
+        }
+      ],"buttons": [
+        {
+          "text": "1",
+          "redirectId": ""
+        },
+        {
+          "text": "2",
+          "redirectId": "scene_explain1"
+        }
+      ]
+
+    },
+
+    "scene_explain1": {
+      "id": "scene_explain1",
+      "visible": 0,
+      "image": "https://www.jci.lu/wp-content/uploads/2016/03/JCI_Luxembourg-team2016.png",
+      "texts": [
+        {
+          "text": "Tout à fait! Vous pouvez aussi avoir à compléter un champ libre. Il faudra écrire votre réponse tout en MAJUSCULE puis cliquer sur la flèche '>' .",
+          "nickname": "L'écran 'Missions'"
+        },
+        {
+          "text": "Par exemple, quel est l'Acronyme de la Jeune Chambre Internationale? (JCI)",
+          "nickname": "L'écran 'Missions'"
+        },
+
+        {
+          "text": "C'est bon, vous êtes prêts à jouer! Allez sur la 'Carte' et cliquez sur le marqueur numéro (1).",
+          "nickname": "L'écran 'Carte'"
+
+        }
+      ],"buttons": [
+
+      ],
+      "game": {
+          "type": "input",
+          "correctAnswer": "JCI"
+        }
+    },
+    "scene_auberge": {
+      "id": "scene_auberge",
+      "name": "Début du jeu",
+      "image": "https://bijouxroyauxenfoliewordpress.files.wordpress.com/2016/03/1919-11-06-mariage-charlotte-de-luxembourg-fc3a9lix-de-bourbon-parme-5.jpg?w=554&h=344",
+      "texts": [
+        {
+          "text": "6 novembre 1919... Un des plus impressionnants diadèmes jamais portés de nos jours, va être exposé pour la première fois! J’ai nommé -l’Empire Tiara-"
+        }
+        ,
+        {
+          "text": "La première apparition de cette immense tiare remonte au 6 novembre 1919, lorsque la toute nouvelle Grande-Duchesse Charlotte de Luxembourg épouse son cousin germain,"
+        }
+        ,
+        {
+          "text": "le Prince Félix de Bourbon-Parme (1893-1970). A cette occasion, la jeune mariée porte un énorme diadème en diamants.",
+          "updatedImage": "https://bijouxroyauxenfoliewordpress.files.wordpress.com/2016/03/empire-tiara.jpg"
+        }
+        ,{
+          "text": "Haute de 10,5 cm et d’un diamètre de 19cm, les origines du diadème sont assez mystérieuses.",
+          "updatedImage": "https://bijouxroyauxenfoliewordpress.files.wordpress.com/2016/03/empire-tiara.jpg"
+        }
+        ,{
+          "text": "Depuis 4 generations, ce Diadème est le joyau le mieux gardé du Duché...",
+          "updatedImage": "https://images.squarespace-cdn.com/content/v1/547ca5b2e4b0f8c457082bed/1461097129728-Y4CMF6QIBW91UYQ9R7QY/tiara11"
+        },
+
+        {
+          "text": "... jusqu'il y a quelques jours, où il a disparu des Coffres Royaux.",
+          "updatedImage": "https://images.squarespace-cdn.com/content/v1/547ca5b2e4b0f8c457082bed/1461097129728-Y4CMF6QIBW91UYQ9R7QY/tiara11"
+        },
+        {
+          "text": "Votre équipe est le dernier espoir de retrouver cette tiare, sans laquelle la monarchie ne peut subsister."
+          ,"updatedImage": "https://i.pinimg.com/originals/1c/87/f8/1c87f85dd10fecb8f68bb70f82b5d453.jpg"
+        }
+        ,
+        {
+          "text": "Pour aider La Duchesse María Teresa Mestre à le retrouver"
+          ,"updatedImage": "https://i.pinimg.com/originals/1c/87/f8/1c87f85dd10fecb8f68bb70f82b5d453.jpg"
+        },
+        {
+          "text": "rendez-vous sur les différents points A-F pour collecter des indices sur le coupable."
+          ,"updatedImage": "https://i.pinimg.com/originals/1c/87/f8/1c87f85dd10fecb8f68bb70f82b5d453.jpg"
+        },
+        {
+          "text": "Et quand vous avez assez d'elemnts, rdv au point (1) pour connecter tous les indices."
+          ,"updatedImage": "https://i.pinimg.com/originals/1c/87/f8/1c87f85dd10fecb8f68bb70f82b5d453.jpg"
+        }
+
+      ],
+      "buttons": [
+
+      ]
+    },
+    "scene_melusine": {
+      "id": "scene_melusine",
+      "name": "Statue de la Sirène de Luxembourg",
+      "image": "https://assets.prod.app.luxembourg-city.com/data/thumbs/76666d00-5afa-11eb-a2da-9f81ab8f780b.jpg",
+      "texts": [
+        {
+          "text": "Il vous faut retrouver cette statue. La Légende raconte que la Sirène veille sur la ville et que rien ne lui échappe. Peut être a-t-elle vu quelque chose?"
+        },
+        {
+          "text": "Comment s'appelle cette sirène?"
+        }
+      ],
+      "buttons": [
+      {
+          "text": "Ariel",
+          "redirectId": "scene_melusine"
+        },
+        {
+          "text": "Pisinoé",
+          "redirectId": "scene_melusine"
+        },
+
+        {
+          "text": "Melusine",
+          "redirectId": "scene_melusine1"
+        }
+      ]
+
+    },
+
+    "scene_melusine1": {
+      "visible": 0,
+      "id": "scene_melusine1",
+      "image": "https://assets.prod.app.luxembourg-city.com/data/thumbs/76666d00-5afa-11eb-a2da-9f81ab8f780b.jpg",
+      "texts": [
+        {
+          "text": "Bien joué! La statue de la légendaire sirène Melusina de l'artiste luxembourgeois Serge Ecker, créée par impression 3D, a été installée dans le quartier du Grund au bord de l'Alzette en 2015."
+        },
+        {
+          "text": "La fondation de la ville de Luxembourg par le comte **** en 963 est étroitement liée au personnage de la sirène Mélusine."
+        }
+        ,
+        {
+          "text": "Elle n’a accepté d’épouser le comte qu’à condition qu’elle puisse disposer librement de tous ses samedis."
+        }
+        ,
+        {
+          "text": "Au bout de quelques années, la jalousie finit par amener le premier comte de Luxembourg à rompre sa promesse."
+        }
+        ,
+        {
+          "text": "Il suivit Mélusine dans ces chambres privées pour l’observer discrètement en train de prendre un bain. C’est ainsi qu'il vit les membres inférieurs de Mélusine"
+        }
+        ,
+        {
+          "text": "se transformer en queue de poisson. Après avoir remarqué que le compte l’observait, Mélusine disparut dans les flots de l’Alzette."
+        }
+        ,
+        {
+          "text": "Que regarde-elle?"
+        }
+
+      ],
+      "buttons": [
+        {
+          "text": "Une abbaye",
+          "redirectId": "scene_melusine2"
+        },
+        {
+          "text": "Un moulin",
+          "redirectId": ""
+        },
+        {
+          "text": "Une tour",
+          "redirectId": ""
+        }
+
+      ]
+    },
+
+    "scene_melusine2": {
+      "name": "",
+      "visible": 0,
+      "id": "scene_melusine2",
+      "image": "https://www.paulus.be/uploads/slider/80/abbaye-de-neumunster-4.jpg",
+      "texts": [
+        {
+          "text": "L'ancienne abbaye de Neumünster, était un monastère de moines bénédictins sis dans le quartier de Grund à Luxembourg, au Grand-Duché de Luxembourg."
+        }
+        ,
+        {
+          "nickname": "Indice:",
+          "text": "Prenez une photo du panneau à côté de Melusine, il vous servira à résoudre l'énigme à la toute fin."
+        }
+        ,
+        {
+          "text": "Si c'est bon, vous pouvez explorer un autre point de la carte."
+        }
+
+      ],
+      "buttons": [
+
+        ]
+    },
+
+    "scene_duchesse": {
+      "name": "Statue de la Grande Duchesse",
+      "id": "scene_duchesse",
+      "image": "https://media-cdn.tripadvisor.com/media/photo-s/0c/fa/f6/4c/statue-de-la-grande-duchesse.jpg",
+      "texts": [
+        {
+          "text": "La grande-duchesse Charlotte de Luxembourg, née le 23 janvier 1896 et décédée le 9 juillet 1985 est la fille du grand-duc Guillaume IV et de l’infante Marie-Anne de Portugal."
+        },
+
+        {
+          "text": "Elle est la septième souveraine du Luxembourg après l’abdication de sa sœur aînée Marie-Adélaïde, en 1919."
+        },
+
+        {
+          "nickname": "Duchess Charlotte",
+          "text": "Des visiteurs! Cela faisait longtemps! Vous êtes aussi à la recherche de mon Diadème? Je peux vous aider à le retrouver..."
+        },
+
+        {
+          "nickname": "Duchess Charlotte",
+          "text": "Mais avant, vous devez trouver quelque chose pour moi. Je cherche un soleil, un soleil dont chaque rayon permet de suivre l'heure qu'il fait."
+        },
+        {
+          "nickname": "Duchess Charlotte",
+          "text": "Si vous l'avez trouvé, combien de rayons a ce soleil?"
+        }
+      ],
+
+
+      "buttons": [{
+          "text": "12",
+          "redirectId": ""
+        },
+        {
+            "text": "24",
+            "redirectId": "scene_duchesse1"
+          },
+        {
+            "text": "60",
+            "redirectId": ""
+          }]
+
+    },
+
+    "scene_duchesse1": {
+      "name": "Statue de la Grande Duchesse",
+      "id": "scene_duchesse1",
+      "image": "https://media-cdn.tripadvisor.com/media/photo-s/0c/fa/f6/4c/statue-de-la-grande-duchesse.jpg",
+      "texts": [
+        {
+          "nickname": "Duchess Charlotte",
+          "text": "Parfaitement! Je suis le Soleil qui Eclaire le Luxembourg, représenté par les 5 drapeaux derrière moi. Souvenez-vous de ma lumière elle vous guidera!"
+        },
+
+         {"nickname": "Duchess Charlotte",
+          "text": "Je vous propose une seconde énigme avant de nous quitter. Si vous n'y arrivez pas, essayez un autre point de la carte."
+        },
+        {"nickname": "Duchess Charlotte",
+          "text": "'Je démarre ta soirée. Je finis tes journées. Dans un semestre je suis double et pour Cesar je suis central.'"
+        },
+        {
+          "text": "Bien joué! Ceci est une lettre interdite! Aussi, je vous laisse ce guide, il vous permettra de résoudre de futures énigmes!",
+          "updatedImage": "https://cdn.pixabay.com/photo/2021/04/07/17/13/braille-6159673_960_720.png"
+          }
+      ],
+      "game": {
+        "type": "input",
+        "correctAnswer": "S"
+      },
+      "buttons": []
+    },
+
+    "scene_pafenthal": {
+      "name": "Ascenceur de Pafenthal",
+      "id": "scene_pafenthal",
+      "image": "../../assets/locations/pfafenthal.png",
+      "texts": [
+        {
+          "text": "Vous y êtes presque. Continuez tout au bout du passage panoramique indiqué par la flèche."
+        },
+        {
+          "updatedImage": "https://app.visitluxembourg.com/images/32741-resize-1000x665x80.jpg",
+          "text": "Profitons-en pour mieux observer les environs. Vous avez devant en haut avec les tours le plateau de Kirchberg."
+        }
+        ,
+        {
+          "updatedImage": "https://app.visitluxembourg.com/images/32741-resize-1000x665x80.jpg",
+          "text": "Plus bas la ville basse. Mémorisez bien tout le paysage devant vous!"
+        }
+         ,
+        {
+          "updatedImage": "https://app.visitluxembourg.com/images/32741-resize-1000x665x80.jpg",
+          "text": "Une petite énigme au passage?"
+        }
+         ,
+        {
+          "updatedImage": "https://app.visitluxembourg.com/images/32741-resize-1000x665x80.jpg",
+          "text": "Retrouvez dans ce mot croisé certaines des institutions européennes au Luxembourg. Mémorisez bien les mots trouvés!"
+        },
+        {
+          "updatedImage": "https://app.visitluxembourg.com/images/32741-resize-1000x665x80.jpg",
+          "text": "Une fois terminé, vous pouvez continuer l'aventure à un autre point."
+        }
+      ],
+      "buttons": [{
+          "text": "Afficher le mot croisé",
+          "redirectId": "https://puzzel.org/fr/crossword/play?p=-MjZe-YJ2-nd3Qd_F1ZJ"
+        }
+      ]
+    },
+
+    "scene_souvenir": {
+      "name": "Monument du Souvenir",
+      "id": "scene_souvenir",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5d/G%C3%ABlle_Fra_War_Memorial_Luxembourg_01.jpg/800px-G%C3%ABlle_Fra_War_Memorial_Luxembourg_01.jpg",
+      "texts": [
+        {
+          "text": "Vous êtes au Monument du Souvenir, communément appelé 'Gëlle Fra' (femme en or, ou femme dorée en luxembourgeois)."
+        },
+        {
+          "text": "Il est dédié au souvenir des soldats luxembourgeois tombés durant les batailles des deux Guerres mondiales et de la guerre de Corée."
+        }
+        ,
+        {
+          "text": "Il est situé sur la place de la Constitution et la statue, œuvre du sculpteur Claus Cito, symbolise la paix et le patriotisme."
+        }
+        ,
+        {
+          "updatedImage": "../../assets/locations/monument.jpg",
+          "text": "Approchez vous de la plaque commémorative. Saurez vous identifier les différences? (avec la photo de l'application, ou le doc '15')"
+        }
+
+      ],
+      "buttons": [
+      {
+          "text": "C'est bon, j'ai toutes les différences!",
+          "redirectId": "scene_souvenir1"
+      }
+      ]
+    },
+    "scene_souvenir1": {
+      "name": "",
+      "id": "scene_souvenir1",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5d/G%C3%ABlle_Fra_War_Memorial_Luxembourg_01.jpg/800px-G%C3%ABlle_Fra_War_Memorial_Luxembourg_01.jpg",
+      "texts": [
+        {
+          "text": "Aah! Mais c'est une phrase en anglais! Il vous faudra probablement un dictionnaire pour la déchiffrer! Peut être qu'ils en ont à l'auberge?"
+        },
+        {
+          "text": "Vous êtes sur la bonne voie! Et si on rajoutait une dernière énigme en anglais? On cherche un mot de 5 lettres!"
+        },
+        {
+          "text": "By 1000 I start. By 1000 I end. 500 splits me. The Alpha and You complete me"
+        },
+        {
+          "text": "Si vous avez trouvé, il est temps d'essayer un autre point de la carte!"
+        }
+      ],
+
+      "buttons": [
+      ]
+    },
+    "scene_thungen": {
+      "name": "Fort Thungen",
+      "id": "scene_thungen",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/6/62/Mudam_04_jnl.jpg",
+      "texts": [
+        {
+          "text":"Vous êtes arrivé au fort Thüngen, un édifice militaire du Luxembourg situé au parc 'Dräi Eechelen'."
+        },
+        {
+          "text": "Construit en 1732 (puis agrandi en 1836 et renforcé en 1860), il doit son nom au baron Adam Sigmund von Thüngen, commandant de la forteresse."
+        }
+        ,
+        {
+          "text": "Sur le site sont installés deux musées : le Musée d'art moderne du Grand-Duc Jean (Mudam), dessiné par l'architecte Ieoh Ming Pei et inauguré le 1er juillet 2006, et le Musée Dräi Eechelen."
+        }
+        ,
+        {
+          "text": "Mais saurez-vous pourquoi 'Dräi Eechelen'? Celà fait référence à un élément décoratif particulier du fort!"
+        }
+
+      ],
+
+      "buttons": [
+        {
+          "text": "3 entrées",
+          "redirectId": ""
+        },
+
+        {
+          "text": "3 glands",
+          "redirectId": "scene_thungen1"
+        },
+
+        {
+          "text": "3 tours",
+          "redirectId": ""
+        }
+      ]
+    },
+
+    "scene_thungen1": {
+      "name": "Thungen1",
+      "id": "scene_thungen1",
+      "visible": 0,
+      "image": "https://static2.touristtube.com/media/thingstodo/Fort-Thungen_1444660046.jpg",
+      "texts": [
+        {"text": "Tout à fait! Les 3 tours sont surmontées de 3 glands d'or! "},
+        {"text": "Vous avez l'air de vous y connaitre en Luxembourgeois; vous n'êtes pas qu'un ami, mais un 'Frend'!"},
+        {"text": "C'est fini pour ce site, rendez-vous à un autre point pour continuer!"}
+
+      ],
+
+      "buttons": [
+
+      ]
+    }
+
+
+  }
+}
