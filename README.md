@@ -10,3 +10,9 @@ The **Webserver** branch is used for the API and UI.
 The **Main** branch will merge the validated activities and connect them to the webserver. Every merge will be preceeded with a pull request to check that everything is compatible :)
 
 Adriano will set up a docker container for the full app (the main branch) for deployment.
+
+
+
+## Libraries:
+
+### adversarial.js from https://github.com/kennysong/adversarial.js
