@@ -1,4 +1,52 @@
 /**
+ * Black pixels
+ *
+ *
+ *
+ * @param {tf.LayersModel} model - The model to construct an adversarial example for.
+ * @param {tf.Tensor} img - The input image to construct an adversarial example for.
+ * @param {tf.Tensor} lbl - The correct label of the image (must have shape [1, NUM_CLASSES]).
+ * @param {Object} config - Optional configuration for this attack.
+ * @param {number} config.nbPixels -  The number of pixels to blackout
+ *
+ * @returns {tf.Tensor} The adversarial image.
+ */
+export function blackPixels(model, img, lbl, {nbPixels=25 } = {}) {
+  // Loss function that measures how close the image is to the original class
+
+  var bucket = [];
+  var mask = [];
+  const imgSize = img.shape[1];
+
+  for (var i=0;i<imgSize;i++) {
+    let tbl = []
+    for (var j=0;j<imgSize;j++) {
+        tbl.push(0)
+       bucket.push(i*imgSize+j);
+    }
+    mask.push(tbl)
+
+  }
+
+  function getRandomFromBucket() {
+     var randomIndex = Math.floor(Math.random()*bucket.length);
+     mask[[randomIndex%imgSize][Math.floor(randomIndex/imgSize)]] =-1
+     return bucket.splice(randomIndex, 1)[0];
+  }
+
+
+  for (var j=0;j<nbPixels;j++){
+    getRandomFromBucket();
+    //img[0][index%imgSize][Math.floor(index/imgSize)] = 0
+  }
+  console.log(img,tf.tensor(mask))
+
+  img = img.clipByValue(0, 1);
+
+  return img;
+}
+
+/**
  * Gaussian noise
  *
  *

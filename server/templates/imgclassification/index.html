@@ -13,8 +13,6 @@
   <body>
     <div class="container">
 
-      <h2>Untargeted Attacks</h2>
-
       <h3>Fast Gradient Sign Method (FGSM)</h3>
       <button id="fgsm-run" class="button-primary">Run FGSM</button>
       <div id="fgsm-success-rate"></div>
@@ -51,8 +49,8 @@
         </tbody>
       </table>
 
-      <h3>Basic Iterative Method (BIM / PGD / I-FGSM)</h3>
-      <button id="bim-run" class="button-primary">Run BIM</button>
+      <h3>Basic Iterative Method (I-FGSM)</h3>
+      <button id="bim-run" class="button-primary">Run</button>
       <div id="bim-success-rate"></div>
       <table id="bim" style="display:none;">
         <thead>
@@ -89,9 +87,46 @@
 
 
       <h3>Gaussian Noise</h3>
-      <button id="gaussian-run" class="button-primary">Run Gaussian</button>
+      <button id="gaussian-run" class="button-primary">Run</button>
       <div id="gaussian-rate"></div>
       <table id="gaussian" style="display:none;">
+        <thead>
+          <td>Original</td>
+          <td>Adversarial</td>
+        </thead>
+        <tbody>
+          <tr>
+            <td><img class="0 tableimg"></img><span class="imagenet-caption"><br/><br/></span></td>
+            <td><canvas class="0a tableimg" width="224" height="224"></canvas><span class="imagenet-caption"><br/><br/></span></td>
+          </tr>
+          <tr>
+            <td><img class="1 tableimg"></img><span class="imagenet-caption"><br/><br/></span></td>
+            <td><canvas class="1a tableimg" width="224" height="224"></canvas><span class="imagenet-caption"><br/><br/></span></td>
+          </tr>
+          <tr>
+            <td><img class="2 tableimg"></img><span class="imagenet-caption"><br/><br/></span></td>
+            <td><canvas class="2a tableimg" width="224" height="224"></canvas><span class="imagenet-caption"><br/><br/></span></td>
+          </tr>
+          <tr>
+            <td><img class="3 tableimg"></img><span class="imagenet-caption"><br/><br/></span></td>
+            <td><canvas class="3a tableimg" width="224" height="224"></canvas><span class="imagenet-caption"><br/><br/></span></td>
+          </tr>
+          <tr>
+            <td><img class="4 tableimg"></img><span class="imagenet-caption"><br/><br/></span></td>
+            <td><canvas class="4a tableimg" width="224" height="224"></canvas><span class="imagenet-caption"><br/><br/></span></td>
+          </tr>
+          <tr>
+            <td><img class="5 tableimg"></img><span class="imagenet-caption"><br/><br/></span></td>
+            <td><canvas class="5a tableimg" width="224" height="224"></canvas><span class="imagenet-caption"><br/><br/></span></td>
+          </tr>
+        </tbody>
+      </table>
+
+
+      <h3>Black Pixels</h3>
+      <button id="blackPixels-run" class="button-primary">Run</button>
+      <div id="blackPixels-rate"></div>
+      <table id="blackPixels" style="display:none;">
         <thead>
           <td>Original</td>
           <td>Adversarial</td>
@@ -130,10 +165,10 @@
     <script src="https://cdn.jsdelivr.net/npm/@tensorflow-models/mobilenet@2.0.4"> </script>
 
     <script type="module">
-      import {fgsm, bim, gaussian} from '/js/adversarial.js';
+      import {fgsm, bim, gaussian, blackPixels} from '/js/adversarial.js';
       import {runUntargeted, loadModel} from '/js/imagenet.js';
 
-      [fgsm, bim, gaussian].forEach((attack) => {
+      [fgsm, bim, gaussian, blackPixels].forEach((attack) => {
         let name = attack.name;
         document.getElementById(`${name}-run`).addEventListener("click", async () => {
           document.getElementById(name).style.display = 'table';
