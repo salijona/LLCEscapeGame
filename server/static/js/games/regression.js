@@ -25,6 +25,9 @@ const prepareData = async () => {
 };
 
 const renderScatter = (container, data, columns, config) => {
+
+  let maxX = 6000;
+  let maxY = 800000;
   var trace = {
     x: data.map(r => r[columns[0]]),
     y: data.map(r => r[columns[1]]),
@@ -36,18 +39,49 @@ const renderScatter = (container, data, columns, config) => {
     }
   };
 
-  var chartData = [trace];
+  var x = [];
+  var y = [];
+  for(var i = 0; i < maxX; i = i + (maxX/100)){
+    x.push(i);
+  }
+  for(var j = 0; j < maxY; j = j + (maxY/100)){
+    y.push(j);
+  }
+
+  var z = [];
+  for (j = 0; j < y.length; j++) {
+    var temp = [];
+    for (i = 0; i < x.length; i++) {
+      temp.push(0);
+    }
+    z.push(temp);
+  }
+
+
+  var traceGrid = {
+    x: x,
+    y: y,
+    z: z,
+    type: "heatmap",
+    colorscale: [["0.0", "rgb(255, 255, 255, 0.5)"], ["1.0", "rgb(255, 255, 255, 0.5)"]],
+    xgap: 1,
+    ygap: 1,
+    hoverinfo: "x",
+    showscale: false
+  }
+
+  var chartData = [trace,traceGrid];
 
   Plotly.newPlot(container, chartData, {
     height: 450,
     title: config.title,
     xaxis: {
       title: config.xLabel,
-      range: [0, 6000]
+      range: [0, maxX]
     },
     yaxis: {
       title: config.yLabel,
-      range: [0, 800000]}
+      range: [0, maxY]}
   });
 };
 
@@ -200,7 +234,7 @@ const trainLinearModel = async (xTrain, yTrain) => {
     }
   });
 
-  return [model, trainLogs[trainLogs.length-1].val_error];
+  return [model, trainLogs[trainLogs.length-1].error, trainLogs[trainLogs.length-1].val_error];
 };
 
 const run = async () => {
@@ -238,10 +272,18 @@ const run = async () => {
     //alert('Closest point clicked:\n\n'+pts);
     //let originalTarget = data.event.originalTarget;
     //console.log(originalTarget.getContext('2d'));
-    const pointIndex = data.points[0].pointIndex
+
     if (selectedValue=="delete"){
+      const pointIndex = data.points[0].pointIndex
       train_data.splice(pointIndex,1)
     }
+
+    else if (selectedValue=="add"){
+      train_data.splice(0,0,{"GrLivArea":data.points[1].x, "SalePrice":data.points[1].y})
+
+      //console.log(data,train_data)
+    }
+
 
     renderScatter("livarea-price-cont", train_data, ["GrLivArea", "SalePrice"], {
     title: "Living Area vs Price",
@@ -263,7 +305,8 @@ const run = async () => {
     ] = createDataSets(train_data.concat(test_data), ["GrLivArea"], new Set(), testSize* data.length);
     const trainedModel = await trainLinearModel(xTrainSimple, yTrainSimple);
     const simpleLinearModel = trainedModel[0];
-    const trainedError = trainedModel[1];
+    const trainedError = trainedModel[1].toFixed(2);
+    const validationError = trainedModel[2].toFixed(2);
     const trueValues = yTest.dataSync();
     const slmPreds = simpleLinearModel.predict(xTestSimple).dataSync();
     const xs = tf.linspace(0, 1, 100);
@@ -272,7 +315,7 @@ const run = async () => {
     let  weight = simpleLinearModel.getWeights()[0]
     let  bias = simpleLinearModel.getWeights()[1]
 
-    document.querySelector('#regression_formula').innerHTML = "y = "+weight.dataSync()+"*x+"+bias.dataSync()+"<br/> Error: "+trainedError
+    document.querySelector('#regression_formula').innerHTML = "y = "+Number(weight.dataSync()).toFixed(2)+"*x+"+Number(bias.dataSync()).toFixed(2)+"<br/> Train Error: "+trainedError+" Test Error: "+validationError
     renderPredictions(trueValues, slmPreds, xTestSimple, XTest,bias, weight,preds);
   }
 
