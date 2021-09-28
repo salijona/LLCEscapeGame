@@ -6,6 +6,15 @@
   </head>
 
   <body>
+      <form>
+        <input type="radio" name="edit_mode" value="delete" id="edit_mode-delete">
+        <label for="edit_mode-delete">Delete</label>
+        <input type="radio" name="edit_mode" value="add" id="edit_mode-add">
+        <label for="edit_mode-add">Add</label>
+        <input type="number" id="edit_mode_counter" value="0" disabled>
+        <button id="btn-train" href="#">Train Model</button>
+        <div id="regression_formula"></div>
+    </form>
     <div id="livarea-price-cont" />
     <div id="loss-cont"></div>
     <div id="slm-predictions-cont"></div>

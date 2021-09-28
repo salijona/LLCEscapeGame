@@ -39,11 +39,15 @@ const renderScatter = (container, data, columns, config) => {
   var chartData = [trace];
 
   Plotly.newPlot(container, chartData, {
+    height: 450,
     title: config.title,
     xaxis: {
-      title: config.xLabel
+      title: config.xLabel,
+      range: [0, 6000]
     },
-    yaxis: { title: config.yLabel }
+    yaxis: {
+      title: config.yLabel,
+      range: [0, 800000]}
   });
 };
 
@@ -108,7 +112,10 @@ const renderPredictions = (trueValues, slmPredictions, xTestSimple, xTest, bias,
 
   Plotly.newPlot("slm-predictions-cont", [trace, slmTrace,regressionTrace], {
     title: "Simple Linear Regression predictions",
-    yaxis: { title: "Price" }
+    yaxis: { title: "Price",  range: [0, 800000] },
+    xaxis: {
+      range: [0, 6000]
+    },
   });
 
 };
@@ -130,6 +137,7 @@ const oneHot = (val, categoryCount) =>
   Array.from(tf.oneHot(val, categoryCount).dataSync());
 
 const createDataSets = (data, features, categoricalFeatures, testSize) => {
+  console.log(data.length)
   const X = data.map(r =>
     features.flatMap(f => {
       if (categoricalFeatures.has(f)) {
@@ -143,7 +151,7 @@ const createDataSets = (data, features, categoricalFeatures, testSize) => {
 
   const y = tf.tensor(data.map(r => (!r.SalePrice ? 0 : r.SalePrice)));
 
-  const splitIdx = parseInt((1 - testSize) * data.length, 10);
+  const splitIdx = parseInt(data.length - testSize, 10);
 
   const [xTrain, xTest] = tf.split(X_t, [splitIdx, data.length - splitIdx]);
   const [yTrain, yTest] = tf.split(y, [splitIdx, data.length - splitIdx]);
@@ -186,59 +194,95 @@ const trainLinearModel = async (xTrain, yTrain) => {
           mae: logs.meanAbsoluteError,
           val_mae: logs.val_meanAbsoluteError
         });
-        tfvis.show.history(lossContainer, trainLogs, ["val_error"]);
+        tfvis.show.history(lossContainer, trainLogs, ["error", "val_error"]);
 
       }
     }
   });
 
-  return model;
+  return [model, trainLogs[trainLogs.length-1].val_error];
 };
 
 const run = async () => {
   const data = await prepareData();
-
-  renderScatter("livarea-price-cont", data, ["GrLivArea", "SalePrice"], {
+  const testSize = 0.1;
+  const splitIdx = parseInt((1 - testSize) * data.length, 10);
+  let test_data = data.slice(0,data.length - splitIdx)
+  let train_data = data.slice(data.length - splitIdx,data.length)
+  renderScatter("livarea-price-cont", train_data, ["GrLivArea", "SalePrice"], {
     title: "Living Area vs Price",
     xLabel: "Living Area",
     yLabel: "Price"
   });
 
-  var distributionPlot = document.getElementById('livarea-price-cont')
-  distributionPlot.on('plotly_click', function(data){
+  function clic(data){
     console.log(data)
+
+    const rbs = document.querySelectorAll('input[name="edit_mode"]');
+    let selectedValue;
+    for (const rb of rbs) {
+        if (rb.checked) {
+            selectedValue = rb.value;
+            break;
+        }
+    }
+
+    const remainingEditsCounter = document.getElementById("edit_mode_counter");
+    remainingEditsCounter.value = parseInt(remainingEditsCounter.value)+1
+
     var pts = '';
     for(var i=0; i < data.points.length; i++){
         pts = 'x = '+data.points[i].x +'\ny = '+
             data.points[i].y.toPrecision(4) + '\n\n';
     }
-    alert('Closest point clicked:\n\n'+pts);
-});
+    //alert('Closest point clicked:\n\n'+pts);
+    //let originalTarget = data.event.originalTarget;
+    //console.log(originalTarget.getContext('2d'));
+    const pointIndex = data.points[0].pointIndex
+    if (selectedValue=="delete"){
+      train_data.splice(pointIndex,1)
+    }
 
-  const [
-    xTrainSimple,
-    xTestSimple,
-    yTrainSimple,
-    yTest,
-    XTrain, XTest
-  ] = createDataSets(data, ["GrLivArea"], new Set(), 0.1);
-  const simpleLinearModel = await trainLinearModel(xTrainSimple, yTrainSimple);
-
-  const trueValues = yTest.dataSync();
-  const slmPreds = simpleLinearModel.predict(xTestSimple).dataSync();
-  const xs = tf.linspace(0, 1, 100);
-  const preds = simpleLinearModel.predict(xs.reshape([100, 1]));
-
-
-
-  let  weight = simpleLinearModel.getWeights()[0]
-  let  bias = simpleLinearModel.getWeights()[1]
-
-  for (let i = 0; i < simpleLinearModel.getWeights().length; i++) {
-      console.log(i,simpleLinearModel.getWeights()[i].dataSync());
+    renderScatter("livarea-price-cont", train_data, ["GrLivArea", "SalePrice"], {
+    title: "Living Area vs Price",
+    xLabel: "Living Area",
+    yLabel: "Price"});
+    document.getElementById('livarea-price-cont').on('plotly_click', clic);
   }
 
-  renderPredictions(trueValues, slmPreds, xTestSimple, XTest,bias, weight,preds);
+  document.getElementById('livarea-price-cont').on('plotly_click', clic);
+
+  const train_clic = async (event) => {
+    event.preventDefault()
+    const [
+      xTrainSimple,
+      xTestSimple,
+      yTrainSimple,
+      yTest,
+      XTrain, XTest
+    ] = createDataSets(train_data.concat(test_data), ["GrLivArea"], new Set(), testSize* data.length);
+    const trainedModel = await trainLinearModel(xTrainSimple, yTrainSimple);
+    const simpleLinearModel = trainedModel[0];
+    const trainedError = trainedModel[1];
+    const trueValues = yTest.dataSync();
+    const slmPreds = simpleLinearModel.predict(xTestSimple).dataSync();
+    const xs = tf.linspace(0, 1, 100);
+    const preds = simpleLinearModel.predict(xs.reshape([100, 1]));
+
+    let  weight = simpleLinearModel.getWeights()[0]
+    let  bias = simpleLinearModel.getWeights()[1]
+
+    document.querySelector('#regression_formula').innerHTML = "y = "+weight.dataSync()+"*x+"+bias.dataSync()+"<br/> Error: "+trainedError
+    renderPredictions(trueValues, slmPreds, xTestSimple, XTest,bias, weight,preds);
+  }
+
+
+  //document.getElementById('btn-train').on('clic', train_clic);
+
+  const btn = document.querySelector('#btn-train');
+  // handle button click
+  btn.onclick = train_clic
+
 };
 
 if (document.readyState !== "loading") {
