@@ -105,7 +105,7 @@ const renderPredictions = (trueValues, slmPredictions, xTestSimple, xTest, bias,
   const original_preds = preds_x.mul(inputMax.sub(inputMin))
         .add(inputMin);
 
-
+/*
   var slmTrace = {
     x: original_preds,
     y: pred_y,
@@ -117,40 +117,60 @@ const renderPredictions = (trueValues, slmPredictions, xTestSimple, xTest, bias,
       color: "forestgreen"
     }
   };
-
+*/
 
   var regressionTrace = {
     x: xTest.dataSync(),
     y: slmPredictions,
-    name: "pred",
+    name: "Machine Regression",
     mode: "lines+markers",
     type: "scatter",
     opacity: 0.5,
     marker: {
-      color: "forestgreen"
+      color: "red"
     }
   };
 
-  //const m = tf.variable(tf.scalar(weight));
-  //const b = tf.variable(tf.scalar(bias));
+  let tracesToPlot = [trace, regressionTrace];
 
-  /*let lin_vals = weight.mul(xTestSimple).add(bias)
-  console.log(bias.dataSync(),lin_vals.dataSync())
-  var linear_regression = {
-    x: xTest.dataSync(),
-    y: lin_vals.dataSync(),
-    name: "regression",
-    mode: 'lines'
-  };*/
+  let html_weight = document.querySelector('#regression_formula_weight').value
+  let html_biais = document.querySelector('#regression_formula_bias').value
+
+  console.log(html_weight,html_biais)
+  let mse;
+  if(html_weight!=null && html_biais!=null){
+      const m = tf.variable(tf.scalar(parseFloat(html_weight)));
+      const b = tf.variable(tf.scalar(parseFloat(html_biais)));
+
+      let lin_vals = m.mul(xTestSimple).add(b)
+      mse =tf.sqrt(tf.mean(tf.metrics.meanSquaredError(trueValues, lin_vals)));
+
+      document.querySelector('#error_user').innerHTML = "User Error: "+Number(mse.dataSync()).toFixed(2)
+
+      var userRegression = {
+        x: xTest.dataSync(),
+        y: lin_vals.dataSync(),
+        name: "User regression",
+        mode: 'lines+markers',
+        marker: {
+          color: "forestgreen"
+        }
+      };
+
+      tracesToPlot.push(userRegression)
+  }
 
 
-  Plotly.newPlot("slm-predictions-cont", [trace, slmTrace,regressionTrace], {
+
+  Plotly.newPlot("slm-predictions-cont", tracesToPlot, {
     title: "Simple Linear Regression predictions",
     yaxis: { title: "Price",  range: [0, 800000] },
     xaxis: {
       range: [0, 6000]
     },
   });
+
+  return Number(mse.dataSync()).toFixed(2)
 
 };
 
@@ -306,24 +326,31 @@ const run = async () => {
     const trainedModel = await trainLinearModel(xTrainSimple, yTrainSimple);
     const simpleLinearModel = trainedModel[0];
     const trainedError = trainedModel[1].toFixed(2);
-    const validationError = trainedModel[2].toFixed(2);
     const trueValues = yTest.dataSync();
     const slmPreds = simpleLinearModel.predict(xTestSimple).dataSync();
     const xs = tf.linspace(0, 1, 100);
-    const preds = simpleLinearModel.predict(xs.reshape([100, 1]));
+    const preds_space = simpleLinearModel.predict(xs.reshape([100, 1]));
 
     let  weight = simpleLinearModel.getWeights()[0]
     let  bias = simpleLinearModel.getWeights()[1]
 
-    document.querySelector('#regression_formula').innerHTML = "y = "+Number(weight.dataSync()).toFixed(2)+"*x+"+Number(bias.dataSync()).toFixed(2)+"<br/> Train Error: "+trainedError+" Test Error: "+validationError
-    renderPredictions(trueValues, slmPreds, xTestSimple, XTest,bias, weight,preds);
+    document.querySelector('#regression_formula_weight').value = Number(weight.dataSync()).toFixed(2)
+    document.querySelector('#regression_formula_bias').value = Number(bias.dataSync()).toFixed(2)
+
+    const validationError = renderPredictions(trueValues, slmPreds, xTestSimple, XTest,bias, weight,xs, preds_space, 0);
+    document.querySelector('#error_formula').innerHTML = "Train Error: "+trainedError+"<br/>Validation Error: "+validationError
+
+    const btn_predict = document.querySelector('#btn-test');
+    btn_predict.onclick = function(event){
+      event.preventDefault()
+      renderPredictions(trueValues, slmPreds, xTestSimple, XTest,bias, weight,xs, preds_space, validationError);
+    }
   }
 
 
   //document.getElementById('btn-train').on('clic', train_clic);
 
   const btn = document.querySelector('#btn-train');
-  // handle button click
   btn.onclick = train_clic
 
 };

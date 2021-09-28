@@ -12,8 +12,16 @@
         <input type="radio" name="edit_mode" value="add" id="edit_mode-add">
         <label for="edit_mode-add">Add</label>
         <input type="number" id="edit_mode_counter" value="0" disabled>
-        <button id="btn-train" href="#">Train Model</button>
-        <div id="regression_formula"></div>
+        <button type="button" id="btn-train" href="#">Train Model</button>
+        <div id="error_formula"></div>
+
+        <div id="regression_formula">
+          y = <input id="regression_formula_weight" value="0">*x+<input id="regression_formula_bias" value="0">
+          <button type="button" id="btn-test" href="#">Compare with Machine</button>
+          <div id="error_user"></div>
+        </div>
+
+
     </form>
     <div id="livarea-price-cont" />
     <div id="loss-cont"></div>
