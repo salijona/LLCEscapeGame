@@ -25,8 +25,32 @@ import firebase from "../utils/Firebase";
 require("firebase/firestore");
 var db = firebase.firestore();
 
+const doc = db.collection('llc')
 
-//const dbref = firebase.database().ref('adventure/')
+/*const observer = doc.onSnapshot(docSnapshot => {
+  console.log(`Received doc snapshot: ${docSnapshot}`);
+  // ...
+}, err => {
+  console.log(`Encountered error: ${err}`);
+});*/
+
+
+const observer = doc.where('type', '==', 'QR')
+  .onSnapshot(querySnapshot => {
+    querySnapshot.docChanges().forEach(change => {
+
+    if (change.type === "added") {
+        console.log("New QR code: ", change.doc.data());
+    }
+    if (change.type === "modified") {
+        console.log("Modified QR code: ", change.doc.data());
+    }
+    if (change.type === "removed") {
+        console.log("Removed QR code: ", change.doc.data());
+    }
+  });
+});
+
 
 class MissionComponent extends Component<MapProps> {
     state: any;
@@ -53,6 +77,7 @@ class MissionComponent extends Component<MapProps> {
     }
 
     loadCommunityMissions = () => {
+        return
         let community_missions = []
         db.collection("missions").get().then((querySnapshot) => {
             querySnapshot.forEach((doc) => {
