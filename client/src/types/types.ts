@@ -96,6 +96,7 @@ export type BoxProps = {
   col: number;
   boxClass: string;
   id:string;
+  face?:string;
   selectBox: (row:number, column:number) => void;
 }
 

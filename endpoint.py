@@ -49,3 +49,17 @@ def catch_all(path):
 if __name__ == '__main__':
     app.debug = True
     app.run(host="0.0.0.0", port=80)
+
+
+
+"""
+files_paths = []
+for root, dirs, files in os.walk("./imgs"):
+    path = root.split(os.sep)
+    print((len(path) - 1) * '---', os.path.basename(root))
+    for file in files:
+        print(len(path) * '---', file)
+        if ".pt" not in file:
+            files_paths.append([os.path.basename(root), file])
+
+"""

@@ -11,7 +11,7 @@ const TabMissions: React.FC = () => {
     <IonPage>
 
         <IonContent fullscreen>
-            <EmotionGame cols={10} rows={10} speed={100} ></EmotionGame>
+            <EmotionGame cols={7} rows={5} speed={100} ></EmotionGame>
         </IonContent>
 
     </IonPage>
