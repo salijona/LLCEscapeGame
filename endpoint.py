@@ -6,13 +6,21 @@ import mimetypes
 mimetypes.add_type('text/css', '.css')
 mimetypes.add_type('application/javascript', ".js")
 from flask_cors import CORS
-
+import json, time, uuid
 base_folder="./public"
 #scaler, mlp_clf, merged, yvar, columns = get_artifacts_from_config()
 
 app = Flask(__name__, static_url_path="",static_folder='server/static',
             template_folder='server/templates')
 CORS(app)
+
+from firebase_admin import credentials, firestore, initialize_app
+
+cred = credentials.Certificate("config/jci-luxembourg-firebase-adminsdk-b1oso-8d04fcd5dc.json")
+default_app = initialize_app(cred)
+db = firestore.client()
+app_db = db.collection('llc')
+
 
 @app.route('/predict', methods=['POST'])
 def predict():
@@ -40,6 +48,23 @@ def send_area(sim_id):
 def send_game(sim_id):
     sim_id = re.sub('[\W_]+', '', sim_id)
     return render_template('{}/index.html'.format(sim_id))
+
+@app.route('/event/<path:event_id>')
+def send_event(event_id):
+    #event_id = re.sub('[\W_]+', '', event_id)
+    event = event_id.split("_")
+    #event format TYPE_GAME_DETAILS
+
+    # data to save
+    data = {
+        "type": event[0],
+        "game": event[1],
+        "params": event[2:],
+        "time":time.time()
+    }
+    id = str(uuid.uuid4().fields[-1]) #"{}_{}_{}".format(data.get("time"),data.get("type"),data.get("game"))
+    app_db.document(id).set(data)
+    return jsonify({"success": True}), 200
 
 @app.route('/', defaults={'path': ''})
 @app.route('/<path:path>')
