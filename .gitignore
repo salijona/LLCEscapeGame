@@ -132,7 +132,6 @@ dmypy.json
 # Pycharm project
 .idea
 
-
 #NodeJS project
 client/build
 client/node_modules
