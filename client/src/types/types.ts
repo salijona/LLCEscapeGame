@@ -1,4 +1,5 @@
 import {SettingsState, Saves, Save, SavesState} from './../store/reducers/reducersTypes';
+import firebase from "firebase";
 
 
 export type GameType = {
@@ -35,6 +36,7 @@ export type EmotionGamePropsType = {
 speed:number;
 rows:number;
 cols:number;
+db?:firebase.firestore.Firestore;
 };
 
 export type ScenePropsType = {

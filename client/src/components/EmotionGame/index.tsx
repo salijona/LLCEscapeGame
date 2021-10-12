@@ -67,6 +67,23 @@ class EmotionGame extends Component<EmotionGamePropsType> {
 
 		}
 
+		if (this.props.db){
+			const doc = this.props.db.collection('llc')
+
+			const observer = doc.where('game', '==', 'EMOTION').where('type', '==', 'QR')
+			  .onSnapshot(querySnapshot => {
+				querySnapshot.docChanges().forEach(change => {
+
+				if (change.type === "added") {
+					console.log("New QR code: ", change.doc.data());
+					let params = change.doc.data().params;
+					this.selectBox(params[0],params[1])
+				}
+			  });
+			});
+		}
+
+
 	}
 
 	selectBox = (row, col) => {
