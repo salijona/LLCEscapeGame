@@ -1,0 +1,22 @@
+{
+  "id": "demo",
+  "name": "LLC Escape Game",
+  "scenes": {
+    "start": {
+      "name": "Explications",
+      "id": "start",
+      "image": "http://www.doodlemore.co.uk/wp-content/uploads/2019/02/LuxLC10.png",
+      "texts": [
+        {
+          "text": "Welcome!"
+        }
+
+      ],
+      "buttons": [
+
+      ]
+    }
+
+
+  }
+}
