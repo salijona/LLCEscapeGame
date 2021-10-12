@@ -12,6 +12,7 @@ base_folder="./public"
 
 app = Flask(__name__, static_url_path="",static_folder='server/static',
             template_folder='server/templates')
+
 CORS(app)
 
 @app.route('/predict', methods=['POST'])
