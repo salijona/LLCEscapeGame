@@ -6,6 +6,7 @@
       "name": "Explications",
       "id": "start",
       "image": "http://www.doodlemore.co.uk/wp-content/uploads/2019/02/LuxLC10.png",
+      "character": "../../assets/locations/detective.png",
       "texts": [
         {
           "text": "Welcome!"

@@ -21,7 +21,8 @@ function Scene({ scene, nextScene, saves, settings, addSave }: ScenePropsType) {
   const [isButtonsVisible, setButtonsVisible] = useState(false);
   const [textIndex, setTextIndex] = useState(0);
   const [backgroundImage, setBackgroundImage] = useState('');
-  const { image, texts, buttons, game } = scene;
+  const [characterImage, setCharacterImage] = useState('');
+  const { image, texts, buttons, game, character } = scene;
   const [answer, setAnswer] = useState<string>('');
 
 
@@ -102,9 +103,13 @@ function Scene({ scene, nextScene, saves, settings, addSave }: ScenePropsType) {
 
   const updateBackground = useCallback(() => {
     const newBackground: string | undefined = texts[textIndex].updatedImage;
+    const newCharacter: string | undefined = texts[textIndex].updatedCharacter;
 
     if (newBackground) {
       setBackgroundImage(newBackground);
+    }
+    if (newCharacter) {
+      setCharacterImage(newCharacter);
     }
   }, [textIndex, texts]);
 
@@ -157,7 +162,13 @@ function Scene({ scene, nextScene, saves, settings, addSave }: ScenePropsType) {
   }, [lazyWords, autoSave, updateBackground, texts, textIndex]);
 
   return (
+
     <div className={styles.background} style={{ backgroundImage: `url(${backgroundImage || image})` }}>
+
+      { (characterImage || character) &&
+         <img src={characterImage || character}  className={styles.character} />
+      }
+
       <div className={styles.content}>
         <div className={styles.buttons}>
           {isButtonsVisible && (textIndex == texts.length - 1) &&
