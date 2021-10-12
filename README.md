@@ -16,3 +16,16 @@ Adriano will set up a docker container for the full app (the main branch) for de
 ## Libraries:
 
 ### adversarial.js from https://github.com/kennysong/adversarial.js
+
+
+## Age-Fake:
+Age: 21-60 (40 classes)
+Gender: F (female), M (male)
+Attack: pgd, square
+Attack level: 1, 2, 3, 4, 5
+Corresponding epsilon: 4/255, 5/255, 6/255, 7/255, 8/255
+
+Name format:
+Original data: realAge-gender.jpg
+
+Adv data: fakeAge-attack-level-gender.jpg
