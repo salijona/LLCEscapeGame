@@ -1,20 +1,18 @@
 .box {
 	display: inline-block;
 	border: 1px solid black;
-	width: 100px;
-	height: 100px;
+	width: 120px;
+	height: 120px;
 	margin-left: 2px;
 	margin-bottom: 2px;
 }
 
 .off {
-	background-color: lightgray;
+	border: solid 1px lightgray;
 }
 
 .on {
-	background-image: url('https://toppng.com/uploads/preview/mushroom-11530969777vjm6st5dwd.png');
-	background-position: center;
-	background-size: contain;
+	border: solid 2px green;
 
 	/*background-color: red;*/
 }

@@ -89,6 +89,7 @@ export type GridProps = {
   cols: number;
   gridFull: number[][];
   selectBox:(row:number, column:number) => void;
+  ranFaces?: string[][];
 }
 
 export type BoxProps = {
