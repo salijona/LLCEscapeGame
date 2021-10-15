@@ -160,6 +160,6 @@ yarn-error.log*
 .eslintcache
 
 
-
+/config/*
 /client/node_modules/
 /client/src/data/*.json

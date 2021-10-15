@@ -15,12 +15,14 @@ export type ButtonType = {
 export type TextsType = {
   text: string;
   updatedImage?: string;
+  updatedCharacter?: string;
   nickname?: string;
 };
 
 export type SceneType = {
   id: string;
   image: string;
+  character?: string;
   name?:string;
   game?:GameType;
   texts: TextsType[];
