@@ -1,4 +1,5 @@
 import {SettingsState, Saves, Save, SavesState} from './../store/reducers/reducersTypes';
+import firebase from "firebase";
 
 
 export type GameType = {
@@ -29,7 +30,13 @@ export type SceneType = {
   status?:number;
   lat?:number;
   lon?:number;
+};
 
+export type EmotionGamePropsType = {
+speed:number;
+rows:number;
+cols:number;
+db?:firebase.firestore.Firestore;
 };
 
 export type ScenePropsType = {
@@ -55,6 +62,7 @@ export type NovelType = {
 
 export type MapProps = { novel?: NovelType; scene?: SceneType; setScene: Function, saves: SavesState, history:any};
 
+
 export type NovelProps = { novel?: NovelType; scene?: SceneType; setScene: Function };
 
 export type SceneArrowProps = {
@@ -74,6 +82,24 @@ export type SceneButtonProps = {
   text: string;
   handleClick: () => void;
 };
+
+
+export type GridProps = {
+  rows : number;
+  cols: number;
+  gridFull: number[][];
+  selectBox:(row:number, column:number) => void;
+  ranFaces?: string[][];
+}
+
+export type BoxProps = {
+  row : number;
+  col: number;
+  boxClass: string;
+  id:string;
+  face?:string;
+  selectBox: (row:number, column:number) => void;
+}
 
 export type MenuState = { settings: SettingsState; setLazyTexts: () => void; unsetLazyTexts: () => void };
 
