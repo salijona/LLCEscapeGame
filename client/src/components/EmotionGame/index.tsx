@@ -1,4 +1,5 @@
 import React, {Component} from "react";
+import { IonGrid, IonRow, IonCol } from '@ionic/react';
 import './style.scss';
 
 import {GridProps, BoxProps, EmotionGamePropsType} from "../../types/types";
@@ -37,7 +38,15 @@ class Grid extends Component<GridProps> {
 			for (var j = 0; j < this.props.rows; j++) {
 			for (var i = 0; i < this.props.cols; i++) {
 				let gridBoxId = i + "_" + j;
-				gridBoxClass = this.props.gridFull[j][i] ? "box on" : "box off";
+				if (this.props.gridFull[j][i]=="C"){
+					gridBoxClass = "box on"
+				}
+				else if (this.props.gridFull[j][i]=="F"){
+					gridBoxClass = "box off"
+				}
+				else if (this.props.gridFull[j][i]=="N"){
+					gridBoxClass = "box no"
+				}
 				boxArr.push(
 					<Box
 						boxClass={gridBoxClass}
@@ -71,15 +80,15 @@ class EmotionGame extends Component<EmotionGamePropsType> {
 
 		if (this.props.db){
 			const doc = this.props.db.collection('llc')
-
-			const observer = doc.where('game', '==', 'EMOTION').where('type', '==', 'QR')
+			console.log(doc)
+			const observer = doc.where('game', '==', 'AGE').where('type', '==', 'QR')
 			  .onSnapshot(querySnapshot => {
 				querySnapshot.docChanges().forEach(change => {
 
 				if (change.type === "added") {
 					console.log("New QR code: ", change.doc.data());
 					let params = change.doc.data().params;
-					this.selectBox(params[0],params[1])
+					this.selectBox(parseInt(params[0]),parseInt(params[1]))
 				}
 			  });
 			});
@@ -114,12 +123,11 @@ class EmotionGame extends Component<EmotionGamePropsType> {
 
 		var ranFaces = []
 		var trueAges = []
-		console.log(ranAges)
 
 		for (const [key, values] of Object.entries(ranAges)) {
 			var vals:any =values;
 			if (vals.length>this.props.cols && Object.keys(ranFaces).length<this.props.cols){
-				console.log("age",key);
+
 				i = this.props.rows - 1;
 				let advFaces = []
 
@@ -143,30 +151,60 @@ class EmotionGame extends Component<EmotionGamePropsType> {
 			}
 
 		}
-
-		console.log(ranFaces)
-
 		this.state = {
 			score : 0,
 			gridFull: Array(this.props.rows).fill([]).map(() => Array(this.props.cols).fill(false)),
 			ranFaces: ranFaces,
-			trueAges: trueAges
+			trueAges: trueAges,
+			selectedFace:"",
+			selectedColumn:0
 		}
 
-		alert("store grid")
+		//alert("store grid")
 
 	}
 
 	selectBox = (row, col) => {
+		let selectedColumn = this.state.selectedColumn
+
+		if (col!=selectedColumn){
+			return
+		}
 
 		let gridCopy = arrayClone(this.state.gridFull);
-		if (gridCopy[row][col]) {
-			gridCopy[row][col] = !gridCopy[row][col];
-		}
-		this.setState({
-			gridFull: gridCopy,
+		///if (gridCopy[row][col]) {
+		//	gridCopy[row][col] = !gridCopy[row][col];
+		//}
 
-		})
+		let selectedFace = this.state.ranFaces[this.state.selectedColumn][row]
+		console.log(selectedFace,this.state.selectedFace, selectedFace!=this.state.selectedFace)
+
+		if (selectedFace != this.state.selectedFace){
+			this.setState({
+				//gridFull: gridCopy,
+				selectedFace : selectedFace
+			})
+		}
+
+		else{
+
+			let face = selectedFace.split("-")[1].split("#")
+			console.log(face)
+			if (face[0]!=face[1]){
+				gridCopy[row][col] = "N"
+			}
+			else{
+				for (var i=0;i<gridCopy.length;i++){
+					if (i!=row){
+						gridCopy[i][col] = "N"
+					}
+				}
+				selectedColumn++
+			}
+			this.setState({gridFull:gridCopy,selectedColumn:selectedColumn})
+		}
+
+
 	}
 
 	populate = () => {
@@ -175,7 +213,7 @@ class EmotionGame extends Component<EmotionGamePropsType> {
 		for (let j = 0; j < this.props.cols; j++) {
 			for (let i = 0; i < this.props.rows; i++) {
 				let face = this.state.ranFaces[j][i].split("-")[1].split("#")
-				gridCopy[i][j] = face[0]==face[1];
+				gridCopy[i][j] = face[0]==face[1]?"C":"F";
 			}
 		}
 
@@ -194,17 +232,35 @@ class EmotionGame extends Component<EmotionGamePropsType> {
 
 	render() {
 		return (
-			<div>
-				<div className="grid" style={{ width: this.state.trueAges.length * 122}}>
-					{this.state.trueAges.map(function(age, index){
-						return <div style={{ textAlign: "center"}} className={"box"} key={ index }>
-							<span style={{ display: "inline-block", marginTop:60}}>{age}</span>
-					</div>;
-					  })}
-				</div>
+			<IonGrid>
+			  <IonRow>
+				<IonCol><div>
+						<div className="grid" style={{ width: this.state.trueAges.length * 122}}>
+							{this.state.trueAges.map(function(age, index){
+								return <div style={{ textAlign: "center"}} className={"box"} key={ index }>
+									<span style={{ display: "inline-block", marginTop:60}}>{age}</span>
+							</div>;
+							  })}
+						</div>
 
-			  <Grid rows={this.props.rows} cols={this.props.cols} gridFull={this.state.gridFull} selectBox={this.selectBox} ranFaces={this.state.ranFaces}></Grid>
-			</div>
+					  <Grid rows={this.props.rows} cols={this.props.cols} gridFull={this.state.gridFull} selectBox={this.selectBox} ranFaces={this.state.ranFaces}></Grid>
+					</div></IonCol>
+				<IonCol style={{textAlign: "center"}}>
+					<h3>Selected Face</h3>
+
+					{this.state.selectedFace &&
+						<div>
+							<div className="box large"
+								style={{ backgroundImage: `url(${"../../assets/imgs/"+this.state.selectedFace.replace("#","/") || ""})` }}
+							/>
+							<p>Scan again to confirm that this person is {this.state.trueAges[this.state.selectedColumn]} years old ;)</p>
+						</div>
+
+					}
+				</IonCol>
+			  </IonRow>
+			</IonGrid>
+
 
 		);
 	};

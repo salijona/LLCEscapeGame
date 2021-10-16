@@ -9,15 +9,132 @@
       "character": "../../assets/locations/detective.png",
       "texts": [
         {
-          "text": "Welcome!"
+          "text": "Welcome to the Serval X LLC Escape Game: Evade the AI."
+        },
+        {
+          "text": "This is an escape game that will require your solve challenges related to Artificial Intelligence. It will take you about 30min to complet"
         }
 
       ],
       "buttons": [
+        {
+          "text": "Start the Game",
+          "redirectId": "start2"
+        },
+        {
+          "text": "Explain a bit more",
+          "redirectId": ""
+        }
+      ]
+    },
+ "start2": {
+      "name": "Game",
+      "visible": 0,
+      "id": "start2",
+      "image": "https://t4.ftcdn.net/jpg/02/94/85/97/240_F_294859777_pD0UMlcW0jK7mXw0DGo1Y92dYfvQPBl5.jpg",
+      "texts": [
+        {
+          "text": "Luxembourg, 2071. Under pressures of some digital lobbies, the countries of the European Union have decided to join in the \"Universal Digital Federation\" "
+        },
+        {
+          "text": "The UDF abolished governments and borders to establish the SMART Artificial Intelligence, instead of local political authorities. "
+        }
+        ,
+        {
+          "text": "SMART stands for Supervision,  Monitoring,  Allocations and Regulations Technology."
+        }
+        ,
+        {
+          "text": "SMART knows everything, SMART wants us good, SMART is at our service."
+        }
+        ,
+        {
+          "text": "The federation has seen an extraordinary growth in life quality measures like happiness, peace of mind, health and leisure time. But what is the cost of SMART for Luxembourg?"
+        }
+        ,
+        {
+          "text": "As a fresh member of the Evaders, your mission is to uncover the prowess and limitations of SMART and free the four districts of Luxembourg from the yoke of the AI."
+        }
+      ],
+      "buttons": [
+        {
+          "text": "I accept the mission!",
+          "redirectId": "start3"
+        },
+        {
+          "text": "Sorry, I can't do it",
+          "redirectId": ""
+        }
+      ]
+    },
+
+    "start3": {
+      "name": "Game",
+      "visible": 0,
+      "id": "start3",
+      "image": "../../assets/locations/Luxembourg.png",
+      "texts": [
+        {
+          "text": "SMART has 4 neural cores that allows it to monitor and supervise all the interactions of the inhabitants:"
+        }
+      ],
+      "buttons": [
+        {
+          "text": "I accept the mission!",
+          "redirectId": "start3"
+        },
+        {
+          "text": "Sorry, I can't do it",
+          "redirectId": ""
+        }
+      ]
+    },
+    "scene_explain": {
+      "id": "scene_explain",
+      "visible": 0,
+      "image": "http://jcemetz.fr/wp-content/uploads/2019/02/signature-mail-2019.jpg",
+      "texts": [
+        {
+          "text": "L'application se compose de 3 parties auquelles vous accédez par le menu inférieur. Vous pouvez naviguer librement d'un écran à un autre sans perdre votre avancement."
+        },
+        {
+          "text": "C'est là où vous êtes. C'est celui qui vous donnera les instructions, les énigmes et les informations de la visite.",
+          "nickname": "L'écran 'Aventure'"
+        },
+        {
+          "text": "En cliquant sur le bouton carte, vous accédez à une carte Metz. Sur cette vue, utilisez vos 2 doigts pour glisser la carte",
+          "nickname": "L'écran 'Carte'"
+        }
+        ,
+        {
+          "text": "Vous pouvez aussi cliquer sur le bouton 'sablier' à droite pour alterner entre les cartes des différentes époques, l'époque romaine, le moyen âge, et l'époque contemporaine. Vous en aurez besoin pour résoudre des énigmes et trouver votre chemin ;-)",
+          "nickname": "L'écran 'Carte'"
+        }
+        ,
+        {
+          "text": "Le bouton à gauche vous permet de vous géolocaliser et centrer la carte autour de vous.",
+          "nickname": "L'écran 'Carte'"
+        }
+        ,
+        {
+          "text": "En cliquant sur un lieu de la carte, vous allez poser un petit symbole 'i'. C'est ainsi que vous allez répondre à des énigmes ou indiquer à l'application où vous êtes pour lancer des activités",
+          "nickname": "L'écran 'Carte'"
+        },
+        {
+          "text": "Cet écran vous permet de sauter directement d'une mission à une autre, sans avoir à faire tous les dialogues. Il vous permettra aussi de retrouver les anciennes réponses données par les personnages que vous rencontrer pour vous aider dans la suite",
+          "nickname": "L'écran 'Missions'"
+        },
+
+        {
+          "text": "Essayez maintenant tout ça, et quand vous êtes prets. Allez sur la 'Carte' et cliquez sur le marqueur numéro (1).",
+          "nickname": "L'écran 'Carte'",
+          "updatedImage": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0f/Metz_March_2019_%2832509957637%29.jpg/1280px-Metz_March_2019_%2832509957637%29.jpg"
+        }
+      ],"buttons": [
 
       ]
-    }
 
+    }
 
   }
 }

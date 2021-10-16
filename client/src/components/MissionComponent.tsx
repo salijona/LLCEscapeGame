@@ -21,18 +21,16 @@ import {
 
 import {addOutline, closeOutline, checkmarkOutline } from "ionicons/icons";
 import { IonModal, IonButton, IonCheckbox, IonFab, IonIcon, IonFabButton  } from '@ionic/react';
-import firebase from "../utils/Firebase";
-require("firebase/firestore");
-var db = firebase.firestore();
 
+/*
 const doc = db.collection('llc')
 
-/*const observer = doc.onSnapshot(docSnapshot => {
+const observer = doc.onSnapshot(docSnapshot => {
   console.log(`Received doc snapshot: ${docSnapshot}`);
   // ...
 }, err => {
   console.log(`Encountered error: ${err}`);
-});*/
+});
 
 
 const observer = doc.where('type', '==', 'QR')
@@ -50,7 +48,7 @@ const observer = doc.where('type', '==', 'QR')
     }
   });
 });
-
+*/
 
 class MissionComponent extends Component<MapProps> {
     state: any;
@@ -78,7 +76,7 @@ class MissionComponent extends Component<MapProps> {
 
     loadCommunityMissions = () => {
         return
-        let community_missions = []
+        /*let community_missions = []
         db.collection("missions").get().then((querySnapshot) => {
             querySnapshot.forEach((doc) => {
                 console.log(`${doc.id}`,doc.data());
@@ -89,6 +87,7 @@ class MissionComponent extends Component<MapProps> {
             });
             this.setState({"community_missions":community_missions})
         });
+         */
     }
     submitMission = () => {
         let mission:SceneType = {id:"",image:"",texts:[],name:"",buttons:[]}
@@ -128,7 +127,7 @@ class MissionComponent extends Component<MapProps> {
         mission.userId = this.state.userId
         console.log(mission)
 
-
+        /*
         db.collection("missions").add(mission).then((docRef) => {
             console.log("Document written with ID: ", docRef.id);
             this.loadCommunityMissions()
@@ -136,7 +135,7 @@ class MissionComponent extends Component<MapProps> {
         .catch((error) => {
             console.error("Error adding document: ", error);
         });
-
+        */
     };
 
     newBtnClick = () => {

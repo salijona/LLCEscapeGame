@@ -89,7 +89,7 @@ export type SceneButtonProps = {
 export type GridProps = {
   rows : number;
   cols: number;
-  gridFull: number[][];
+  gridFull: string[][];
   selectBox:(row:number, column:number) => void;
   ranFaces?: string[][];
 }
