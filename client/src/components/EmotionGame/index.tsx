@@ -78,22 +78,6 @@ class EmotionGame extends Component<EmotionGamePropsType> {
 	constructor(props: any) {
 		super(props);
 
-		if (this.props.db){
-			const doc = this.props.db.collection('llc')
-			console.log(doc)
-			const observer = doc.where('game', '==', 'AGE').where('type', '==', 'QR')
-			  .onSnapshot(querySnapshot => {
-				querySnapshot.docChanges().forEach(change => {
-
-				if (change.type === "added") {
-					console.log("New QR code: ", change.doc.data());
-					let params = change.doc.data().params;
-					this.selectBox(parseInt(params[0]),parseInt(params[1]))
-				}
-			  });
-			});
-		}
-
 
 		const minAge = 21;
 		const maxAge = 60;
@@ -157,7 +141,28 @@ class EmotionGame extends Component<EmotionGamePropsType> {
 			ranFaces: ranFaces,
 			trueAges: trueAges,
 			selectedFace:"",
-			selectedColumn:0
+			selectedColumn:0,
+			startDate:Date.now()
+		}
+
+		if (this.props.db){
+			const doc = this.props.db.collection('llc')
+			console.log(doc)
+			const observer = doc.where('game', '==', 'AGE').where('type', '==', 'QR')
+			  .onSnapshot(querySnapshot => {
+				querySnapshot.docChanges().forEach(change => {
+
+				if (change.type === "added") {
+					let params = change.doc.data().params;
+					let time = change.doc.data().time*1000;
+					console.log(time, this.state.startDate, time > this.state.startDate)
+					if (time > this.state.startDate){
+						this.selectBox(parseInt(params[0]),parseInt(params[1]))
+					}
+
+				}
+			  });
+			});
 		}
 
 		//alert("store grid")
