@@ -4,6 +4,8 @@ import './style.scss';
 
 import {GridProps, BoxProps, EmotionGamePropsType} from "../../types/types";
 import faces from '../../data/faces.json';
+import Confetti from "react-confetti";
+
 
 function arrayClone(arr) {
 	return JSON.parse(JSON.stringify(arr));
@@ -75,6 +77,8 @@ class Grid extends Component<GridProps> {
 class EmotionGame extends Component<EmotionGamePropsType> {
 	state: any;
 
+
+
 	constructor(props: any) {
 		super(props);
 
@@ -142,7 +146,9 @@ class EmotionGame extends Component<EmotionGamePropsType> {
 			trueAges: trueAges,
 			selectedFace:"",
 			selectedColumn:0,
-			startDate:Date.now()
+			startDate:Date.now(),
+			height : window.innerHeight,
+			width : window.innerWidth
 		}
 
 		if (this.props.db){
@@ -238,6 +244,7 @@ class EmotionGame extends Component<EmotionGamePropsType> {
 	render() {
 		return (
 			<IonGrid>
+				{this.state.selectedColumn==this.state.trueAges.length && <Confetti width={this.state.width} height={this.state.height} />}
 			  <IonRow>
 				<IonCol><div>
 						<div className="grid" style={{ width: this.state.trueAges.length * 122}}>
@@ -258,7 +265,15 @@ class EmotionGame extends Component<EmotionGamePropsType> {
 							<div className="box large"
 								style={{ backgroundImage: `url(${"../../assets/imgs/"+this.state.selectedFace.replace("#","/") || ""})` }}
 							/>
+
+							{this.state.selectedColumn<this.state.trueAges.length &&
 							<p>Scan again to confirm that this person is {this.state.trueAges[this.state.selectedColumn]} years old ;)</p>
+							}
+
+							{this.state.selectedColumn==this.state.trueAges.length &&
+							<p>Congratulations! You completed the game</p>
+							}
+
 						</div>
 
 					}
