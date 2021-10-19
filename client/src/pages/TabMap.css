@@ -5,3 +5,23 @@ svg {
 path{
     pointer-events: auto;
 }
+
+.east{
+    fill: red;
+}
+
+.north{
+    fill: yellow;
+}
+
+.center{
+    fill:blue;
+}
+
+.south{
+    fill:green;
+}
+
+.ai{
+    fill:darkgray;
+}
