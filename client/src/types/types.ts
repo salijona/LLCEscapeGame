@@ -41,6 +41,12 @@ cols:number;
 db?:firebase.firestore.Firestore;
 };
 
+export type TweetGamePropsType = {
+cols:number;
+db?:firebase.firestore.Firestore;
+};
+
+
 export type ScenePropsType = {
   scene: SceneType;
   nextScene: (id: string) => void;
