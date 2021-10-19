@@ -6,15 +6,22 @@ import MissionComponent from "../components/MissionComponent";
 import EmotionGame from "../components/EmotionGame";
 
 import firebase from "../utils/Firebase";
+import {RouteComponentProps} from "react-router";
+import TweetGame from "../components/TweetGame";
 require("firebase/firestore");
 var db = firebase.firestore();
 
-const TabMissions: React.FC = () => {
+interface MissionDetailPageProps extends RouteComponentProps<{
+  id: string;
+}> {}
+
+const TabMissions:  React.FC<MissionDetailPageProps> = ({match}) => {
   return (
     <IonPage>
 
         <IonContent fullscreen>
-            <EmotionGame cols={7} rows={5} speed={100} db={db}></EmotionGame>
+            {(!match.params.id || match.params.id=="emotion") &&  <EmotionGame cols={7} rows={5} speed={100} db={db}></EmotionGame>}
+            {(!match.params.id || match.params.id=="tweet") &&  <TweetGame cols={7} db={db}></TweetGame>}
         </IonContent>
 
     </IonPage>
