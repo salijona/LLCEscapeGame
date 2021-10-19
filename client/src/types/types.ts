@@ -34,6 +34,13 @@ export type SceneType = {
   lon?:number;
 };
 
+export type AgeGamePropsType = {
+speed:number;
+rows:number;
+cols:number;
+db?:firebase.firestore.Firestore;
+};
+
 export type EmotionGamePropsType = {
 speed:number;
 rows:number;
