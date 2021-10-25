@@ -5,6 +5,7 @@
 	height: 120px;
 	margin-left: 2px;
 	margin-bottom: 2px;
+	cursor: pointer;
 }
 
 .large{
@@ -25,6 +26,18 @@
 	border: solid 2px green;
 
 	/*background-color: red;*/
+}
+
+.active{
+	background: greenyellow;
+}
+
+.correct{
+	background: darkseagreen;
+}
+
+.past{
+	background: darkgrey;
 }
 
 .center {

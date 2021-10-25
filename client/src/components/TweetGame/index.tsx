@@ -21,9 +21,10 @@ class TweetGame extends Component<TweetGamePropsType> {
 			width : window.innerWidth,
 			tiles:Array.from(Array(this.props.cols).keys()),
 			selectedColumn:0,
-			selectedTweet:true,
+			selectedTweet:false,
 			tweetA:"",
-			tweetB:""
+			tweetB:"",
+			correct:[]
 		}
 
 		if (this.props.db){
@@ -63,13 +64,21 @@ class TweetGame extends Component<TweetGamePropsType> {
 	}
 
 	selectBox = (lane:number, index:number) => {
-		alert(lane*10+index)
+		if(index!=this.state.selectedColumn){
+			return
+		}
+		if(lane==this.state.advIndex){
+			let correct = this.state.correct
+			correct.push(this.state.advIndex)
+			this.setState({"selectedColumn":this.state.selectedColumn+1,"correct":correct})
+			this.updateTweets()
+		}
 	}
 
 	populateRow = (row) => {
 
 		return (label, index) =>{
-		return <div style={{ textAlign: "center"}} className={"box"} key={ index } onClick={() => this.selectBox(row,index)}>
+		return <div style={{ textAlign: "center"}} className={`box ${index==this.state.selectedColumn ? "active" : (index<this.state.selectedColumn ? (this.state.correct[index]==row?"correct":"past"):"")}`} key={ index } onClick={() => this.selectBox(row,index)}>
 									<span style={{ display: "inline-block", marginTop:60}}>{label}</span>
 		</div>
 		}
@@ -87,7 +96,7 @@ class TweetGame extends Component<TweetGamePropsType> {
 	render() {
 		return (
 			<IonGrid>
-				{false && <Confetti width={this.state.width} height={this.state.height} />}
+				{this.state.tiles.length==this.state.selectedColumn && <Confetti width={this.state.width} height={this.state.height} />}
 			  <IonRow>
 				<IonCol>
 
@@ -106,18 +115,20 @@ class TweetGame extends Component<TweetGamePropsType> {
 					}
 
 				</IonCol>
+				  {this.state.selectedColumn  < this.state.tiles.length &&
 				<IonCol style={{textAlign: "center"}}>
 					<h3>Tweets</h3>
 
-						<div className="tweet">
-								<p>{this.state.tweetA}</p>
-						</div>
+
+					<div className="tweet">
+						<p>{this.state.tweetA}</p>
+					</div>
 
 						<div className="tweet">
-								<p>{this.state.tweetB}</p>
+						<p>{this.state.tweetB}</p>
 						</div>
-
 				</IonCol>
+				  }
 			  </IonRow>
 			</IonGrid>
 
