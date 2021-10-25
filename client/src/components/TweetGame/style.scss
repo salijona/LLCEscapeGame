@@ -27,14 +27,6 @@
 	/*background-color: red;*/
 }
 
-.sprite {
-	background-image: url('https://www.seekpng.com/png/detail/475-4754251_mario-png-clipart-new-super-mario-bros-yoshi.png');
-	background-position: center;
-	background-size: contain;
-
-	/*background-color: red;*/
-}
-
 .center {
 	margin: auto;
 	display: table;
@@ -60,4 +52,16 @@ h1, h2, h3, h4 {
 
 h4 {
 	margin-top: 0px;
+}
+
+
+.tweet{
+	width:620px;
+	height:300px;
+	background-size: cover;
+	text-align: left;
+	font-size: 24px;
+	padding: 65px 20px 45px 20px;
+	margin-bottom: 20px;
+	background-image: url('../../assets/tweet_back.png');
 }
