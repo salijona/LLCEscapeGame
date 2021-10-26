@@ -34,7 +34,10 @@
       "image": "https://t4.ftcdn.net/jpg/02/94/85/97/240_F_294859777_pD0UMlcW0jK7mXw0DGo1Y92dYfvQPBl5.jpg",
       "texts": [
         {
-          "text": "Luxembourg, 2071. Under pressures of some digital lobbies, the countries of the European Union have decided to join in the \"Universal Digital Federation\" "
+          "text": "Luxembourg, 2071. Under pressures of some digital lobbies,"
+        },
+        {
+          "text": "the countries of the European Union have decided to join in the \"Universal Digital Federation\" "
         },
         {
           "text": "The UDF abolished governments and borders to establish the SMART Artificial Intelligence, instead of local political authorities. "
@@ -49,11 +52,18 @@
         }
         ,
         {
-          "text": "The federation has seen an extraordinary growth in life quality measures like happiness, peace of mind, health and leisure time. But what is the cost of SMART for Luxembourg?"
+          "text": "The federation has seen an extraordinary growth in life quality measures"
         }
         ,
         {
-          "text": "As a fresh member of the Evaders, your mission is to uncover the prowess and limitations of SMART and free the four districts of Luxembourg from the yoke of the AI."
+          "text": "like happiness, peace of mind, health and leisure time. But what is the cost of SMART for Luxembourg?"
+        }
+        ,
+        {
+          "text": "As a fresh member of the Evaders, your mission is to uncover the prowess and limitations of SMART"
+        },
+        {
+          "text": "and free the four districts of Luxembourg from the yoke of the AI."
         }
       ],
       "buttons": [
@@ -80,8 +90,8 @@
       ],
       "buttons": [
         {
-          "text": "I accept the mission!",
-          "redirectId": "start3"
+          "text": "Let's start!",
+          "redirectId": "/map/"
         },
         {
           "text": "Sorry, I can't do it",
@@ -89,6 +99,73 @@
         }
       ]
     },
+
+    "south": {
+      "name": "Game",
+      "visible": 1,
+      "id": "south",
+      "image": "https://app.visitluxembourg.com/images/32801-resize-669x445x70.jpg",
+      "texts": [
+        {
+          "text": "You are in Belval"
+        }
+      ],
+      "buttons": [
+        {
+          "text": "Begin the game!",
+          "redirectId": "/missions/age"
+        }
+      ]
+    },
+
+    "center": {
+      "name": "Game",
+      "visible": 1,
+      "id": "center",
+      "image": "https://cdn.generationvoyage.fr/2014/11/luxembourg-ville-guide-voyage.jpg",
+      "texts": [
+        {
+          "text": "You are in Luxembourg Ville"
+        }
+      ],
+      "buttons": [
+
+      ]
+    },
+
+    "north": {
+      "name": "Game",
+      "visible": 1,
+      "id": "north",
+      "image": "https://app.visitluxembourg.com/images/33759-resize-1170x999x70.jpg",
+      "texts": [
+        {
+          "text": "You are in Vianden"
+        }
+      ],
+      "buttons": [
+        {
+          "text": "Begin the game!",
+          "redirectId": "/missions/tweet"
+        }
+      ]
+    },
+
+    "east": {
+      "name": "Game",
+      "visible": 1,
+      "id": "east",
+      "image": "https://static.independent.co.uk/s3fs-public/thumbnails/image/2015/06/15/11/schengen.jpg",
+      "texts": [
+        {
+          "text": "You are in Schengen"
+        }
+      ],
+      "buttons": [
+
+      ]
+    },
+
     "scene_explain": {
       "id": "scene_explain",
       "visible": 0,

@@ -4,9 +4,6 @@ import { NovelProps } from '../../types/types';
 import { NovelState, SceneState } from '../../store/reducers/reducersTypes';
 import Scene from '../../components/Scene';
 import { setScene } from '../../store/actions/sceneActions';
-import MenuSettings from '../../components/MenuSettings';
-import MenuSaves from '../../components/MenuSaves';
-import styles from './styles.module.scss';
 
 class Novel extends Component<NovelProps> {
   nextScene = (id: string) => {

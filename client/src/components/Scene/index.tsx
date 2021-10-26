@@ -55,6 +55,9 @@ function Scene({ scene, nextScene, saves, settings, addSave }: ScenePropsType) {
       if (id.startsWith("http")){
         window.open(id, '_blank');
       }
+      else if (id.startsWith("/")){
+        window.open(id, '_self');
+      }
       else{
       clearScene();
       nextScene(id);

@@ -21,7 +21,7 @@ class TweetGame extends Component<TweetGamePropsType> {
 			width : window.innerWidth,
 			tiles:Array.from(Array(this.props.cols).keys()),
 			selectedColumn:0,
-			selectedTweet:false,
+			selectedTweet:true,
 			tweetA:"",
 			tweetB:"",
 			correct:[]
@@ -71,8 +71,9 @@ class TweetGame extends Component<TweetGamePropsType> {
 			let correct = this.state.correct
 			correct.push(this.state.advIndex)
 			this.setState({"selectedColumn":this.state.selectedColumn+1,"correct":correct})
-			this.updateTweets()
+
 		}
+		this.updateTweets()
 	}
 
 	populateRow = (row) => {
