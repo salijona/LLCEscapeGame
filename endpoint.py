@@ -3,6 +3,7 @@ from flask import Flask, request, jsonify, send_from_directory, render_template
 import hashlib
 import re
 import mimetypes
+import os
 mimetypes.add_type('text/css', '.css')
 mimetypes.add_type('application/javascript', ".js")
 from flask_cors import CORS
@@ -73,7 +74,8 @@ def catch_all(path):
      
 if __name__ == '__main__':
     app.debug = True
-    app.run(host='127.0.0.1', port=80)
+    port = int(os.environ.get("PORT", 5000))
+    app.run(host='127.0.0.1', port=port)
 
 
 

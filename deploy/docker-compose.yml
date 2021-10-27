@@ -1,0 +1,19 @@
+version: '3.4'
+
+services:
+  client:
+    image: escape-game-client
+    build:
+      context: ../client
+      dockerfile: ./Dockerfile
+    environment:
+      NODE_ENV: production
+    ports:
+      - "8383:8383"
+  server:
+    image: escape-game-server
+    build:
+      context: ../
+      dockerfile: ./Dockerfile
+    ports:
+      - "5151:5151"
