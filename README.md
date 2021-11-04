@@ -29,3 +29,8 @@ Name format:
 Original data: realAge-gender.jpg
 
 Adv data: fakeAge-attack-level-gender.jpg
+
+
+## Ressources:
+
+Face detection from https://github.com/simplysuvi/face-emo

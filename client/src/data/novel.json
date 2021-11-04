@@ -129,7 +129,10 @@
         }
       ],
       "buttons": [
-
+        {
+          "text": "Begin the game!",
+          "redirectId": "/missions/emotion"
+        }
       ]
     },
 
