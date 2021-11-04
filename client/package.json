@@ -4,6 +4,9 @@
   "private": true,
   "dependencies": {
     "@capacitor/core": "^2.4.7",
+    "@fortawesome/fontawesome-svg-core": "^1.2.36",
+    "@fortawesome/free-solid-svg-icons": "^5.15.4",
+    "@fortawesome/react-fontawesome": "^0.1.16",
     "@ionic-native/android-permissions": "^5.31.1",
     "@ionic-native/core": "^5.31.1",
     "@ionic-native/geolocation": "^5.31.1",
@@ -43,6 +46,8 @@
     "react-router-dom": "^5.2.0",
     "react-scripts": "4.0.2",
     "react-use": "^17.3.1",
+    "react-use-faceapi": "^1.0.1",
+    "react-webcam": "^6.0.0",
     "redux-devtools-extension": "^2.13.9",
     "redux-persist": "^6.0.0",
     "typesafe-actions": "^5.1.0",
@@ -93,5 +98,5 @@
     "@types/google.maps": "^3.44.2",
     "@types/googlemaps": "^3.43.3"
   },
-  "description": "Une aventure temporelle proposée par la JCE de Metz"
+  "description": "Une aventure proposée par le LLC & Serval"
 }
