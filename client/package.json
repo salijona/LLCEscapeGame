@@ -43,6 +43,7 @@
     "react-router-dom": "^5.2.0",
     "react-scripts": "4.0.2",
     "react-use": "^17.3.1",
+    "react-use-faceapi": "^1.0.1",
     "redux-devtools-extension": "^2.13.9",
     "redux-persist": "^6.0.0",
     "typesafe-actions": "^5.1.0",
