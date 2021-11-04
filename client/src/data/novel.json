@@ -13,7 +13,7 @@
           "text": "Welcome to the Serval X LLC Escape Game: Evade the AI."
         },
         {
-          "text": "This is an escape game that will require your solve challenges related to Artificial Intelligence. It will take you about 30min to complet"
+          "text": "This is an escape game that will require you to solve challenges related to Machine Learning. It will take you about 30min to complete"
         }
 
       ],
@@ -23,32 +23,56 @@
           "redirectId": "start2"
         },
         {
-          "text": "Explain a bit more",
-          "redirectId": ""
+          "text": "What is Machine Learning (ML)?",
+          "redirectId": "start1"
         }
+      ]
+    },
+    "start1": {
+      "name": "ML",
+      "visible": 0,
+      "id": "start1",
+      "image": "http://www.doodlemore.co.uk/wp-content/uploads/2019/02/LuxLC10.png",
+      "character": "f_uwKZIAeM0",
+      "content": "youtube",
+      "texts": [
+        {
+          "text": "Let's watch this short video about ML!"
+        }
+      ],
+      "buttons": [
+        {
+          "text": "Start the Game",
+          "redirectId": "start2"
+        }
+
       ]
     },
  "start2": {
       "name": "Game",
       "visible": 0,
       "id": "start2",
+      "content": "img",
       "image": "https://t4.ftcdn.net/jpg/02/94/85/97/240_F_294859777_pD0UMlcW0jK7mXw0DGo1Y92dYfvQPBl5.jpg",
       "texts": [
         {
-          "text": "Luxembourg, 2071. Under pressures of some digital lobbies,"
+
+          "text": "Luxembourg, 2071. Under pressures of some digital lobbies, the countries of the"
         },
         {
-          "text": "the countries of the European Union have decided to join in the \"Universal Digital Federation\" "
+          "text": "European Union have decided to merge as the \"Universal Digital Federation\" (UDF)"
         },
         {
           "text": "The UDF abolished governments and borders to establish the SMART Artificial Intelligence, instead of local political authorities. "
         }
         ,
         {
+          "updatedCharacter": "../../assets/locations/SMART2.png",
           "text": "SMART stands for Supervision,  Monitoring,  Allocations and Regulations Technology."
         }
         ,
         {
+
           "text": "SMART knows everything, SMART wants us good, SMART is at our service."
         }
         ,
@@ -74,7 +98,7 @@
         },
         {
           "text": "Sorry, I can't do it",
-          "redirectId": ""
+          "redirectId": "gameover"
         }
       ]
     },
@@ -93,11 +117,27 @@
         {
           "text": "Let's start!",
           "redirectId": "/map/"
-        },
-        {
-          "text": "Sorry, I can't do it",
-          "redirectId": ""
         }
+
+      ]
+    },
+
+    "gameover": {
+      "name": "Game Over",
+      "visible": 0,
+      "id": "gameover",
+      "image": "https://c.tenor.com/gttLQYXYZIYAAAAC/chaos-the-tomorrow-war.gif",
+      "texts": [
+        {
+          "text": "All hope is lost! Game Over!"
+        }
+      ],
+      "buttons": [
+        {
+          "text": "Start again",
+          "redirectId": "start2"
+        }
+
       ]
     },
 
