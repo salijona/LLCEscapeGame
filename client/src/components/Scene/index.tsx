@@ -22,7 +22,7 @@ function Scene({ scene, nextScene, saves, settings, addSave }: ScenePropsType) {
   const [textIndex, setTextIndex] = useState(0);
   const [backgroundImage, setBackgroundImage] = useState('');
   const [characterImage, setCharacterImage] = useState('');
-  const { image, texts, buttons, game, character } = scene;
+  const { image, texts, buttons, game, character, content } = scene;
   const [answer, setAnswer] = useState<string>('');
 
 
@@ -45,9 +45,7 @@ function Scene({ scene, nextScene, saves, settings, addSave }: ScenePropsType) {
           nextText(code.data)
         }
 
-        console.log(width+" "+height)
       })
-       console.log(image_url)
    }
   const handleClick = (id: string) => () => {
     if(id !=""){
@@ -168,9 +166,25 @@ function Scene({ scene, nextScene, saves, settings, addSave }: ScenePropsType) {
 
     <div className={styles.background} style={{ backgroundImage: `url(${backgroundImage || image})` }}>
 
-      { (characterImage || character) &&
-         <img src={characterImage || character}  className={styles.character} />
+
+      {
+        (characterImage || character) && content =="youtube" &&
+        <iframe  width="1200" height="600" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen
+        src={`https://www.youtube.com/embed/${characterImage || character}?autoplay=1`}>
+        </iframe>
       }
+      {
+        (characterImage || character) && content =="iframe" &&
+        <iframe
+        src={`${characterImage || character}`}>
+        </iframe>
+      }
+      {
+        (characterImage || character) && content =="img" &&
+            <img src={characterImage || character}  className={styles.character} />
+      }
+
+
 
       <div className={styles.content}>
         <div className={styles.buttons}>

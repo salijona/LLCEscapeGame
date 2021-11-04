@@ -7,6 +7,7 @@
       "id": "start",
       "image": "http://www.doodlemore.co.uk/wp-content/uploads/2019/02/LuxLC10.png",
       "character": "../../assets/locations/detective.png",
+      "content": "img",
       "texts": [
         {
           "text": "Welcome to the Serval X LLC Escape Game: Evade the AI."

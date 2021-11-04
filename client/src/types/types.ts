@@ -32,6 +32,7 @@ export type SceneType = {
   status?:number;
   lat?:number;
   lon?:number;
+  content?: string | 'img';
 };
 
 export type AgeGamePropsType = {
