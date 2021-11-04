@@ -11,7 +11,7 @@ import Webcam from "react-webcam";
 import "./Camera.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-const Camera = ({ photoMode }) => {
+const Camera = ({ photoMode, score }) => {
   const camera = useRef();
   const cameraCanvas = useRef();
 
@@ -113,7 +113,7 @@ const Camera = ({ photoMode }) => {
       ) : (
         <>
           <div className="results__container">
-            <Results results={results} />
+            <Results results={results} score={score}/>
           </div>
         </>
       )}

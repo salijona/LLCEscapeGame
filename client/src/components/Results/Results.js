@@ -1,15 +1,56 @@
-import React from "react";
-
+import React, {useState} from "react";
+import useCountDown from 'react-countdown-hook';
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import Spinner from "../Spinner/Spinner";
 
-import {mapExpressionToEmoji} from "../../utils/emojis";
+import {mapExpressionToEmoji, mapExpressionGenderToEmoji, emotions} from "../../utils/emojis";
 
 import "./Results.css";
+const initialTime = 5 * 1000; // initial time in milliseconds, defaults to 60000
+const interval = 1000; // interval to change remaining time amount, defaults to 1000
 
-const Results = ({results, processing}) => {
+
+const Results = ({results, processing, score}) => {
+
+    const [timeLeft, { start, pause, resume, reset }] = useCountDown(initialTime, interval);
+    const [targetFace, setTargetFace] = useState(0);
+
+    React.useEffect(() => {
+        restartEvent()
+      }, []);
+
+    const restart = React.useCallback(() => {
+    start();
+  }, []);
+
+    function restartEvent() {
+
+        if (results && results.length > 0) {
+
+            let userFace = results[0].expressions.asSortedArray()[0].expression
+
+            console.log(emotions[targetFace], userFace)
+            if (userFace == emotions[targetFace]) {
+                score += 1
+                alert("ok")
+
+            }
+        }
+         start();
+         setTimeout(restartEvent, initialTime);
+         setTargetFace(Math.floor(Math.random()*emotions.length))
+    }
+
   if (processing && results) {
-    return <Spinner />;
+    return
+          <div>
+              <p>You should look{" "}
+              {emotions[targetFace]}
+              </p>
+              <p>Time left: {Math.floor(timeLeft/1000)}</p>
+                <Spinner />
+            </div>
+      ;
   }
   if (!processing && results && results.length > 0) {
     return (
@@ -19,39 +60,24 @@ const Results = ({results, processing}) => {
             <p>I think...</p>
             {results.map((result, i) => (
               <div className="results__wrapper" key={i}>
-                <div>
-                  <p>
-                    One of you is probably {result.gender}, is looking{" "}
-                    {result.expressions.asSortedArray()[0].expression} and looks
-                    around {Math.round(result.age)}
-                  </p>
-                </div>
-                <FontAwesomeIcon
-                  icon={mapExpressionToEmoji(
-                    result.expressions.asSortedArray()[0].expression
-                  )}
-                  size="4x"
-                />
-                <FontAwesomeIcon
-                  icon={mapExpressionToEmoji(
-                    result.gender
-                  )}
-                  size="4x"
-                />
+
               </div>
             ))}
           </div>
         ) : (
           <div className="results__wrapper">
             <div>
-              <p>I think...</p>
-              <p>
-                You look{" "}
-                {results[0].expressions.asSortedArray()[0].expression}
+              <p>You should look{" "}
+              {emotions[targetFace]}
               </p>
+              <p>Time left: {Math.floor(timeLeft/1000)}</p>
 
             </div>
             <div className="results__emoji">
+            <p>
+                You look{" "}
+                {results[0].expressions.asSortedArray()[0].expression}
+              </p>
               <FontAwesomeIcon
                 icon={mapExpressionToEmoji(
                   results[0].expressions.asSortedArray()[0].expression
@@ -59,7 +85,7 @@ const Results = ({results, processing}) => {
                 size="4x"
               />
               <FontAwesomeIcon
-                icon={mapExpressionToEmoji(
+                icon={mapExpressionGenderToEmoji(
                   results[0].gender
                 )}
                 size="4x"

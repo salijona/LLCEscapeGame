@@ -17,7 +17,7 @@ const SelectedImage = ({img}) => {
     setResults(faces);
     drawResults(selected.current, canvas.current, faces, "box");
     drawResults(selected.current, canvas.current, faces, "landmarks");
-
+    console.log(faces)
     setProcessing(false);
   };
 
