@@ -42,10 +42,12 @@ class EmotionGame extends Component<EmotionGamePropsType> {
 				  <h1>
 					<span>Emotion Detector</span>
 				  </h1>
+					<p>Your score: {this.state.score}</p>
 
 				</div>
 			  </header>
-			  <Camera photoMode={this.state.mode} />
+			  <Camera photoMode={this.state.mode} score={this.state.score}/>
+
 			</div>
 		);
 	};
