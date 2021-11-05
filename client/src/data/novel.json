@@ -145,10 +145,22 @@
       "name": "Game",
       "visible": 1,
       "id": "south",
+      "content": "img",
       "image": "https://app.visitluxembourg.com/images/32801-resize-669x445x70.jpg",
+
       "texts": [
         {
-          "text": "You are in Belval"
+          "text": "Welcome to Belval"
+        },
+        {
+          "nickname": "W",
+          "updatedCharacter": "../../assets/locations/MALE_ANGRY.png",
+          "text": "We need to free the Campus from WISE. It restricts access to people based on their Age."
+        },
+        {
+          "nickname": "W",
+          "updatedCharacter": "../../assets/locations/MALE_ANGRY.png",
+          "text": "To beat the game"
         }
       ],
       "buttons": [
