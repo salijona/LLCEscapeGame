@@ -1,12 +1,13 @@
 const emojiMap = {
-  angry: "angry",
-  disgusted: "grin-tongue-squint",
-  fearful: "grimace",
-  happy: "grin",
   neutral: "meh",
+  angry: "angry",
+  //disgusted: "grin-tongue-squint",
+  //fearful: "grimace",
+  happy: "grin",
   sad: "sad-tear",
   surprised: "surprise"
 };
+
 
 const emojiGenderMap = {
   male: "male",

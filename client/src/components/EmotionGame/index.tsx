@@ -33,6 +33,10 @@ class EmotionGame extends Component<EmotionGamePropsType> {
 		this.setState({"mode":val})
 	}
 
+	setGameScore = (val) =>{
+		this.setState({"score":val})
+	}
+
 
 	render() {
 		return (
@@ -46,7 +50,7 @@ class EmotionGame extends Component<EmotionGamePropsType> {
 
 				</div>
 			  </header>
-			  <Camera photoMode={this.state.mode} score={this.state.score}/>
+			  <Camera photoMode={this.state.mode} scoreFn={this.setGameScore}/>
 
 			</div>
 		);

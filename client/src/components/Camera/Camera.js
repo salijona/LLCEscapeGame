@@ -10,8 +10,10 @@ import Webcam from "react-webcam";
 
 import "./Camera.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import useCountDown from "react-countdown-hook";
+import {emotions} from "../../utils/emojis";
 
-const Camera = ({ photoMode, score }) => {
+const Camera = ({ photoMode, scoreFn }) => {
   const camera = useRef();
   const cameraCanvas = useRef();
 
@@ -19,6 +21,38 @@ const Camera = ({ photoMode, score }) => {
   const [showGallery, setShowGallery] = useState(false);
   const [photos, setPhotos] = useState([]);
   const [results, setResults] = useState([]);
+  const [score, setScore] = useState(0);
+  const [trials, setTrials] = useState(24);
+
+
+  const initialTime = 10 * 1000; // initial time in milliseconds, defaults to 60000
+  const interval = 1000; // interval to change remaining time amount, defaults to 1000
+
+  const [timeLeft, { start, pause, resume, reset }] = useCountDown(initialTime, interval);
+
+  let myscore = 0;
+  let nbRetrials = 12;
+  let targetId = 0;
+
+  const [targetFace, setTargetFace] = useState(0);
+
+
+    React.useEffect(() => {
+        restartEvent();
+        setInterval(restartEvent, initialTime+1000);
+      }, []);
+
+
+    function restartEvent() {
+
+      console.log("restart", nbRetrials)
+      targetId = Math.floor(Math.random()*emotions.length)
+      setTargetFace(targetId)
+      start();
+      nbRetrials = nbRetrials-1
+      setTrials(nbRetrials)
+
+    }
 
   const getFaces = async () => {
     if (camera.current !== null) {
@@ -30,6 +64,26 @@ const Camera = ({ photoMode, score }) => {
         "boxLandmarks"
       );
       setResults(faces);
+
+      if (faces && faces.length > 0) {
+
+          let userFace = faces[0].expressions.asSortedArray()[0].expression
+          console.log("--",userFace, emotions[targetId])
+
+          myscore = myscore+1
+          if (userFace == emotions[targetId]) {
+
+            myscore = myscore+5
+            console.log("ok", myscore)
+          }
+
+      }
+      else{
+          //console.log("-- no face", results)
+      }
+      scoreFn(myscore)
+      setScore(myscore)
+
     }
   };
 
@@ -62,7 +116,8 @@ const Camera = ({ photoMode, score }) => {
     setPhoto(imgSrc);
     setShowGallery(true);
   };
-  const reset = () => {
+
+  const resetPhotos = () => {
     setPhoto(undefined);
     setPhotos([]);
     setShowGallery(false);
@@ -85,6 +140,16 @@ const Camera = ({ photoMode, score }) => {
           )}
           ref={cameraCanvas}
         />
+        <div>
+              <p>
+                <span>You have {Math.floor(timeLeft/1000)} seconds</span>
+                <span> to look{" "}
+              {emotions[targetFace]}
+                </span>
+              </p>
+              <p>You still have {trials} trials before the end of the game</p>
+
+            </div>
       </div>
 
       {photoMode ? (
@@ -98,7 +163,7 @@ const Camera = ({ photoMode, score }) => {
             <Button onClick={capture} className="camera__button--snap">
               <FontAwesomeIcon icon="camera" size="md" />
             </Button>
-            {photos.length > 0 && <Button onClick={reset}>Reset</Button>}
+            {photos.length > 0 && <Button onClick={resetPhotos}>Reset</Button>}
           </div>
 
           {photos.length > 0 && (
@@ -113,7 +178,7 @@ const Camera = ({ photoMode, score }) => {
       ) : (
         <>
           <div className="results__container">
-            <Results results={results} score={score}/>
+            <Results results={results}/>
           </div>
         </>
       )}
