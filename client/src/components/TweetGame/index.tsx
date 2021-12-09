@@ -108,7 +108,7 @@ class TweetGame extends Component<TweetGamePropsType> {
 							{this.state.tiles.map(this.populateRow(1),this)}
 					</div>
 
-					{this.state.selectedTweet &&
+					{false &&
 
 						<div  className="tweet" style={{marginTop:20, marginLeft:50, border:"solid 2px red"}}>
 							<p>{this.state.adv}</p>
@@ -121,11 +121,11 @@ class TweetGame extends Component<TweetGamePropsType> {
 					<h3>Tweets</h3>
 
 
-					<div className="tweet">
+					<div className="tweet" onClick={() => this.selectBox(0,this.state.selectedColumn)}>
 						<p>{this.state.tweetA}</p>
 					</div>
 
-						<div className="tweet">
+						<div className="tweet"  onClick={() => this.selectBox(1,this.state.selectedColumn)}>
 						<p>{this.state.tweetB}</p>
 						</div>
 				</IonCol>

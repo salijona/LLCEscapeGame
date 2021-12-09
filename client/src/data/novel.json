@@ -160,7 +160,7 @@
         {
           "nickname": "W",
           "updatedCharacter": "../../assets/locations/MALE_ANGRY.png",
-          "text": "To beat the game"
+          "text": "To beat the game, you will "
         }
       ],
       "buttons": [
@@ -218,7 +218,10 @@
         }
       ],
       "buttons": [
-
+        {
+          "text": "Begin the game!",
+          "redirectId": "/missions/sound"
+        }
       ]
     },
 
