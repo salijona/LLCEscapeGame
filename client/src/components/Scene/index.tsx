@@ -14,6 +14,13 @@ import CameraService from "../../utils/Camera";
 import jsQR from "jsqr";
 
 import ReactDOM from 'react-dom'
+import EmotionGame from "../EmotionGame";
+import AgeGame from "../AgeGame";
+import TweetGame from "../TweetGame";
+import SoundGame from "../SoundGame";
+import firebase from "../../utils/Firebase";
+require("firebase/firestore");
+var db = firebase.firestore();
 
 let wordsInterval: number;
 let wordsIntervalIndex: number = 0;
@@ -219,6 +226,17 @@ function Scene({ scene, nextScene, saves, settings, addSave }: ScenePropsType) {
                       text={"Prendre une photo du QR Code"}
                     />
             }
+
+
+            {game.type =="activity" &&
+                <div>
+                   {(game.correctAnswer=="emotion") &&  <EmotionGame cols={7} rows={5} speed={100} db={db}></EmotionGame>}
+                    {(game.correctAnswer=="age") &&  <AgeGame cols={7} rows={5} speed={100} db={db}></AgeGame>}
+                    {(game.correctAnswer=="tweet") &&  <TweetGame cols={7} db={db}></TweetGame>}
+                    {(game.correctAnswer=="sound") &&  <SoundGame cols={7} db={db}></SoundGame>}
+                </div>
+            }
+
             </div>
 
 

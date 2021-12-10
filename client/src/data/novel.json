@@ -47,10 +47,6 @@
         {
           "text": "Start the Game",
           "redirectId": "start2"
-        },
-        {
-          "text": "Play with ML!",
-          "redirectId": "start3bis"
         }
 
       ]
@@ -216,9 +212,44 @@
       "buttons": [
         {
           "text": "Begin the game!",
-          "redirectId": "/missions/age"
+          "redirectId": "ageGame"
         }
       ]
+    },
+
+
+    "ageGame": {
+      "name": "Age Game",
+      "visible": 0,
+      "id": "ageGame",
+      "image": "",
+      "texts": [
+        {
+          "text": "In this game, we will give you each a grid of faces. Each column has 6 faces"
+        },{
+          "text": "On top of the grid, you have a target age. Your mission is to find the face which age is the number"
+        },{
+          "text": "You will start from the column on the left, and you can move to the next column if you find the correct face"
+        },{
+          "text": "The current column (where faces are clickable) is showed in green."
+        },{
+          "text": "When you clic on a face. It appears bigger on the right. It allows you to check if the face is the correct age"
+        },{
+          "text": "If you are sure that it is the right face. Click again on the face. If the face is correct you can move to the next column"
+        },{
+          "text": "The game will start when you press the 'right arrow'"
+        },{
+          "text": ""
+        },{
+          "text": "Game is over! Please record your score"
+        }
+      ],
+      "buttons": [
+      ],
+      "game": {
+        "type": "activity",
+        "correctAnswer": "age"
+      }
     },
 
     "center": {
@@ -234,9 +265,35 @@
       "buttons": [
         {
           "text": "Begin the game!",
-          "redirectId": "/missions/emotion"
+          "redirectId": "emotionGame"
         }
       ]
+    },
+
+    "emotionGame": {
+      "name": "Emotion Game",
+      "visible": 0,
+      "id": "emotionGame",
+      "image": "",
+      "texts": [
+        {
+          "text": "In this game, we will ask you to do 12 different emotions with your face (among: sad, happy, neutral, surprised)"
+        },{
+          "text": "Each emotion will last 10 seconds. The longer your emotion matches the target, the more points you get"
+        },{
+          "text": "The game will start when you press the 'right arrow'"
+        },{
+          "text": ""
+        },{
+          "text": "Game is over! Please record your score"
+        }
+      ],
+      "buttons": [
+      ],
+      "game": {
+        "type": "activity",
+        "correctAnswer": "emotion"
+      }
     },
 
     "north": {
@@ -252,9 +309,37 @@
       "buttons": [
         {
           "text": "Begin the game!",
-          "redirectId": "/missions/tweet"
+          "redirectId": "tweetGame"
         }
       ]
+    },
+
+    "tweetGame": {
+      "name": "Offensive Tweet Game",
+      "visible": 0,
+      "id": "tweetGame",
+      "image": "",
+      "texts": [
+        {
+          "text": "In this game, we will give you each time two tweets. Both are offensive for humans"
+        },{
+          "text": "However, one of them contains a small change (a letter, a synonym) that makes it non-offensive for the machine."
+        },{
+          "text": "Can you guess which one?"
+        },{
+          "text": "The game will start when you press the 'right arrow'"
+        },{
+          "text": ""
+        },{
+          "text": "Game is over! Please record your score"
+        }
+      ],
+      "buttons": [
+      ],
+      "game": {
+        "type": "activity",
+        "correctAnswer": "tweet"
+      }
     },
 
     "east": {
