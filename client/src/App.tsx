@@ -71,16 +71,16 @@ const App: React.FC = () => (
       <IonTabs>
         <IonRouterOutlet>
 
-          <Route exact path="/LLCEscapeGame/story" >
+          <Route exact path="/story" >
             <TabStory></TabStory>
           </Route>
 
 
-          <Route exact path="/LLCEscapeGame/map">
+          <Route exact path="/map">
             <TabMap />
           </Route>
 
-          <Route exact path="/LLCEscapeGame/missions/:id" component={TabMissions}>
+          <Route exact path="/missions/:id" component={TabMissions}>
           </Route>
 
           <Route path="/tab3">
@@ -91,21 +91,21 @@ const App: React.FC = () => (
             <Tab4 />
           </Route>
           <Route exact path="/">
-            <Redirect to="/LLCEscapeGame/story" />
+            <Redirect to="/story" />
           </Route>
         </IonRouterOutlet>
         <IonTabBar slot="bottom">
-          <IonTabButton tab="tabstory" href="/LLCEscapeGame/story">
+          <IonTabButton tab="tabstory" href="/story">
             <IonIcon icon={peopleOutline} />
             <IonLabel>Story</IonLabel>
           </IonTabButton>
 
-          <IonTabButton tab="tab1" href="/LLCEscapeGame/map">
+          <IonTabButton tab="tab1" href="/map">
             <IonIcon icon={mapOutline} />
             <IonLabel>Map</IonLabel>
           </IonTabButton>
 
-          <IonTabButton tab="tab2" href="/LLCEscapeGame/missions">
+          <IonTabButton tab="tab2" href="/missions">
             <IonIcon icon={appsOutline} />
             <IonLabel>Missions</IonLabel>
           </IonTabButton>

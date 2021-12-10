@@ -216,7 +216,7 @@
       "buttons": [
         {
           "text": "Begin the game!",
-          "redirectId": "/LLCEscapeGame/missions/age"
+          "redirectId": "/missions/age"
         }
       ]
     },
@@ -234,7 +234,7 @@
       "buttons": [
         {
           "text": "Begin the game!",
-          "redirectId": "/LLCEscapeGame/missions/emotion"
+          "redirectId": "/missions/emotion"
         }
       ]
     },
@@ -252,7 +252,7 @@
       "buttons": [
         {
           "text": "Begin the game!",
-          "redirectId": "/LLCEscapeGame/missions/tweet"
+          "redirectId": "/missions/tweet"
         }
       ]
     },
