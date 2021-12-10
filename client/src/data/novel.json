@@ -13,7 +13,10 @@
           "text": "Welcome to the Serval X LLC Escape Game: Evade the AI."
         },
         {
-          "text": "This is an escape game that will require you to solve challenges related to Machine Learning. It will take you about 30min to complete"
+          "text": "This is an escape game where you solve challenges related to Machine Learning"
+        },
+        {
+          "text": "It will take you about 30min to complete"
         }
 
       ],
@@ -44,6 +47,10 @@
         {
           "text": "Start the Game",
           "redirectId": "start2"
+        },
+        {
+          "text": "Play with ML!",
+          "redirectId": "start3bis"
         }
 
       ]
@@ -93,13 +100,10 @@
       ],
       "buttons": [
         {
-          "text": "I accept the mission!",
+          "text": "Tell me more about the districts",
           "redirectId": "start3"
-        },
-        {
-          "text": "Sorry, I can't do it",
-          "redirectId": "gameover"
         }
+
       ]
     },
 
@@ -110,13 +114,59 @@
       "image": "../../assets/locations/Luxembourg.png",
       "texts": [
         {
-          "text": "SMART has 4 neural cores that allows it to monitor and supervise all the interactions of the inhabitants:"
+          "text": "SMART has 4 neural cores that allows it to monitor and supervise all the interactions of the inhabitants: North, East, South and Center."
+        },
+         {
+          "text": "In the interactive map, you will have to click on each region to play its associated game."
         }
       ],
       "buttons": [
         {
           "text": "Let's start!",
           "redirectId": "/map/"
+        }
+
+      ]
+    },
+
+    "start3bis": {
+      "name": "Game",
+      "visible": 0,
+      "id": "start3bis",
+       "character": "http://127.0.0.1/game/regression",
+      "content": "iframe",
+      "image": "",
+      "texts": [
+        {
+          "text": "In this first game, we will train a ML model"
+        },
+        {
+          "text": "to predict the price of houses based on area!"
+        }
+        ,
+        {
+          "text": "Press the button 'Train model'"
+        }
+        ,
+        {
+          "text": "Next, let's see how we can affect the training"
+        }
+        ,
+        {
+          "text": "Try to add or remove some points and retrain"
+        }
+        ,
+        {
+          "text": "The model error will change!"
+        },
+        {
+          "text": "You now understand the basics!"
+        }
+      ],
+      "buttons": [
+        {
+          "text": "Ready to fight SMART",
+          "redirectId": "start3"
         }
 
       ]
