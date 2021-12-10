@@ -21,9 +21,12 @@ class TweetGame extends Component<TweetGamePropsType> {
 			width : window.innerWidth,
 			tiles:Array.from(Array(this.props.cols).keys()),
 			selectedColumn:0,
-			selectedTweet:true,
+			selectedTweet:false,
 			tweetA:"",
 			tweetB:"",
+			time:0,
+			nbClick:0,
+			beginTime:new Date().getTime(),
 			correct:[]
 		}
 
@@ -45,6 +48,7 @@ class TweetGame extends Component<TweetGamePropsType> {
 			  });
 			});
 		}
+
 
 	}
 	
@@ -70,16 +74,23 @@ class TweetGame extends Component<TweetGamePropsType> {
 		if(lane==this.state.advIndex){
 			let correct = this.state.correct
 			correct.push(this.state.advIndex)
-			this.setState({"selectedColumn":this.state.selectedColumn+1,"correct":correct})
+			if(this.state.tiles.length==this.state.selectedColumn+1){
+				let time = Math.floor((new Date().getTime() - this.state.beginTime)/1000)
+				this.setState({"time":time})
+			}
+
+			this.setState({"selectedColumn":this.state.selectedColumn+1,"correct":correct, "nbClick":this.state.nbClick+1})
 
 		}
 		this.updateTweets()
+
+
 	}
 
 	populateRow = (row) => {
 
 		return (label, index) =>{
-		return <div style={{ textAlign: "center"}} className={`box ${index==this.state.selectedColumn ? "active" : (index<this.state.selectedColumn ? (this.state.correct[index]==row?"correct":"past"):"")}`} key={ index } onClick={() => this.selectBox(row,index)}>
+		return <div style={{ textAlign: "center"}} className={`box ${index==this.state.selectedColumn ? "active" : (index<this.state.selectedColumn ? (this.state.correct[index]==row?"correct":"past"):"")}`} key={ index } >
 									<span style={{ display: "inline-block", marginTop:60}}>{label}</span>
 		</div>
 		}
@@ -97,7 +108,14 @@ class TweetGame extends Component<TweetGamePropsType> {
 	render() {
 		return (
 			<IonGrid>
-				{this.state.tiles.length==this.state.selectedColumn && <Confetti width={this.state.width} height={this.state.height} />}
+				{this.state.tiles.length==this.state.selectedColumn &&
+
+				<div>
+					<Confetti width={this.state.width} height={this.state.height} />
+					<p className="scoreFinal">Game Over. Your finished the game in {this.state.time}s and {this.state.nbClick} clicks</p>
+				</div>
+
+				}
 			  <IonRow>
 				<IonCol>
 
@@ -118,14 +136,14 @@ class TweetGame extends Component<TweetGamePropsType> {
 				</IonCol>
 				  {this.state.selectedColumn  < this.state.tiles.length &&
 				<IonCol style={{textAlign: "center"}}>
-					<h3>Tweets</h3>
+					<h3 style={{"marginLeft":0}}>Tweets</h3>
 
 
-					<div className="tweet">
+					<div className="tweet" onClick={() => this.selectBox(0,this.state.selectedColumn)}>
 						<p>{this.state.tweetA}</p>
 					</div>
 
-						<div className="tweet">
+						<div className="tweet" onClick={() => this.selectBox(1,this.state.selectedColumn)}>
 						<p>{this.state.tweetB}</p>
 						</div>
 				</IonCol>
