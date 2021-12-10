@@ -117,10 +117,6 @@
         }
       ],
       "buttons": [
-        {
-          "text": "Let's start!",
-          "redirectId": "/map/"
-        }
 
       ]
     },
