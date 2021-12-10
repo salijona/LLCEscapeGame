@@ -4,8 +4,7 @@ import './style.scss';
 
 import {GridProps, BoxProps, TweetGamePropsType} from "../../types/types";
 import Confetti from "react-confetti";
-import { useDrag } from 'react-dnd'
-
+import { DragDropContainer, DropTarget } from 'react-drag-drop-container';
 
 class SoundGame extends Component<TweetGamePropsType> {
 	state: any;
@@ -28,11 +27,25 @@ class SoundGame extends Component<TweetGamePropsType> {
 
 	}
 
+	dropped(e){
+      e.containerElem.style.visibility = 'hidden';
+	  e.target.style.border = "solid 1px red"
+	  console.log(e)
+  }
+
 	render() {
 		return (
 			<IonGrid>
 				{false && <Confetti width={this.state.width} height={this.state.height} />}
 			  <IonRow>
+
+				  <DragDropContainer targetKey="foo" >
+						<div className={"box"}>Drag Me!</div>
+					</DragDropContainer>
+
+					<DropTarget targetKey="foo" onHit={this.dropped}>
+						<div className="box large my_target">I'm a valid drop target for the object above since we both have the same targetKey!</div>
+					</DropTarget>
 
 			  </IonRow>
 			</IonGrid>
