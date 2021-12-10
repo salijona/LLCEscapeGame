@@ -6,7 +6,7 @@
       "name": "Explications",
       "id": "start",
       "image": "http://www.doodlemore.co.uk/wp-content/uploads/2019/02/LuxLC10.png",
-      "character": "../../assets/locations/detective.png",
+      "character": "../../LLCEscapeGame/assets/locations/detective.png",
       "content": "img",
       "texts": [
         {
@@ -74,7 +74,7 @@
         }
         ,
         {
-          "updatedCharacter": "../../assets/locations/SMART2.png",
+          "updatedCharacter": "../../LLCEscapeGame/assets/locations/SMART2.png",
           "text": "SMART stands for Supervision,  Monitoring,  Allocations and Regulations Technology."
         }
         ,
@@ -111,7 +111,7 @@
       "name": "Game",
       "visible": 0,
       "id": "start3",
-      "image": "../../assets/locations/Luxembourg.png",
+      "image": "../../LLCEscapeGame/assets/locations/Luxembourg.png",
       "texts": [
         {
           "text": "SMART has 4 neural cores that allows it to monitor and supervise all the interactions of the inhabitants: North, East, South and Center."
@@ -204,12 +204,12 @@
         },
         {
           "nickname": "W",
-          "updatedCharacter": "../../assets/locations/MALE_ANGRY.png",
+          "updatedCharacter": "../../LLCEscapeGame/assets/locations/MALE_ANGRY.png",
           "text": "We need to free the Campus from WISE. It restricts access to people based on their Age."
         },
         {
           "nickname": "W",
-          "updatedCharacter": "../../assets/locations/MALE_ANGRY.png",
+          "updatedCharacter": "../../LLCEscapeGame/assets/locations/MALE_ANGRY.png",
           "text": "To beat the game"
         }
       ],

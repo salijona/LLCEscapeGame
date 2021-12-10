@@ -22,7 +22,7 @@ class Box extends Component<BoxProps> {
 				id={this.props.id}
 				onClick={this.selectBox}
 				 title={this.props.face}
-				 style={{ backgroundImage: `url(${"../../assets/imgs/"+this.props.face.replace("#","/") || ""})` }}
+				 style={{ backgroundImage: `url(${"../../LLCEscapeGame/assets/imgs/"+this.props.face.replace("#","/") || ""})` }}
 			/>
 		)
 	}
