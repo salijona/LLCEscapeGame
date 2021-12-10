@@ -48,29 +48,36 @@ const Camera = ({ photoMode, scoreFn }) => {
       console.log("restart", nbRetrials)
       targetId = Math.floor(Math.random()*emotions.length)
       setTargetFace(targetId)
-      start();
-      nbRetrials = nbRetrials-1
-      setTrials(nbRetrials)
+
+      if (nbRetrials>0){
+        start();
+        nbRetrials = nbRetrials-1
+        setTrials(nbRetrials)
+      }
+
 
     }
 
   const getFaces = async () => {
     if (camera.current !== null) {
       const faces = await detectFaces(camera.current.video);
-      await drawResults(
-        camera.current.video,
-        cameraCanvas.current,
-        faces,
-        "boxLandmarks"
-      );
-      setResults(faces);
+      if (camera.current !== null) {
+        await drawResults(
+            camera.current.video,
+            cameraCanvas.current,
+            faces,
+            "boxLandmarks"
+        );
+        setResults(faces);
+      }
 
-      if (faces && faces.length > 0) {
+      if (nbRetrials>0){
+        if (faces && faces.length > 0) {
 
           let userFace = faces[0].expressions.asSortedArray()[0].expression
           console.log("--",userFace, emotions[targetId])
 
-          myscore = myscore+1
+          //myscore = myscore+1
           if (userFace == emotions[targetId]) {
 
             myscore = myscore+5
@@ -81,16 +88,21 @@ const Camera = ({ photoMode, scoreFn }) => {
       else{
           //console.log("-- no face", results)
       }
-      scoreFn(myscore)
+
       setScore(myscore)
+      }
+      scoreFn([myscore, nbRetrials])
 
     }
   };
 
   const clearOverlay = canvas => {
-    canvas.current
+    if(canvas.current){
+      canvas.current
       .getContext("2d")
       .clearRect(0, 0, canvas.width, canvas.height);
+    }
+
   };
 
   useEffect(() => {
@@ -142,8 +154,8 @@ const Camera = ({ photoMode, scoreFn }) => {
         />
         <div>
               <p>
-                <span>You have {Math.floor(timeLeft/1000)} seconds</span>
-                <span> to look{" "}
+                <span>You have {Math.floor(timeLeft/1000)} seconds to look{" "}</span>
+                <span className="targetFace">
               {emotions[targetFace]}
                 </span>
               </p>

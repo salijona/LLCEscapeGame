@@ -69,3 +69,8 @@ p.scroll_down
     padding: 0;
   }
 }
+
+.targetFace{
+  font-size: larger;
+  font-weight: bold;
+}

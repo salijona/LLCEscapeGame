@@ -1,6 +1,5 @@
 .App {
   background-color: #3D9970;
-  min-height: 100vh;
 }
 
 .App header {
@@ -26,4 +25,15 @@
 
 .App__switcher-switch {
   margin: 0 0.25rem;
+}
+
+.score{
+  font-size: larger;
+  font-weight: bold;
+}
+
+.scoreFinal{
+  font-size: xx-large;
+  font-weight: bold;
+  text-align: center;
 }
