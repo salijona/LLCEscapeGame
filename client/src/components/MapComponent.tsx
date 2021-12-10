@@ -77,7 +77,7 @@ class MapComponent extends Component<MapProps> {
       }
 
       this.props.setScene(this.props.novel.scenes[zone])
-      this.props.history.push("/story")
+      this.props.history.push("/LLCEscapeGame/story")
 
       //window.location.href="/missions/"+games[zone]
 
