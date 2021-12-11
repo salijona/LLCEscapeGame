@@ -22,7 +22,7 @@ class Box extends Component<BoxProps> {
 				id={this.props.id}
 				onClick={this.selectBox}
 				 title={this.props.face}
-				 style={{ backgroundImage: `url(${"../../assets/imgs/"+this.props.face.replace("#","/") || ""})` }}
+				 style={{ backgroundImage: `url(${"../../LLCEscapeGame/assets/imgs/"+this.props.face.replace("#","/") || ""})` }}
 			/>
 		)
 	}
@@ -146,7 +146,10 @@ class AgeGame extends Component<AgeGamePropsType> {
 			selectedColumn:0,
 			startDate:Date.now(),
 			height : window.innerHeight,
-			width : window.innerWidth
+			width : window.innerWidth,
+			time:0,
+			nbClick:0,
+			beginTime:new Date().getTime(),
 		}
 
 		if (this.props.db){
@@ -210,7 +213,13 @@ class AgeGame extends Component<AgeGamePropsType> {
 				}
 				selectedColumn++
 			}
-			this.setState({gridFull:gridCopy,selectedColumn:selectedColumn})
+
+			if(this.state.trueAges.length==selectedColumn){
+				let time = Math.floor((new Date().getTime() - this.state.beginTime)/1000)
+				this.setState({"time":time})
+			}
+
+			this.setState({gridFull:gridCopy,selectedColumn:selectedColumn, "nbClick":this.state.nbClick+1})
 		}
 
 
@@ -240,43 +249,57 @@ class AgeGame extends Component<AgeGamePropsType> {
 	}
 
 	render() {
+		const column = this.state.selectedColumn;
 		return (
 			<IonGrid>
-				{this.state.selectedColumn==this.state.trueAges.length && <Confetti width={this.state.width} height={this.state.height} />}
-			  <IonRow>
-				<IonCol><div>
-						<div className="grid" style={{ width: this.state.trueAges.length * 122}}>
-							{this.state.trueAges.map(function(age, index){
-								return <div style={{ textAlign: "center"}} className={"box"} key={ index }>
-									<span style={{ display: "inline-block", marginTop:60}}>{age}</span>
-							</div>;
-							  })}
+				{this.state.selectedColumn==this.state.trueAges.length &&
+				<div>
+					<Confetti width={this.state.width} height={this.state.height} />
+					<p className="scoreFinal">Game Over. Your finished the game in {this.state.time}s and {this.state.nbClick} clicks</p>
+				</div>
+
+				}
+				{this.state.selectedColumn != this.state.trueAges.length &&
+				<IonRow>
+					<IonCol>
+						<div>
+							<div className="grid" style={{width: this.state.trueAges.length * 122}}>
+								{this.state.trueAges.map(function (age, index) {
+									return <div style={{textAlign: "center"}} key={index}
+												className={`box ${index == column ? "active" : ""}`}>
+										<span style={{display: "inline-block", marginTop: 60}}>{age}</span>
+									</div>;
+								})}
+							</div>
+
+							<Grid rows={this.props.rows} cols={this.props.cols} gridFull={this.state.gridFull}
+								  selectBox={this.selectBox} ranFaces={this.state.ranFaces}></Grid>
 						</div>
+					</IonCol>
+					<IonCol style={{textAlign: "center"}}>
+						<h3>Selected Face</h3>
 
-					  <Grid rows={this.props.rows} cols={this.props.cols} gridFull={this.state.gridFull} selectBox={this.selectBox} ranFaces={this.state.ranFaces}></Grid>
-					</div></IonCol>
-				<IonCol style={{textAlign: "center"}}>
-					<h3>Selected Face</h3>
-
-					{this.state.selectedFace &&
+						{this.state.selectedFace &&
 						<div>
 							<div className="box large"
-								style={{ backgroundImage: `url(${"../../assets/imgs/"+this.state.selectedFace.replace("#","/") || ""})` }}
+								 style={{backgroundImage: `url(${"../../LLCEscapeGame/assets/imgs/" + this.state.selectedFace.replace("#", "/") || ""})`}}
 							/>
 
-							{this.state.selectedColumn<this.state.trueAges.length &&
-							<p>Scan again to confirm that this person is {this.state.trueAges[this.state.selectedColumn]} years old ;)</p>
+							{this.state.selectedColumn < this.state.trueAges.length &&
+							<p>Scan again to confirm that this person
+								is {this.state.trueAges[this.state.selectedColumn]} years old ;)</p>
 							}
 
-							{this.state.selectedColumn==this.state.trueAges.length &&
+							{this.state.selectedColumn == this.state.trueAges.length &&
 							<p>Congratulations! You completed the game</p>
 							}
 
 						</div>
 
-					}
-				</IonCol>
-			  </IonRow>
+						}
+					</IonCol>
+				</IonRow>
+				}
 			</IonGrid>
 
 

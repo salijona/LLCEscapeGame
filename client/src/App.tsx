@@ -75,12 +75,22 @@ const App: React.FC = () => (
             <TabStory></TabStory>
           </Route>
 
+          <Route exact path="/LLCEscapeGame/story" >
+            <TabStory></TabStory>
+          </Route>
+
+          <Route exact path="/LLCEscapeGame/map">
+            <TabMap />
+          </Route>
 
           <Route exact path="/map">
             <TabMap />
           </Route>
 
           <Route exact path="/missions/:id" component={TabMissions}>
+          </Route>
+
+          <Route exact path="/LLCEscapeGame/missions/:id" component={TabMissions}>
           </Route>
 
           <Route path="/tab3">

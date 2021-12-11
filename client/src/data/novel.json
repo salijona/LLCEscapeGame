@@ -6,14 +6,17 @@
       "name": "Explications",
       "id": "start",
       "image": "http://www.doodlemore.co.uk/wp-content/uploads/2019/02/LuxLC10.png",
-      "character": "../../assets/locations/detective.png",
+      "character": "../../LLCEscapeGame/assets/locations/detective.png",
       "content": "img",
       "texts": [
         {
           "text": "Welcome to the Serval X LLC Escape Game: Evade the AI."
         },
         {
-          "text": "This is an escape game that will require you to solve challenges related to Machine Learning. It will take you about 30min to complete"
+          "text": "This is an escape game where you solve challenges related to Machine Learning"
+        },
+        {
+          "text": "It will take you about 30min to complete"
         }
 
       ],
@@ -67,7 +70,7 @@
         }
         ,
         {
-          "updatedCharacter": "../../assets/locations/SMART2.png",
+          "updatedCharacter": "../../LLCEscapeGame/assets/locations/SMART2.png",
           "text": "SMART stands for Supervision,  Monitoring,  Allocations and Regulations Technology."
         }
         ,
@@ -93,13 +96,10 @@
       ],
       "buttons": [
         {
-          "text": "I accept the mission!",
+          "text": "Tell me more about the districts",
           "redirectId": "start3"
-        },
-        {
-          "text": "Sorry, I can't do it",
-          "redirectId": "gameover"
         }
+
       ]
     },
 
@@ -107,16 +107,58 @@
       "name": "Game",
       "visible": 0,
       "id": "start3",
-      "image": "../../assets/locations/Luxembourg.png",
+      "image": "../../LLCEscapeGame/assets/locations/Luxembourg.png",
       "texts": [
         {
-          "text": "SMART has 4 neural cores that allows it to monitor and supervise all the interactions of the inhabitants:"
+          "text": "SMART has 4 neural cores that allows it to monitor and supervise all the interactions of the inhabitants: North, East, South and Center."
+        },
+         {
+          "text": "In the interactive map, you will have to click on each region to play its associated game."
+        }
+      ],
+      "buttons": [
+
+      ]
+    },
+
+    "start3bis": {
+      "name": "Game",
+      "visible": 0,
+      "id": "start3bis",
+       "character": "http://127.0.0.1/game/regression",
+      "content": "iframe",
+      "image": "",
+      "texts": [
+        {
+          "text": "In this first game, we will train a ML model"
+        },
+        {
+          "text": "to predict the price of houses based on area!"
+        }
+        ,
+        {
+          "text": "Press the button 'Train model'"
+        }
+        ,
+        {
+          "text": "Next, let's see how we can affect the training"
+        }
+        ,
+        {
+          "text": "Try to add or remove some points and retrain"
+        }
+        ,
+        {
+          "text": "The model error will change!"
+        },
+        {
+          "text": "You now understand the basics!"
         }
       ],
       "buttons": [
         {
-          "text": "Let's start!",
-          "redirectId": "/map/"
+          "text": "Ready to fight SMART",
+          "redirectId": "start3"
         }
 
       ]
@@ -154,21 +196,56 @@
         },
         {
           "nickname": "W",
-          "updatedCharacter": "../../assets/locations/MALE_ANGRY.png",
+          "updatedCharacter": "../../LLCEscapeGame/assets/locations/MALE_ANGRY.png",
           "text": "We need to free the Campus from WISE. It restricts access to people based on their Age."
         },
         {
           "nickname": "W",
-          "updatedCharacter": "../../assets/locations/MALE_ANGRY.png",
-          "text": "To beat the game, you will "
+          "updatedCharacter": "../../LLCEscapeGame/assets/locations/MALE_ANGRY.png",
+          "text": "To beat the game"
         }
       ],
       "buttons": [
         {
           "text": "Begin the game!",
-          "redirectId": "/missions/age"
+          "redirectId": "ageGame"
         }
       ]
+    },
+
+
+    "ageGame": {
+      "name": "Age Game",
+      "visible": 0,
+      "id": "ageGame",
+      "image": "",
+      "texts": [
+        {
+          "text": "In this game, we will give you each a grid of faces. Each column has 6 faces"
+        },{
+          "text": "On top of the grid, you have a target age. Your mission is to find the face which age is the number"
+        },{
+          "text": "You will start from the column on the left, and you can move to the next column if you find the correct face"
+        },{
+          "text": "The current column (where faces are clickable) is showed in green."
+        },{
+          "text": "When you clic on a face. It appears bigger on the right. It allows you to check if the face is the correct age"
+        },{
+          "text": "If you are sure that it is the right face. Click again on the face. If the face is correct you can move to the next column"
+        },{
+          "text": "The game will start when you press the 'right arrow'"
+        },{
+          "text": ""
+        },{
+          "text": "Game is over! Please record your score"
+        }
+      ],
+      "buttons": [
+      ],
+      "game": {
+        "type": "activity",
+        "correctAnswer": "age"
+      }
     },
 
     "center": {
@@ -184,9 +261,35 @@
       "buttons": [
         {
           "text": "Begin the game!",
-          "redirectId": "/missions/emotion"
+          "redirectId": "emotionGame"
         }
       ]
+    },
+
+    "emotionGame": {
+      "name": "Emotion Game",
+      "visible": 0,
+      "id": "emotionGame",
+      "image": "",
+      "texts": [
+        {
+          "text": "In this game, we will ask you to do 12 different emotions with your face (among: sad, happy, neutral, surprised)"
+        },{
+          "text": "Each emotion will last 10 seconds. The longer your emotion matches the target, the more points you get"
+        },{
+          "text": "The game will start when you press the 'right arrow'"
+        },{
+          "text": ""
+        },{
+          "text": "Game is over! Please record your score"
+        }
+      ],
+      "buttons": [
+      ],
+      "game": {
+        "type": "activity",
+        "correctAnswer": "emotion"
+      }
     },
 
     "north": {
@@ -202,9 +305,37 @@
       "buttons": [
         {
           "text": "Begin the game!",
-          "redirectId": "/missions/tweet"
+          "redirectId": "tweetGame"
         }
       ]
+    },
+
+    "tweetGame": {
+      "name": "Offensive Tweet Game",
+      "visible": 0,
+      "id": "tweetGame",
+      "image": "",
+      "texts": [
+        {
+          "text": "In this game, we will give you each time two tweets. Both are offensive for humans"
+        },{
+          "text": "However, one of them contains a small change (a letter, a synonym) that makes it non-offensive for the machine."
+        },{
+          "text": "Can you guess which one?"
+        },{
+          "text": "The game will start when you press the 'right arrow'"
+        },{
+          "text": ""
+        },{
+          "text": "Game is over! Please record your score"
+        }
+      ],
+      "buttons": [
+      ],
+      "game": {
+        "type": "activity",
+        "correctAnswer": "tweet"
+      }
     },
 
     "east": {
@@ -218,10 +349,7 @@
         }
       ],
       "buttons": [
-        {
-          "text": "Begin the game!",
-          "redirectId": "/missions/sound"
-        }
+
       ]
     },
 

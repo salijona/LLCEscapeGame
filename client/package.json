@@ -1,6 +1,6 @@
 {
-  "name": "Back2Mettis",
-  "version": "0.0.1",
+  "name": "Serval / LLC Escape Game",
+  "version": "0.1.0",
   "private": true,
   "dependencies": {
     "@capacitor/core": "^2.4.7",
@@ -74,10 +74,12 @@
   },
   "scripts": {
     "preview": "react-scripts --max_old_space_size=4096 start",
-    "build": "react-scripts --max_old_space_size=4096 build",
+    "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "start": "node server.js"
+    "start": "node server.js",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   },
   "eslintConfig": {
     "extends": [
@@ -101,7 +103,9 @@
     "@capacitor/cli": "^2.4.7",
     "@types/google-map-react": "^2.1.0",
     "@types/google.maps": "^3.44.2",
-    "@types/googlemaps": "^3.43.3"
+    "@types/googlemaps": "^3.43.3",
+    "gh-pages": "^3.2.3"
   },
-  "description": "Une aventure proposée par le LLC & Serval"
+  "description": "Une aventure proposée par le LLC & Serval",
+  "homepage": "http://yamizi.github.io/LLCEscapeGame/"
 }
