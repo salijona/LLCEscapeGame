@@ -349,8 +349,34 @@
         }
       ],
       "buttons": [
-
+        {
+          "text": "Begin the game!",
+          "redirectId": "soundGame"
+        }
       ]
+    },
+
+
+    "soundGame": {
+      "name": "Sound Game",
+      "visible": 0,
+      "id": "soundGame",
+      "image": "",
+      "texts": [
+        {
+          "text": "In this game, we will ask you to do 12 different emotions with your face (among: sad, happy, neutral, surprised)"
+        },{
+          "text": ""
+        },{
+          "text": "Game is over! Please record your score"
+        }
+      ],
+      "buttons": [
+      ],
+      "game": {
+        "type": "activity",
+        "correctAnswer": "sound"
+      }
     },
 
     "scene_explain": {
