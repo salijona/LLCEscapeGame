@@ -43,7 +43,7 @@
 
 .grid {
 	width: 600px;
-	line-height: 0;
+	line-height: 25px;
 	margin: auto;
 	box-shadow: 0px 0px 20px white;
 	margin-top: 20px;
@@ -64,3 +64,23 @@ h4 {
 
 
 .highlighted .my_target {background-color: lightblue}
+
+
+.droptarget {
+	height: auto;
+	display: inline-block;
+}
+
+.incorrect{
+border:	solid 2px red;
+}
+
+.correct{
+border:	solid 2px green;
+}
+
+.scoreFinal{
+  font-size: xx-large;
+  font-weight: bold;
+  text-align: center;
+}
