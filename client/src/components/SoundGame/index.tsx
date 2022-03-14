@@ -5,12 +5,27 @@ import './style.scss';
 import {GridProps, BoxProps, TweetGamePropsType} from "../../types/types";
 import Confetti from "react-confetti";
 import { DragDropContainer, DropTarget } from 'react-drag-drop-container';
+import ReactTooltip from 'react-tooltip';
 
 class SoundGame extends Component<TweetGamePropsType> {
 	state: any;
 
 	constructor(props: any) {
 		super(props);
+
+		const base_folder = "../../assets/audio/"
+
+		let audios = [new Audio(base_folder + "50db_0.mp3"), new Audio(base_folder + "50db_1.mp3"),
+			new Audio(base_folder + "50db_2.mp3"), new Audio(base_folder + "35db_0.mp3"),
+			new Audio(base_folder + "35db_1.mp3"), new Audio(base_folder + "20db_0.mp3"),
+			new Audio(base_folder + "20db_1.mp3") ]
+
+		let audios_labels = ["that day the merchant gave the boy permission to build the display",
+			"everyone seemed very excited", "plastic surgery has beocome more popular",
+			"the boy looked out at the horizon","later we simply let life proeed in its own direction toward its own fate",
+			"Now I would drift gently off to dream land",
+			"my wife pointed out to me the brightness of the red green and yellow signal light"
+		]
 
 		let sounds = Array.from(Array(this.props.cols).keys())
 		sounds.sort(() => (Math.random() > .5) ? 1 : -1);
@@ -27,12 +42,19 @@ class SoundGame extends Component<TweetGamePropsType> {
 			tiles:tiles,
 			scrambledSounds:sounds,
 			associationsSounds:associations,
-			selectedColumn:0
+			selectedColumn:0,
+			audios:audios,
+			audios_labels:audios_labels
 		}
 
 		console.log(this.state.associationsSounds)
 
 	}
+
+	play = (index) => {
+		alert(index)
+		this.state.audios[index].play()
+	  }
 
 	componentDidMount(){
 
@@ -41,16 +63,16 @@ class SoundGame extends Component<TweetGamePropsType> {
 	populateRow = (row) => {
 
 		return (label, index) =>{
-		return <div style={{ textAlign: "center", display:"inline-block"}}  key={ index } >
+		return <div style={{ display:"inline-block"}}  key={ index } >
 
 			{row == 0 &&
 			<DragDropContainer targetKey={"label"} >
-				<div className="box" id={"sound_"+this.state.scrambledSounds[label]}>Drag Me!</div>
+				<div className="box" id={"sound_"+this.state.scrambledSounds[label]} onClick={evt => this.play(label)}>Drag Me!</div>
 			</DragDropContainer>
 			}
 
 			{row == 1 &&
-			<DropTarget targetKey={"label"} onHit={this.dropped} >
+			<DropTarget targetKey={"label"} onHit={this.dropped} data-tip={this.state.audios_labels[label]} >
 				<div className="box my_target" onDoubleClick={this.clearDrop}  id={"drop_"+label}>I'm a drop target </div>
 			</DropTarget>
 			}
@@ -99,9 +121,13 @@ class SoundGame extends Component<TweetGamePropsType> {
 		return (
 			<IonGrid>
 				{false && <Confetti width={this.state.width} height={this.state.height} />}
+				<ReactTooltip />
 			  <IonRow>
 
-				  <div className="grid" style={{ width: this.state.tiles.length * 122}}>
+				  <div className="grid" style={{ textAlign: "center", width: (this.state.tiles.length+1) * 122}}>
+					  	<DragDropContainer targetKey={"label"} >
+							<div className="box" id={"sound__"}>Drag Me!</div>
+						</DragDropContainer>
 							{this.state.tiles.map(this.populateRow(0),this)}
 					</div>
 				  </IonRow>

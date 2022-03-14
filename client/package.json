@@ -49,6 +49,7 @@
     "react-router": "^5.2.0",
     "react-router-dom": "^5.2.0",
     "react-scripts": "4.0.2",
+    "react-tooltip": "^4.2.21",
     "react-use": "^17.3.1",
     "react-use-faceapi": "^1.0.1",
     "react-webcam": "^6.0.0",
