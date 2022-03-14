@@ -7,13 +7,15 @@ import Confetti from "react-confetti";
 import { DragDropContainer, DropTarget } from 'react-drag-drop-container';
 import ReactTooltip from 'react-tooltip';
 
+const base_folder = "https://github.com/yamizi/LLCEscapeGame/blob/game_sound/client/src/assets/audio/"
+
 class SoundGame extends Component<TweetGamePropsType> {
 	state: any;
 
 	constructor(props: any) {
 		super(props);
 
-		const base_folder = "https://github.com/yamizi/LLCEscapeGame/blob/game_sound/client/src/assets/audio/"
+
 
 		let audios = [new Audio(base_folder + "50db_0.mp3?raw=true"), new Audio(base_folder + "50db_1.mp3?raw=true"),
 			new Audio(base_folder + "50db_2.mp3?raw=true"), new Audio(base_folder + "35db_0.mp3?raw=true"),
@@ -26,6 +28,8 @@ class SoundGame extends Component<TweetGamePropsType> {
 			"Now I would drift gently off to dream land",
 			"my wife pointed out to me the brightness of the red green and yellow signal light"
 		]
+
+		//let audio_backgrounds = ["cards/1.pn"]
 
 		let sounds = Array.from(Array(this.props.cols).keys())
 		sounds.sort(() => (Math.random() > .5) ? 1 : -1);
@@ -53,7 +57,7 @@ class SoundGame extends Component<TweetGamePropsType> {
 
 	play = (index) => {
 		console.log(index+"--"+ this.state.audios[index].src)
-		//this.state.audios[index].play()
+		this.state.audios[index].play()
 	  }
 
 	componentDidMount(){
@@ -67,13 +71,15 @@ class SoundGame extends Component<TweetGamePropsType> {
 
 			{row == 0 &&
 			<DragDropContainer targetKey={"label"} >
-				<div className="box" id={"sound_"+this.state.scrambledSounds[label]} onClick={evt => this.play(label)}>Drag Me!</div>
+				<div className="box" id={"sound_"+this.state.scrambledSounds[label]} onClick={evt => this.play(label)}
+				style={{backgroundImage: "url('"+base_folder+"cards/"+(label+2)+".png?raw=true')"}}
+				>Drag Me!</div>
 			</DragDropContainer>
 			}
 
 			{row == 1 &&
 			<DropTarget targetKey={"label"} onHit={this.dropped}>
-				<div className="box my_target" data-tip={this.state.audios_labels[label]}  onDoubleClick={this.clearDrop}  id={"drop_"+label}>I'm a drop target </div>
+				<div className="box my_target" data-tip={this.state.audios_labels[label]} style={{backgroundImage: "url('"+base_folder+"cards/back.png?raw=true')"}} onDoubleClick={this.clearDrop}  id={"drop_"+label}>I'm a drop target </div>
 			</DropTarget>
 			}
 
@@ -126,7 +132,7 @@ class SoundGame extends Component<TweetGamePropsType> {
 
 				  <div className="grid" style={{ textAlign: "center", width: (this.state.tiles.length+1) * 122}}>
 					  	<DragDropContainer targetKey={"label"} >
-							<div className="box" id={"sound__"}>Drag Me!</div>
+							<div className="box" id={"sound__"} style={{backgroundImage: "url('"+base_folder+"cards/1.png?raw=true')"}}>Drag Me!</div>
 						</DragDropContainer>
 							{this.state.tiles.map(this.populateRow(0),this)}
 					</div>
