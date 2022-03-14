@@ -13,12 +13,12 @@ class SoundGame extends Component<TweetGamePropsType> {
 	constructor(props: any) {
 		super(props);
 
-		const base_folder = "../../assets/audio/"
+		const base_folder = "https://github.com/yamizi/LLCEscapeGame/blob/game_sound/client/src/assets/audio/"
 
-		let audios = [new Audio(base_folder + "50db_0.mp3"), new Audio(base_folder + "50db_1.mp3"),
-			new Audio(base_folder + "50db_2.mp3"), new Audio(base_folder + "35db_0.mp3"),
-			new Audio(base_folder + "35db_1.mp3"), new Audio(base_folder + "20db_0.mp3"),
-			new Audio(base_folder + "20db_1.mp3") ]
+		let audios = [new Audio(base_folder + "50db_0.mp3?raw=true"), new Audio(base_folder + "50db_1.mp3?raw=true"),
+			new Audio(base_folder + "50db_2.mp3?raw=true"), new Audio(base_folder + "35db_0.mp3?raw=true"),
+			new Audio(base_folder + "35db_1.mp3?raw=true"), new Audio(base_folder + "20db_0.mp3?raw=true"),
+			new Audio(base_folder + "20db_1.mp3?raw=true") ]
 
 		let audios_labels = ["that day the merchant gave the boy permission to build the display",
 			"everyone seemed very excited", "plastic surgery has beocome more popular",
@@ -52,8 +52,8 @@ class SoundGame extends Component<TweetGamePropsType> {
 	}
 
 	play = (index) => {
-		alert(index)
-		this.state.audios[index].play()
+		console.log(index+"--"+ this.state.audios[index].src)
+		//this.state.audios[index].play()
 	  }
 
 	componentDidMount(){
@@ -72,8 +72,8 @@ class SoundGame extends Component<TweetGamePropsType> {
 			}
 
 			{row == 1 &&
-			<DropTarget targetKey={"label"} onHit={this.dropped} data-tip={this.state.audios_labels[label]} >
-				<div className="box my_target" onDoubleClick={this.clearDrop}  id={"drop_"+label}>I'm a drop target </div>
+			<DropTarget targetKey={"label"} onHit={this.dropped}>
+				<div className="box my_target" data-tip={this.state.audios_labels[label]}  onDoubleClick={this.clearDrop}  id={"drop_"+label}>I'm a drop target </div>
 			</DropTarget>
 			}
 
