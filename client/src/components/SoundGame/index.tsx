@@ -33,8 +33,10 @@ class SoundGame extends Component<TweetGamePropsType> {
 
 		let sounds = Array.from(Array(this.props.cols).keys())
 		sounds.sort(() => (Math.random() > .5) ? 1 : -1);
+		//sounds = [6,0,4, 2 , 1, 5 , 3]
 
 		let tiles = Array.from(Array(this.props.cols).keys())
+
 		let associations = Object.fromEntries(tiles.map(e=>["drop_"+e,""]))
 
 
@@ -73,13 +75,13 @@ class SoundGame extends Component<TweetGamePropsType> {
 			<DragDropContainer targetKey={"label"} >
 				<div className="box" id={"sound_"+this.state.scrambledSounds[label]} onClick={evt => this.play(label)}
 				style={{backgroundImage: "url('"+base_folder+"cards/"+(label+2)+".png?raw=true')"}}
-				>Drag Me!</div>
+				></div>
 			</DragDropContainer>
 			}
 
 			{row == 1 &&
 			<DropTarget targetKey={"label"} onHit={this.dropped}>
-				<div className="box my_target" data-tip={this.state.audios_labels[label]} style={{backgroundImage: "url('"+base_folder+"cards/back.png?raw=true')"}} onDoubleClick={this.clearDrop}  id={"drop_"+label}>I'm a drop target </div>
+				<div className="box my_target" data-tip={this.state.audios_labels[label]} style={{backgroundImage: "url('"+base_folder+"cards/back.png?raw=true')"}} onDoubleClick={this.clearDrop}  id={"drop_"+label}></div>
 			</DropTarget>
 			}
 
@@ -132,7 +134,7 @@ class SoundGame extends Component<TweetGamePropsType> {
 
 				  <div className="grid" style={{ textAlign: "center", width: (this.state.tiles.length+1) * 122}}>
 					  	<DragDropContainer targetKey={"label"} >
-							<div className="box" id={"sound__"} style={{backgroundImage: "url('"+base_folder+"cards/1.png?raw=true')"}}>Drag Me!</div>
+							<div className="box" id={"sound__"} style={{backgroundImage: "url('"+base_folder+"cards/1.png?raw=true')"}}></div>
 						</DragDropContainer>
 							{this.state.tiles.map(this.populateRow(0),this)}
 					</div>
