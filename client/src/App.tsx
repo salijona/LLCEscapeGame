@@ -59,8 +59,6 @@ for (var sceneId of Object.keys(novel.scenes)){
 
 if (novel) {
   store.dispatch(setNovel(novel));
-
-
   store.dispatch(setScene(novel.scenes.start))
 }
 
@@ -101,6 +99,10 @@ const App: React.FC = () => (
             <Tab4 />
           </Route>
           <Route exact path="/">
+            <Redirect to="/story" />
+          </Route>
+
+          <Route exact path="/LLCEscapeGame">
             <Redirect to="/story" />
           </Route>
         </IonRouterOutlet>

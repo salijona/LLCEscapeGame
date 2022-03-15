@@ -184,7 +184,7 @@ function Scene({ scene, nextScene, saves, settings, addSave }: ScenePropsType) {
 
       {
         (characterImage || character) && content =="youtube" &&
-        <iframe  width="1200" height="600" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen
+        <iframe style={{ maxHeight: "90vh", height: "90vh", width: "100vw"}} width="1200" height="600" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen
         src={`https://www.youtube.com/embed/${characterImage || character}?autoplay=1`}>
         </iframe>
       }

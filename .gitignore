@@ -163,3 +163,4 @@ yarn-error.log*
 /config/*
 /client/node_modules/
 /client/src/data/*.json
+/ressources/*

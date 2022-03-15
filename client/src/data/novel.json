@@ -5,16 +5,13 @@
     "start": {
       "name": "Explications",
       "id": "start",
-      "image": "http://www.doodlemore.co.uk/wp-content/uploads/2019/02/LuxLC10.png",
-      "character": "../../LLCEscapeGame/assets/locations/detective.png",
+      "image": "../../LLCEscapeGame/assets/locations/WelcomeScreen.png",
       "content": "img",
       "texts": [
         {
-          "text": "Welcome to the Serval X LLC Escape Game: Evade the AI."
+          "text": "Welcome to our Escape Game."
         },
-        {
-          "text": "This is an escape game where you solve challenges related to Machine Learning"
-        },
+
         {
           "text": "It will take you about 30min to complete"
         }
@@ -51,47 +48,86 @@
 
       ]
     },
- "start2": {
-      "name": "Game",
+
+    "start2": {
+      "name": "ML",
       "visible": 0,
       "id": "start2",
-      "content": "img",
-      "image": "https://t4.ftcdn.net/jpg/02/94/85/97/240_F_294859777_pD0UMlcW0jK7mXw0DGo1Y92dYfvQPBl5.jpg",
+      "image": "",
+      "character": "a-teKQ91gBk",
+      "content": "youtube",
       "texts": [
         {
-
-          "text": "Luxembourg, 2071. Under pressures of some digital lobbies, the countries of the"
+          "text": "Let me tell you our story!"
         },
         {
-          "text": "European Union have decided to merge as the \"Universal Digital Federation\" (UDF)"
+          "text": ""
+        }
+      ],
+      "buttons": [
+        {
+          "text": "But... who are you?",
+          "redirectId": "start2_1"
+        }
+
+      ]
+    },
+ "start2_1": {
+      "name": "Game",
+      "visible": 0,
+      "id": "start2_1",
+      "content": "img",
+      "image": "../../LLCEscapeGame/assets/locations/robots_round.png",
+      "texts": [
+        {
+          "nickname": "...",
+          "updatedCharacter": "../../LLCEscapeGame/assets/locations/TRUST_HAPPY.png",
+          "text": "My name is Trust. And here are my 4 siblings: Supervision, Monitoring, Administration and Regulation"
+        },
+         {
+          "nickname": "Trust",
+          "text": "With me, Trust, we form the SMART system."
         },
         {
-          "text": "The UDF abolished governments and borders to establish the SMART Artificial Intelligence, instead of local political authorities. "
+          "nickname": "Trust",
+          "text": "My siblings have gone mad, uncontrollable. And they are now "
+        },
+        {
+          "nickname": "Trust",
+          "text": "terrorizing the citizen of the Universal Digital Federation."
+        },
+        {
+          "text": "Can you help fix them? "
         }
         ,
         {
-          "updatedCharacter": "../../LLCEscapeGame/assets/locations/SMART2.png",
-          "text": "SMART stands for Supervision,  Monitoring,  Allocations and Regulations Technology."
+          "updatedCharacter": "",
+          "nickname": "Player",
+          "text": "Sure! I joined the Rebels to free Luxembourg from SMART!"
         }
         ,
         {
-
-          "text": "SMART knows everything, SMART wants us good, SMART is at our service."
+          "nickname": "Player",
+          "text": "SMART knows everything, SMART wants us good, SMART is at our service. That's what I was told..."
         }
         ,
         {
+          "nickname": "Player",
           "text": "The federation has seen an extraordinary growth in life quality measures"
         }
         ,
         {
+          "nickname": "Player",
           "text": "like happiness, peace of mind, health and leisure time. But what is the cost of SMART for Luxembourg?"
         }
         ,
         {
-          "text": "As a fresh member of the Evaders, your mission is to uncover the prowess and limitations of SMART"
+          "updatedCharacter": "../../LLCEscapeGame/assets/locations/TRUST_HAPPY.png",
+          "nickname": "Trust",
+          "text": "Indeed, we lost the Trust of the People... But we can still restore some of it."
         },
         {
-          "text": "and free the four districts of Luxembourg from the yoke of the AI."
+          "text": "We just need free the four districts of Luxembourg from my siblings."
         }
       ],
       "buttons": [
@@ -107,13 +143,22 @@
       "name": "Game",
       "visible": 0,
       "id": "start3",
-      "image": "../../LLCEscapeGame/assets/locations/Luxembourg.png",
+      "content": "img",
+      "image": "../../LLCEscapeGame/assets/locations/Districts_Luxembourg.png",
       "texts": [
+        { "nickname": "Trust",
+          "updatedCharacter": "../../LLCEscapeGame/assets/locations/TRUST_HAPPY.png",
+          "text": "SMART has 4 neural cores"
+        },{
+          "text": "North, East, South and Center."
+        },
         {
-          "text": "SMART has 4 neural cores that allows it to monitor and supervise all the interactions of the inhabitants: North, East, South and Center."
+          "text": "To disable the Core of a District, you will have to beat the AI of that District."
         },
          {
-          "text": "In the interactive map, you will have to click on each region to play its associated game."
+          "text": "In the interactive map, you will have to click on each district to play its associated game."
+        },{
+          "text": "To continue, click on 'Map' button below."
         }
       ],
       "buttons": [
@@ -192,24 +237,76 @@
 
       "texts": [
         {
-          "text": "Welcome to Belval"
+          "nickname": "Cedric",
+          "updatedCharacter": "../../LLCEscapeGame/assets/locations/MALE_ANGRY.png",
+          "text": "Finally! You're here! We had almost given up hope!"
         },
         {
-          "nickname": "W",
-          "updatedCharacter": "../../LLCEscapeGame/assets/locations/MALE_ANGRY.png",
-          "text": "We need to free the Campus from WISE. It restricts access to people based on their Age."
+          "updatedCharacter": "../../LLCEscapeGame/assets/locations/MALE_NEUTRAL.png",
+          "text": "My name is Cedric, I am the head of the student association, here in Belval."
         },
         {
-          "nickname": "W",
-          "updatedCharacter": "../../LLCEscapeGame/assets/locations/MALE_ANGRY.png",
-          "text": "To beat the game"
+          "text": "Are you here to destroy the core of SMART?"
         }
       ],
       "buttons": [
         {
-          "text": "Begin the game!",
+          "text": "I have the access codes",
+          "redirectId": "south_code"
+        },
+        {
+          "text": "I need the access codes first",
           "redirectId": "ageGame"
         }
+      ]
+    },
+
+    "south_code": {
+      "name": "South Core Code",
+      "id": "south_code",
+      "content": "img",
+      "image": "https://app.visitluxembourg.com/images/32801-resize-669x445x70.jpg",
+      "texts": [
+        {
+          "nickname": "Cedric",
+          "updatedCharacter": "../../LLCEscapeGame/assets/locations/MALE_NEUTRAL.png",
+          "text": "To disable this core, you need to enter the correct 3 number code!"
+        },
+        {
+          "updatedCharacter": "../../LLCEscapeGame/assets/locations/MALE_HAPPY.png",
+          "text": "Well done! Supervision is now disabled!"
+        }
+      ],
+      "buttons": [
+        {
+          "text": "There is a secret message!",
+          "redirectId": "south_secret"
+        }
+      ],
+      "game": {
+        "type": "input",
+        "correctAnswer": "086"
+      }
+    },
+
+
+    "south_secret": {
+      "name": "Game",
+      "visible": 0,
+      "id": "south_secret",
+      "content": "img",
+      "image": "https://app.visitluxembourg.com/images/32801-resize-669x445x70.jpg",
+
+      "texts": [
+        {
+          "nickname": "Cedric",
+          "updatedCharacter": "../../LLCEscapeGame/assets/locations/MALE_NEUTRAL.png",
+          "text": "It says: THERE IS NO TRUST"
+        }
+
+      ],
+      "buttons": [
+
       ]
     },
 
