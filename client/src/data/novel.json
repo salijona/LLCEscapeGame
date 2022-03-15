@@ -239,7 +239,7 @@
         {
           "nickname": "Cedric",
           "updatedCharacter": "../../LLCEscapeGame/assets/locations/MALE_ANGRY.png",
-          "text": "Finally! You're here! We had almost given up hope!"
+          "text": "Finally! You are here! We had almost given up hope!"
         },
         {
           "updatedCharacter": "../../LLCEscapeGame/assets/locations/MALE_NEUTRAL.png",
@@ -274,7 +274,7 @@
         },
         {
           "updatedCharacter": "../../LLCEscapeGame/assets/locations/MALE_HAPPY.png",
-          "text": "Well done! Supervision is now disabled!"
+          "text": "Well done! Supervision Core is now disabled!"
         }
       ],
       "buttons": [
@@ -310,17 +310,29 @@
       ]
     },
 
-
     "ageGame": {
       "name": "Age Game",
       "visible": 0,
       "id": "ageGame",
       "image": "",
+      "content": "img",
       "texts": [
         {
-          "text": "In this game, we will give you each a grid of faces. Each column has 6 faces"
+          "nickname": "Supervision",
+          "updatedCharacter": "../../LLCEscapeGame/assets/locations/Supervision.png",
+          "text": "I have the best face recognition system!"
         },{
-          "text": "On top of the grid, you have a target age. Your mission is to find the face which age is the number"
+          "text": "I can recognize the gender, the age, the race of any person, anytime in a fraction of seconds!"
+        },{
+          "text": "Let's have a bet: If you finish this challenge in less than 120s and 12 clicks,"
+        },{
+          "text": "I will acknowledge your superiority, and give you this core's Code."
+        },
+        {
+         "text": "In this challenge, you need to correctly guess the age of the Faces to beat my record."
+        },
+        {
+          "text": "On top of the grid, you have a target age. Your task is to find the face which age is the number indicated"
         },{
           "text": "You will start from the column on the left, and you can move to the next column if you find the correct face"
         },{
@@ -330,11 +342,12 @@
         },{
           "text": "If you are sure that it is the right face. Click again on the face. If the face is correct you can move to the next column"
         },{
-          "text": "The game will start when you press the 'right arrow'"
+          "text": "The game will start when you press the 'right arrow'. Be quick, be precise!"
         },{
+          "updatedCharacter": "",
           "text": ""
         },{
-          "text": "Game is over! Please record your score"
+          "text": "The game is over! You can play again from the map!"
         }
       ],
       "buttons": [

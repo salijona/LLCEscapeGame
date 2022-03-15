@@ -73,7 +73,7 @@ class SoundGame extends Component<TweetGamePropsType> {
 
 			{row == 0 &&
 			<DragDropContainer targetKey={"label"} >
-				<div className="box" id={"sound_"+this.state.scrambledSounds[label]} onClick={evt => this.play(label)}
+				<div className="card" id={"sound_"+this.state.scrambledSounds[label]} onClick={evt => this.play(label)}
 				style={{backgroundImage: "url('"+base_folder+"cards/"+(label+2)+".png?raw=true')"}}
 				></div>
 			</DragDropContainer>
@@ -81,7 +81,7 @@ class SoundGame extends Component<TweetGamePropsType> {
 
 			{row == 1 &&
 			<DropTarget targetKey={"label"} onHit={this.dropped}>
-				<div className="box my_target" data-tip={this.state.audios_labels[label]} style={{backgroundImage: "url('"+base_folder+"cards/back.png?raw=true')"}} onDoubleClick={this.clearDrop}  id={"drop_"+label}></div>
+				<div className="card my_target" data-tip={this.state.audios_labels[label]} style={{backgroundImage: "url('"+base_folder+"cards/back.png?raw=true')"}} onDoubleClick={this.clearDrop}  id={"drop_"+label}></div>
 			</DropTarget>
 			}
 
@@ -134,7 +134,7 @@ class SoundGame extends Component<TweetGamePropsType> {
 
 				  <div className="grid" style={{ textAlign: "center", width: (this.state.tiles.length+1) * 122}}>
 					  	<DragDropContainer targetKey={"label"} >
-							<div className="box" id={"sound__"} style={{backgroundImage: "url('"+base_folder+"cards/1.png?raw=true')"}}></div>
+							<div className="card" id={"sound__"} style={{backgroundImage: "url('"+base_folder+"cards/1.png?raw=true')"}}></div>
 						</DragDropContainer>
 							{this.state.tiles.map(this.populateRow(0),this)}
 					</div>
