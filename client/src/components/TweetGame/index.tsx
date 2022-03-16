@@ -118,7 +118,7 @@ class TweetGame extends Component<TweetGamePropsType> {
 					<p className="scoreFinal">Congratulations! You collected all the tweets! The secret code is <strong>31216</strong></p>}
 
 					{this.state.time>180 || this.state.nbClick>=10 &&
-					<p className="scoreFinal">Too bad, you took too much time. The system has been reset Try again!</p>}
+					<p className="scoreFinal">Too bad, you took too much time. The system has been reset. Try again!</p>}
 				</div>
 
 				}
