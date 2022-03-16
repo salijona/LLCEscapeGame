@@ -44,6 +44,11 @@
         {
           "text": "Start the Game",
           "redirectId": "start2"
+        },
+
+        {
+          "text": "Let's practice",
+          "redirectId": "start3bis"
         }
 
       ]
@@ -127,7 +132,7 @@
           "text": "Indeed, we lost the Trust of the People... But we can still restore some of it."
         },
         {
-          "text": "We just need free the four districts of Luxembourg from my siblings."
+          "text": "We just need to free the four districts of Luxembourg from my siblings."
         }
       ],
       "buttons": [
@@ -162,7 +167,10 @@
         }
       ],
       "buttons": [
-
+        {
+          "text": "I have destroyed all the cores!",
+          "redirectId": "start3_final"
+        }
       ]
     },
 
@@ -202,7 +210,7 @@
       ],
       "buttons": [
         {
-          "text": "Ready to fight SMART",
+          "text": "Continue the fight!",
           "redirectId": "start3"
         }
 
@@ -237,13 +245,13 @@
 
       "texts": [
         {
-          "nickname": "Cedric",
+          "nickname": "Yoann",
           "updatedCharacter": "../../LLCEscapeGame/assets/locations/MALE_ANGRY.png",
           "text": "Finally! You are here! We had almost given up hope!"
         },
         {
           "updatedCharacter": "../../LLCEscapeGame/assets/locations/MALE_NEUTRAL.png",
-          "text": "My name is Cedric, I am the head of the student association, here in Belval."
+          "text": "My name is Yoann, I am the head of the student association, here in Belval."
         },
         {
           "text": "Are you here to destroy the core of SMART?"
@@ -268,7 +276,7 @@
       "image": "https://app.visitluxembourg.com/images/32801-resize-669x445x70.jpg",
       "texts": [
         {
-          "nickname": "Cedric",
+          "nickname": "Yoann",
           "updatedCharacter": "../../LLCEscapeGame/assets/locations/MALE_NEUTRAL.png",
           "text": "To disable this core, you need to enter the correct 3 number code!"
         },
@@ -299,14 +307,17 @@
 
       "texts": [
         {
-          "nickname": "Cedric",
+          "nickname": "Yoann",
           "updatedCharacter": "../../LLCEscapeGame/assets/locations/MALE_NEUTRAL.png",
           "text": "It says: THERE IS NO TRUST"
         }
 
       ],
       "buttons": [
-
+      {
+          "text": "Continue the fight!",
+          "redirectId": "start3"
+        }
       ]
     },
 
@@ -318,6 +329,10 @@
       "content": "img",
       "texts": [
         {
+          "nickname": "Yoann",
+          "updatedCharacter": "../../LLCEscapeGame/assets/locations/MALE_HAPPY.png",
+          "text": "Once you have the code, come back to see me on the Map!"
+        },{
           "nickname": "Supervision",
           "updatedCharacter": "../../LLCEscapeGame/assets/locations/Supervision.png",
           "text": "I have the best face recognition system!"
@@ -406,16 +421,116 @@
       "name": "Game",
       "visible": 1,
       "id": "north",
+      "content": "img",
       "image": "https://app.visitluxembourg.com/images/33759-resize-1170x999x70.jpg",
       "texts": [
+
         {
-          "text": "You are in Vianden"
+          "nickname": "Camille",
+          "updatedCharacter": "../../LLCEscapeGame/assets/locations/CAMILLE_ANGRY.png",
+          "text": "Du bist spät !"
+        },
+        {
+          "nickname": "Player",
+          "updatedCharacter": "",
+          "text": "Euh... sorry, what?"
+        },
+        {
+          "nickname": "Camille",
+          "updatedCharacter": "../../LLCEscapeGame/assets/locations/CAMILLE_ANGRY.png",
+          "text": "Dir sidd spéit !"
+        },
+        {
+          "nickname": "Player",
+          "updatedCharacter": "",
+          "text": "I know, I'm late. But I'm here. How can I help the Resistance?"
+        },{
+          "nickname": "Camille",
+          "updatedCharacter": "../../LLCEscapeGame/assets/locations/CAMILLE_SAD.png",
+          "text": "I'm a journalist working for the Wort! We're raising awareness about SMART"
+        },{
+          "nickname": "Camille",
+          "text": "But 'Monitoring' detects and block all offensive tweets. We can't say anything against SMART without censorship"
+        },{
+          "nickname": "Player",
+          "updatedCharacter": "",
+          "text": "So if I destroy the core, you can spread your messages!"
+        },{
+          "nickname": "Camille",
+          "updatedCharacter": "../../LLCEscapeGame/assets/locations/CAMILLE_HAPPY.png",
+          "text": "Yes! You just need need to collect 7 non-offensive tweets to get the deactivation code, and we'll do the rest!"
+        },
+        {
+          "nickname": "Camille",
+          "updatedCharacter": "../../LLCEscapeGame/assets/locations/CAMILLE_HAPPY.png",
+          "text": "But careful, if you use more than 10 clicks or 3 minutes, the system  will reset!"
+        },
+        {
+          "nickname": "Camille",
+          "updatedCharacter": "../../LLCEscapeGame/assets/locations/CAMILLE_HAPPY.png",
+          "text": "Once you have the code, come back to see me on the Map!"
         }
       ],
       "buttons": [
         {
           "text": "Begin the game!",
           "redirectId": "tweetGame"
+        },
+        {
+          "text": "I have the code!",
+          "redirectId": "tweet_code"
+        }
+      ]
+    },
+
+    "tweet_code": {
+      "name": "East Core Code",
+      "id": "tweet_code",
+      "content": "img",
+      "image": "https://app.visitluxembourg.com/images/33759-resize-1170x999x70.jpg",
+      "texts": [
+        {
+          "nickname": "Camille",
+          "updatedCharacter": "../../LLCEscapeGame/assets/locations/CAMILLE_HAPPY.png",
+          "text": "To disable this core, you need to enter the correct 3 number code!"
+        },
+        {
+          "nickname": "Camille",
+          "updatedCharacter": "../../LLCEscapeGame/assets/locations/CAMILLE_HAPPY.png",
+          "text": "Well done! Monitoring Core is now disabled!"
+        }
+      ],
+      "buttons": [
+        {
+          "text": "There is a secret message!",
+          "redirectId": "tweet_secret"
+        }
+      ],
+      "game": {
+        "type": "input",
+        "correctAnswer": "121"
+      }
+    },
+
+
+    "tweet_secret": {
+      "name": "Game",
+      "visible": 0,
+      "id": "tweet_secret",
+      "content": "img",
+       "image": "https://app.visitluxembourg.com/images/33759-resize-1170x999x70.jpg",
+      "texts": [
+        {
+          "nickname": "Camille",
+          "updatedCharacter": "../../LLCEscapeGame/assets/locations/CAMILLE_HAPPY.png",
+          "text": "It says: 'BEAUTY IS A SHORT-LIVED TYRANNY' Socrates"
+        }
+
+      ],
+      "buttons": [
+      {
+          "text": "Continue the fight!",
+          "redirectId": "start3"
         }
       ]
     },
@@ -424,20 +539,20 @@
       "name": "Offensive Tweet Game",
       "visible": 0,
       "id": "tweetGame",
-      "image": "",
+      "image": "https://app.visitluxembourg.com/images/33759-resize-1170x999x70.jpg",
       "texts": [
         {
-          "text": "In this game, we will give you each time two tweets. Both are offensive for humans"
+          "text": "In this game, You will get each time two tweets. Both are offensive for humans"
         },{
           "text": "However, one of them contains a small change (a letter, a synonym) that makes it non-offensive for the machine."
         },{
-          "text": "Can you guess which one?"
+          "text": "Can you guess which tweet is non-offensive?"
         },{
           "text": "The game will start when you press the 'right arrow'"
         },{
           "text": ""
         },{
-          "text": "Game is over! Please record your score"
+          "text": "The game is over!"
         }
       ],
       "buttons": [
@@ -455,7 +570,9 @@
       "image": "https://static.independent.co.uk/s3fs-public/thumbnails/image/2015/06/15/11/schengen.jpg",
       "texts": [
         {
-          "text": "You are in Schengen"
+          "nickname": "Nicolas",
+          "updatedCharacter": "../../LLCEscapeGame/assets/locations/CAMILLE_HAPPY.png",
+          "text": "It says: 'BEAUTY IS A SHORT-LIVED TYRANNY' Socrates"
         }
       ],
       "buttons": [
