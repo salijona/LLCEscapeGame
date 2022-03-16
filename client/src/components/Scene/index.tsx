@@ -140,10 +140,28 @@ function Scene({ scene, nextScene, saves, settings, addSave }: ScenePropsType) {
       setTextIndex((textIndex) => (textIndex += 1));
     } else if (textIndex + 1 === texts.length - 1) {
 
-      if(! game || (game && answer!="" && answer==game.correctAnswer) || (game && val!="" && val==game.correctAnswer)){
+      if(! game){
         setTextIndex((textIndex) => (textIndex += 1));
         setButtonsVisible(true);
       }
+      else if (game.correctAnswer.indexOf('##')){
+        const correctAnswers = game.correctAnswer.split("##")
+        for (const correct of correctAnswers) {
+          if((game && answer!="" && answer==correct) || (game && val!="" && val==correct)){
+            setTextIndex((textIndex) => (textIndex += 1));
+            setButtonsVisible(true);
+            break;
+          }
+
+        }
+      }
+      else{
+        if((game && answer!="" && answer==game.correctAnswer) || (game && val!="" && val==game.correctAnswer)){
+          setTextIndex((textIndex) => (textIndex += 1));
+          setButtonsVisible(true);
+        }
+      }
+
 
     }
   };
