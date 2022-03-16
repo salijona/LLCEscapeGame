@@ -14,6 +14,10 @@
 
         {
           "text": "It will take you about 30min to complete"
+        },
+
+        {
+          "text": "The rectangles you see on top of the text are buttons. Use them to navigate in the game!"
         }
 
       ],
@@ -376,16 +380,49 @@
     "center": {
       "name": "Game",
       "visible": 1,
+      "content": "img",
       "id": "center",
       "image": "https://cdn.generationvoyage.fr/2014/11/luxembourg-ville-guide-voyage.jpg",
       "texts": [
         {
-          "text": "You are in Luxembourg Ville"
+          "nickname": "Nicolas",
+          "updatedCharacter": "../../LLCEscapeGame/assets/locations/NICO_SAD.png",
+          "text": "Sidd Dir de gewielten? Sorry, ... are you the Chosen One?"
+        },
+        {
+          "nickname": "Player",
+          "updatedCharacter": "",
+          "text": "Euh... maybe?"
+        }, {
+          "nickname": "Nicolas",
+          "updatedCharacter": "../../LLCEscapeGame/assets/locations/NICO_SAD.png",
+          "text": "Whatever! You'll have to do the trick. Your mission if you choose to accept it,"
+        },{
+          "nickname": "Nicolas",
+          "updatedCharacter": "../../LLCEscapeGame/assets/locations/NICO_SAD.png",
+          "text": "is to beat 'Regulation' at his own game, or die trying! Good luck, Hero!"
+        },{
+          "nickname": "Player",
+          "updatedCharacter": "",
+          "text": "Wait! You can't just leave me like this. How can I beat it?"
+        },{
+          "nickname": "Nicolas",
+          "updatedCharacter": "../../LLCEscapeGame/assets/locations/NICO_SAD.png",
+          "text": "Regulation, regulates the Emotions of the citizen! It is because of him that everyone here is sad!"
+        },
+        {
+          "nickname": "Nicolas",
+          "updatedCharacter": "../../LLCEscapeGame/assets/locations/NICO_SAD.png",
+          "text": "I don't know what is the game, but once you beat it, bring me the code, and everyone"
+        },{
+          "nickname": "Nicolas",
+          "updatedCharacter": "../../LLCEscapeGame/assets/locations/NICO_SAD.png",
+          "text": "in the city will get their smile back!"
         }
       ],
       "buttons": [
         {
-          "text": "Begin the game!",
+          "text": "Confront Regulation!",
           "redirectId": "emotionGame"
         }
       ]
@@ -395,13 +432,58 @@
       "name": "Emotion Game",
       "visible": 0,
       "id": "emotionGame",
-      "image": "",
+      "content": "img",
+      "image": "https://cdn.generationvoyage.fr/2014/11/luxembourg-ville-guide-voyage.jpg",
       "texts": [
         {
-          "text": "In this game, we will ask you to do 12 different emotions with your face (among: sad, happy, neutral, surprised)"
+          "nickname": "Regulation",
+          "updatedCharacter": "../../LLCEscapeGame/assets/locations/REGULATION_SAD.png",
+          "text": "Why soo sad? "
+        },
+        {
+          "nickname": "Regulation",
+          "updatedCharacter": "../../LLCEscapeGame/assets/locations/REGULATION_HAPPY.png",
+          "text": "AHAHA! How about a joke?"
+        },
+        {
+          "nickname": "Regulation",
+          "updatedCharacter": "../../LLCEscapeGame/assets/locations/REGULATION_HAPPY.png",
+          "text": "What is yellow and runs fast?"
+        },
+        {
+          "nickname": "Regulation",
+          "updatedCharacter": "../../LLCEscapeGame/assets/locations/REGULATION_HAPPY.png",
+          "text": "A lemon squeeze!"
         },{
-          "text": "Each emotion will last 10 seconds. The longer your emotion matches the target, the more points you get"
+          "nickname": "Regulation",
+          "updatedCharacter": "../../LLCEscapeGame/assets/locations/REGULATION_SAD.png",
+          "text": "I, know it is better in french!"
+        },
+        {
+          "nickname": "Regulation",
+          "updatedCharacter": "../../LLCEscapeGame/assets/locations/REGULATION_SAD.png",
+          "text": "Why are'nt you laughing? Laugh! Laugh!"
+        },
+        {
+          "nickname": "Regulation",
+          "updatedCharacter": "../../LLCEscapeGame/assets/locations/REGULATION_SAD.png",
+          "text": "Let's play a game then. I will ask you six times to do an emotion with your face."
+        },
+        {
+          "nickname": "Regulation",
+          "updatedCharacter": "../../LLCEscapeGame/assets/locations/REGULATION_SAD.png",
+          "text": "The emotion can be sad, happy, neutral, surprised. I will give points if you do it well."
         },{
+          "nickname": "Regulation",
+          "updatedCharacter": "../../LLCEscapeGame/assets/locations/REGULATION_SAD.png",
+          "text": "Each emotion will last 10 seconds. The longer your emotion matches the target,"
+        },{
+          "nickname": "Regulation",
+          "updatedCharacter": "../../LLCEscapeGame/assets/locations/REGULATION_SAD.png",
+          "text": " the more points you get. I will give you the codes if you beat 1000 points"
+        },{
+          "nickname": "Regulation",
+          "updatedCharacter": "../../LLCEscapeGame/assets/locations/REGULATION_SAD.png",
           "text": "The game will start when you press the 'right arrow'"
         },{
           "text": ""
@@ -567,12 +649,22 @@
       "name": "Game",
       "visible": 1,
       "id": "east",
+       "content": "img",
       "image": "https://static.independent.co.uk/s3fs-public/thumbnails/image/2015/06/15/11/schengen.jpg",
       "texts": [
         {
           "nickname": "Nicolas",
-          "updatedCharacter": "../../LLCEscapeGame/assets/locations/CAMILLE_HAPPY.png",
-          "text": "It says: 'BEAUTY IS A SHORT-LIVED TYRANNY' Socrates"
+          "updatedCharacter": "../../LLCEscapeGame/assets/locations/NICO_HAPPY.png",
+          "text": "Sidd Dir de gewielten? Sorry, ... are you the Chosen One?"
+        },
+        {
+          "nickname": "Player",
+          "updatedCharacter": "",
+          "text": "Euh... maybe?"
+        }, {
+          "nickname": "Nicolas",
+          "updatedCharacter": "../../LLCEscapeGame/assets/locations/NICO_HAPPY.png",
+          "text": "Whatever, you'll have to do the trick. "
         }
       ],
       "buttons": [
