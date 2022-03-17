@@ -50,7 +50,7 @@ class EmotionGame extends Component<EmotionGamePropsType> {
 					<p className="scoreFinal">Game Over. Your score is {this.state.score}</p>
 
 					{this.state.score>=1000 &&
-					<p className="scoreFinal">Congratulations! You collected mastered all the Emotions! The secret code is <strong>JOY</strong></p>}
+					<p className="scoreFinal">Congratulations! You mastered all the Emotions! The secret code is <strong>JOY</strong></p>}
 
 					{this.state.score<1000 &&
 					<p className="scoreFinal">Too bad, Your score is good, but not enough. Try again!</p>}

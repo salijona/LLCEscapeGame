@@ -50,7 +50,8 @@ class SoundGame extends Component<TweetGamePropsType> {
 			associationsSounds:associations,
 			selectedColumn:0,
 			audios:audios,
-			audios_labels:audios_labels
+			audios_labels:audios_labels,
+			count_drops:0
 		}
 
 		console.log(this.state.associationsSounds)
@@ -98,7 +99,7 @@ class SoundGame extends Component<TweetGamePropsType> {
 		}
 
 		associations[e.target.id] = e.dragElem.firstChild.id
-		this.setState({"associationsSounds":associations})
+		this.setState({"associationsSounds":associations, "count_drops":this.state.count_drops+1})
 
       	e.containerElem.style.visibility = 'hidden';
 		if (e.target.id.split("_")[1]==e.dragElem.firstChild.id.split("_")[1]){
@@ -110,7 +111,7 @@ class SoundGame extends Component<TweetGamePropsType> {
 			e.target.classList.add("incorrect")
 		}
 
-	  console.log(e.dragElem.firstChild.id, e.target.id,e )
+	  console.log(e.dragElem.firstChild.id, e.target.id,this.state.count_drops )
   	}
 
 	  clearDrop = (e) => {
@@ -128,23 +129,32 @@ class SoundGame extends Component<TweetGamePropsType> {
 	render() {
 		return (
 			<IonGrid>
-				{false && <Confetti width={this.state.width} height={this.state.height} />}
+				{this.state.count_drops>10 &&
+				<div>
+				<Confetti width={this.state.width} height={this.state.height} />
+				<p className="scoreFinal">Too bad, the game is over, have you guessed the code? If not, go back and try again!</p>
+				</div>
+				}
 				<ReactTooltip />
-			  <IonRow>
+				{this.state.count_drops <= 10 &&
+				<IonRow>
 
-				  <div className="grid" style={{ textAlign: "center", width: (this.state.tiles.length+1) * 122}}>
-					  	<DragDropContainer targetKey={"label"} >
-							<div className="card" id={"sound__"} style={{backgroundImage: "url('"+base_folder+"cards/1.png?raw=true')"}}></div>
+					<div className="grid" style={{textAlign: "center", width: (this.state.tiles.length + 1) * 122}}>
+						<DragDropContainer targetKey={"label"}>
+							<div className="card" id={"sound__"}
+								 style={{backgroundImage: "url('" + base_folder + "cards/1.png?raw=true')"}}></div>
 						</DragDropContainer>
-							{this.state.tiles.map(this.populateRow(0),this)}
+						{this.state.tiles.map(this.populateRow(0), this)}
 					</div>
-				  </IonRow>
+				</IonRow>
+				}
+				{this.state.count_drops<=10 &&
 				<IonRow>
 					<div className="grid" style={{ width: this.state.tiles.length * 122}}>
 							{this.state.tiles.map(this.populateRow(1),this)}
 					</div>
-
-			  </IonRow>
+			  	</IonRow>
+				}
 			</IonGrid>
 
 		);
