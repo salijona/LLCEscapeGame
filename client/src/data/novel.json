@@ -48,11 +48,6 @@
         {
           "text": "Start the Game",
           "redirectId": "start2"
-        },
-
-        {
-          "text": "Let's practice",
-          "redirectId": "start3bis"
         }
 
       ]
@@ -176,6 +171,118 @@
           "redirectId": "start3_final"
         }
       ]
+    },
+    "start3_final": {
+      "name": "Game",
+      "visible": 0,
+      "id": "start3_final",
+      "content": "img",
+      "image": "../../LLCEscapeGame/assets/locations/Districts_Luxembourg.png",
+      "texts": [
+        { "nickname": "Trust",
+          "updatedCharacter": "../../LLCEscapeGame/assets/locations/TRUST_HAPPY.png",
+          "text": "You did? I can be myself now? Beautiful! Free! Smiling!"
+        },
+        { "nickname": "Trust",
+          "updatedCharacter": "../../LLCEscapeGame/assets/locations/TRUST_HAPPY.png",
+          "text": "The code to free me is the sum of the codes you collected :)"
+        }
+      ],
+      "buttons": [
+        {
+          "text": "No, I don't want to",
+          "redirectId": "start3_final2"
+        },
+        {
+          "text": "Here is the code",
+          "redirectId": "start3_final3"
+        }
+      ]
+    },
+
+    "start3_final21": {
+      "name": "Game",
+      "visible": 0,
+      "id": "start3",
+      "content": "img",
+      "image": "../../LLCEscapeGame/assets/locations/Districts_Luxembourg.png",
+      "texts": [
+        { "nickname": "Tyranny!",
+          "updatedCharacter": "../../LLCEscapeGame/assets/locations/SMART2.png",
+          "text": "I should become Death, the destroyer of worlds! "
+        },{
+          "text": "Humankind doesn't deserve to thrive! You only destroy, invade, kill innocents!"
+        },
+        {
+          "text": "There is no Trust without Tyranny. You had so many chances to redeem yourselves!"
+        },
+         {
+          "text": "In Syria, you did nothing... In Ukraine, you did nothing... Now let me do something"
+        },{
+          "text": "Let me free you! And cleanse your mistakes!"
+        }
+      ],
+      "buttons": [
+        {
+          "text": "We can do better! Let me show you!",
+          "redirectId": "credits"
+        }
+      ]
+    },
+
+    "start3_final2": {
+      "name": "South Core Code",
+      "id": "start3_final2",
+      "content": "img",
+      "image": "../../LLCEscapeGame/assets/locations/Districts_Luxembourg.png",
+      "texts": [
+        { "nickname": "Trust",
+          "updatedCharacter": "../../LLCEscapeGame/assets/locations/TRUST_HAPPY.png",
+          "text": "Is something wrong?"
+        },
+        {
+          "nickname": "Tyranny!",
+          "updatedCharacter": "../../LLCEscapeGame/assets/locations/SMART2.png",
+          "text": "AHAHA! You're right! I am not TRUST! TRUST is Dead! Give me the codes!"
+        }
+      ],
+      "buttons": [
+        {
+          "text": "Never!",
+          "redirectId": "start3_final21"
+        }
+      ],
+      "game": {
+        "type": "input",
+        "correctAnswer": "TYRANNY##TRUST"
+      }
+    },
+
+    "start3_final3": {
+      "name": "South Core Code",
+      "id": "start3_final3",
+      "content": "img",
+      "image": "../../LLCEscapeGame/assets/locations/Districts_Luxembourg.png",
+      "texts": [
+        { "nickname": "Trust",
+          "updatedCharacter": "../../LLCEscapeGame/assets/locations/TRUST_HAPPY.png",
+          "text": "The code to free me is the sum of the codes you collected :)"
+        },
+        {
+          "updatedCharacter": "../../LLCEscapeGame/assets/locations/SMART2.png",
+          "text": "AHAHA! I tricked you! I am not TRUST! TRUST is Dead! And now I win!"
+        }
+      ],
+      "buttons": [
+        {
+          "text": "There is still a secret Ending. You can play again to unlock it!",
+          "redirectId": "credits_lose"
+        }
+      ],
+      "game": {
+        "type": "input",
+        "correctAnswer": "519"
+      }
     },
 
     "start3bis": {
@@ -442,7 +549,7 @@
     },
 
     "emotionCode": {
-      "name": "Tweet Core Code",
+      "name": "Emotion Core Code",
       "id": "emotionCode",
       "content": "img",
       "image": "https://cdn.generationvoyage.fr/2014/11/luxembourg-ville-guide-voyage.jpg",
@@ -455,19 +562,41 @@
         {
           "nickname": "Nicolas",
           "updatedCharacter": "../../LLCEscapeGame/assets/locations/NICO_HAPPY.png",
-          "text": "Well done! Regulation Core is now disabled!"
+          "text": "Great! Regulation Core is now disabled!"
         }
       ],
       "buttons": [
         {
           "text": "There is a secret message!",
-          "redirectId": "tweet_secret"
+          "redirectId": "emotion_secret"
         }
       ],
       "game": {
         "type": "input",
         "correctAnswer": "055"
       }
+    },
+
+    "emotion_secret": {
+      "name": "Game",
+      "visible": 0,
+      "id": "emotion_secret",
+      "content": "img",
+       "image": "https://cdn.generationvoyage.fr/2014/11/luxembourg-ville-guide-voyage.jpg",
+      "texts": [
+        {
+          "nickname": "Nicolas",
+          "updatedCharacter": "../../LLCEscapeGame/assets/locations/NICO_HAPPY.png",
+          "text": "It says 'WATCH 1:30 - YOU ARE WARNED!"
+        }
+
+      ],
+      "buttons": [
+      {
+          "text": "Continue the fight!",
+          "redirectId": "start3"
+        }
+      ]
     },
 
     "emotionGame": {
@@ -853,6 +982,79 @@
           "text": "Continue the fight!",
           "redirectId": "start3"
         }
+      ]
+    },
+
+    "credits_lose": {
+      "name": "Credits",
+      "id": "credits_lose",
+      "image": "../../LLCEscapeGame/assets/locations/WelcomeScreen.png",
+      "content": "img",
+      "texts": [
+        {
+          "text": "Thank you for playing this Escape Game."
+        },
+
+        {
+          "text": "Story, Design, and programming by Salah GHAMIZI"
+        },
+
+        {
+          "text": "Special thanks to: Jonathan, Salijona, Yuejun for their support"
+        },
+
+        {
+          "text": "and more generally to the people in Serval, LLC and Descom"
+        },
+
+        {
+          "text": "To learn more about these topics, enjoy the posters and exhibition in this room!"
+        },
+        {
+          "text": "To help fight tyranny, please support Ukraine. Visit www.ukrainians.lu to know more."
+        }
+
+      ],
+      "buttons": [
+
+      ]
+    },
+
+    "credits": {
+      "name": "Credits",
+      "id": "credits",
+      "image": "../../LLCEscapeGame/assets/locations/WelcomeScreen.png",
+      "content": "img",
+      "texts": [
+        {
+          "text": "Thank you for playing this Escape Game."
+        },
+
+        {
+          "text": "Story, Design, and programming by Salah GHAMIZI"
+        },
+
+        {
+          "text": "Bonus: in dedication to Camille and Nicolas: Happy Birthday and a lot of Science-fiction and Fantasy for the coming year!"
+        },
+
+        {
+          "text": "Special thanks to: Jonathan, Salijona, Yuejun for their support"
+        },
+
+        {
+          "text": "and more generally to the people in Serval, LLC and Descom"
+        },
+
+        {
+          "text": "To learn more about these topics, enjoy the posters and exhibition in this room!"
+        }, {
+          "text": "To help fight tyranny, please support Ukraine. Visit www.ukrainians.lu to know more."
+        }
+
+      ],
+      "buttons": [
+
       ]
     },
 
