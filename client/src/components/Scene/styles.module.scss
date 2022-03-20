@@ -11,7 +11,7 @@
   max-height: 90vh;
   height: 90vh;
   overflow: hidden;
-  background-repeat: no-repeat;
+  /*background-repeat: no-repeat;*/
   width: 100vw;
   background-position: center center;
   background-size: contain;
@@ -19,6 +19,7 @@
   flex-direction: column;
   justify-content: flex-end;
   align-items: center;
+  background-repeat: round;
   animation: sceneLoading 1s;
 }
 
