@@ -117,10 +117,6 @@ const App: React.FC = () => (
             <IonLabel>Map</IonLabel>
           </IonTabButton>
 
-          <IonTabButton tab="tab2" href="/missions">
-            <IonIcon icon={appsOutline} />
-            <IonLabel>Missions</IonLabel>
-          </IonTabButton>
 
 
         </IonTabBar>

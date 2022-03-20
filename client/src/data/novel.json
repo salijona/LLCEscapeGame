@@ -58,7 +58,7 @@
       "visible": 0,
       "id": "start2",
       "image": "",
-      "character": "a-teKQ91gBk",
+      "character": "ci-lAkMfGmM",
       "content": "youtube",
       "texts": [
         {
@@ -472,7 +472,7 @@
           "text": "The current column (where faces are clickable) is showed in green."
         },{
           "nickname": "Supervision",
-          "text": "When you clic on a face. It appears bigger on the right. It allows you to check if the face is the correct age"
+          "text": "When you click on a face. It appears bigger on the right. It allows you to check if the face is the correct age"
         },{
           "nickname": "Supervision",
           "text": "If you are sure that it is the right face. Click again on the face. If the face is correct you can move to the next column"
@@ -628,7 +628,7 @@
         },{
           "nickname": "Regulation",
           "updatedCharacter": "../../LLCEscapeGame/assets/locations/REGULATION_SAD.png",
-          "text": "I, know it is better in french!"
+          "text": "I know it is better in french!"
         },
         {
           "nickname": "Regulation",
@@ -716,7 +716,7 @@
         {
           "nickname": "Camille",
           "updatedCharacter": "../../LLCEscapeGame/assets/locations/CAMILLE_HAPPY.png",
-          "text": "But careful, if you use more than 10 clicks or 3 minutes, the system  will reset!"
+          "text": "But careful, if you use more than 15 clicks or 3 minutes, the system  will reset!"
         },
         {
           "nickname": "Camille",
@@ -909,7 +909,7 @@
         },{
           "nickname": "Shiori",
           "updatedCharacter": "../../LLCEscapeGame/assets/locations/SHIORI_HAPPY.png",
-          "text": "You can double-clic on a bottom card to reset it. Only 1 card in top goes with 1 bottom"
+          "text": "You can double-click on a bottom card to reset it. Only 1 card in top goes with 1 bottom"
         },{
           "nickname": "Shiori",
           "updatedCharacter": "../../LLCEscapeGame/assets/locations/SHIORI_HAPPY.png",
