@@ -185,7 +185,7 @@
         },
         { "nickname": "Trust",
           "updatedCharacter": "../../LLCEscapeGame/assets/locations/TRUST_HAPPY.png",
-          "text": "The code to free me is the sum of the codes you collected :)"
+          "text": "The code to free me is the sum of the 4 codes you collected :)"
         }
       ],
       "buttons": [
@@ -901,11 +901,11 @@
         },{
           "nickname": "Shiori",
           "updatedCharacter": "../../LLCEscapeGame/assets/locations/SHIORI_HAPPY.png",
-          "text": "In the top area, you have 8 cards, if you click on any of the last 7, you will hear a sound. "
+          "text": "In the top area, you have 7 cards, if you click on one of them, you will hear a sound."
         },{
           "nickname": "Shiori",
           "updatedCharacter": "../../LLCEscapeGame/assets/locations/SHIORI_HAPPY.png",
-          "text": "Move the sound cards and drop them on their matching messages in the bottom."
+          "text": "Move the sound cards to their matching messages in the bottom."
         },{
           "nickname": "Shiori",
           "updatedCharacter": "../../LLCEscapeGame/assets/locations/SHIORI_HAPPY.png",
@@ -917,9 +917,9 @@
         },{
           "nickname": "Shiori",
           "updatedCharacter": "../../LLCEscapeGame/assets/locations/SHIORI_HAPPY.png",
-          "text": "You will find the 'clear' cards if you match all of them. "
+          "text": "And the answers are always green!"
         },{
-          "text": "You only have 10 drops to figure it out!"
+          "text": "You can only move 10 cards to figure it out!"
         },{
           "text": "Game is over! Please record your score"
         }
