@@ -113,31 +113,20 @@
         {
           "nickname": "Player",
           "text": "SMART knows everything, SMART wants us good, SMART is at our service. That's what I was told..."
-        }
-        ,
-        {
-          "nickname": "Player",
-          "text": "The federation has seen an extraordinary growth in life quality measures"
-        }
-        ,
-        {
-          "nickname": "Player",
-          "text": "like happiness, peace of mind, health and leisure time. But what is the cost of SMART for Luxembourg?"
-        }
-        ,
-        {
-          "updatedCharacter": "../../LLCEscapeGame/assets/locations/TRUST_HAPPY.png",
-          "nickname": "Trust",
-          "text": "Indeed, we lost the Trust of the People... But we can still restore some of it."
         },
         {
-          "text": "We just need to free the four districts of Luxembourg from my siblings."
+          "nickname": "Trust",
+          "text": "We just need to free the four districts of Luxembourg from my siblings!"
         }
       ],
       "buttons": [
         {
           "text": "Tell me more about the districts",
           "redirectId": "start3"
+        },
+        {
+          "text": "I have destroyed all the cores!",
+          "redirectId": "start3_final"
         }
 
       ]
@@ -587,7 +576,7 @@
         {
           "nickname": "Nicolas",
           "updatedCharacter": "../../LLCEscapeGame/assets/locations/NICO_HAPPY.png",
-          "text": "It says 'WATCH 1:30 - YOU ARE WARNED!"
+          "text": "It says 'WATCH 1:30 - YOU ARE WARNED FROM THE START!"
         }
 
       ],
@@ -835,11 +824,11 @@
         }, {
           "nickname": "Shiori",
           "updatedCharacter": "../../LLCEscapeGame/assets/locations/SHIORI_NEUTRAL.png",
-          "text": "Are you listening to me? What, I'm I speaking japanese! Je peux aussi parler français!"
+          "text": "Are you listening to me? What, Am I speaking japanese?! Je peux parler français si tu préfères!"
         },{
           "nickname": "Player",
           "updatedCharacter": "",
-          "text": "Euh... I'm good! English is fine. But why is it so quiet here? "
+          "text": "Euh... I'm good! English is fine. But why is it so quiet here?"
         },{
           "nickname": "Player",
           "updatedCharacter": "",
