@@ -387,6 +387,10 @@
       ],
       "buttons": [
         {
+          "text": "There is a hint",
+          "redirectId": "https://github.com/yamizi/LLCEscapeGame/blob/game_sound/client/src/assets/Slide46.PNG?raw=true"
+        },
+        {
           "text": "There is a secret message!",
           "redirectId": "south_secret"
         }
@@ -556,6 +560,10 @@
       ],
       "buttons": [
         {
+          "text": "There is a hint",
+          "redirectId": "https://github.com/yamizi/LLCEscapeGame/blob/game_sound/client/src/assets/Slide47.PNG?raw=true"
+        },
+        {
           "text": "There is a secret message!",
           "redirectId": "emotion_secret"
         }
@@ -576,7 +584,7 @@
         {
           "nickname": "Nicolas",
           "updatedCharacter": "../../LLCEscapeGame/assets/locations/NICO_HAPPY.png",
-          "text": "It says 'WATCH 1:30 - YOU ARE WARNED FROM THE START!"
+          "text": "It says 'WATCH 1:30 - YOU ARE WARNED FROM THE START!'"
         }
 
       ],
@@ -743,6 +751,10 @@
         }
       ],
       "buttons": [
+        {
+          "text": "There is a hint",
+          "redirectId": "https://github.com/yamizi/LLCEscapeGame/blob/game_sound/client/src/assets/Slide44.PNG?raw=true"
+        },
         {
           "text": "There is a secret message!",
           "redirectId": "tweet_secret"
@@ -941,6 +953,9 @@
       ],
       "buttons": [
         {
+          "text": "There is a hint",
+          "redirectId": "https://github.com/yamizi/LLCEscapeGame/blob/game_sound/client/src/assets/Slide45.PNG?raw=true"
+        },{
           "text": "There is a secret message!",
           "redirectId": "east_secret"
         }
