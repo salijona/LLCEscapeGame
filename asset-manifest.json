@@ -3,8 +3,8 @@
     "static/js/0.d42ca5c9.chunk.js": "/LLCEscapeGame/static/js/0.d42ca5c9.chunk.js",
     "static/js/0.d42ca5c9.chunk.js.map": "/LLCEscapeGame/static/js/0.d42ca5c9.chunk.js.map",
     "main.css": "/LLCEscapeGame/static/css/main.1b8085e7.chunk.css",
-    "main.js": "/LLCEscapeGame/static/js/main.f365643c.chunk.js",
-    "main.js.map": "/LLCEscapeGame/static/js/main.f365643c.chunk.js.map",
+    "main.js": "/LLCEscapeGame/static/js/main.8394bf20.chunk.js",
+    "main.js.map": "/LLCEscapeGame/static/js/main.8394bf20.chunk.js.map",
     "polyfills-dom.js": "/LLCEscapeGame/static/js/polyfills-dom.eb23d25e.chunk.js",
     "polyfills-dom.js.map": "/LLCEscapeGame/static/js/polyfills-dom.eb23d25e.chunk.js.map",
     "runtime-main.js": "/LLCEscapeGame/static/js/runtime-main.8e951350.js",
@@ -137,6 +137,6 @@
     "static/css/4.d3941853.chunk.css",
     "static/js/4.c8c2c08a.chunk.js",
     "static/css/main.1b8085e7.chunk.css",
-    "static/js/main.f365643c.chunk.js"
+    "static/js/main.8394bf20.chunk.js"
   ]
 }
