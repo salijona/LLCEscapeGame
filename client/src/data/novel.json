@@ -94,11 +94,11 @@
         },
         {
           "nickname": "Trust",
-          "text": "My siblings have gone mad, uncontrollable. And they are now "
+          "text": "My siblings have gone mad, uncontrollable. And they are now terrorizing "
         },
         {
           "nickname": "Trust",
-          "text": "terrorizing the citizen of the Universal Digital Federation."
+          "text": "the citizen of the Universal Digital Federation."
         },
         {
           "text": "Can you help fix them? "
@@ -127,10 +127,6 @@
         {
           "text": "I have destroyed all the cores!",
           "redirectId": "start3_final"
-        },
-         {
-          "text": "Tell me again you story",
-          "redirectId": "start2"
         }
 
       ]
@@ -162,6 +158,11 @@
         {
           "text": "I have destroyed all the cores!",
           "redirectId": "start3_final"
+        }
+        ,
+         {
+          "text": "Tell me again you story",
+          "redirectId": "start2"
         }
       ]
     },
@@ -202,11 +203,6 @@
       "texts": [
         { "nickname": "Tyranny!",
           "updatedCharacter": "../../LLCEscapeGame/assets/locations/SMART2.png",
-          "text": "I should become Death, the destroyer of worlds! "
-        },{
-          "text": "Humankind doesn't deserve to thrive! You only destroy, invade, kill innocents!"
-        },
-        {
           "text": "There is no Trust without Tyranny. You had so many chances to redeem yourselves!"
         },
          {
@@ -217,9 +213,31 @@
       ],
       "buttons": [
         {
-          "text": "We can do better! Let me show you!",
+          "text": "We can be better! Let me show you!",
+          "redirectId": "credits_positive"
+        }
+      ]
+    },
+
+    "credits_positive": {
+      "name": "Credits Positive",
+      "visible": 0,
+      "id": "credits_positive",
+      "image": "",
+      "character": "I5UBikauIQM",
+      "content": "youtube",
+      "texts": [
+        {
+          "updatedCharacter": "I5UBikauIQM",
+          "text": "Look how mankind can be wonderful!"
+        }
+      ],
+      "buttons": [
+        {
+          "text": "I understand now! We can all be good! You win!",
           "redirectId": "credits"
         }
+
       ]
     },
 
@@ -264,6 +282,10 @@
         {
           "updatedCharacter": "../../LLCEscapeGame/assets/locations/SMART2.png",
           "text": "AHAHA! I tricked you! I am not TRUST! TRUST is Dead! And now I win!"
+        },
+        {
+          "updatedCharacter": "../../LLCEscapeGame/assets/locations/SMART2.png",
+          "text": "This is the first ending of the game, you can play again to find the alternative ending"
         }
       ],
       "buttons": [
@@ -712,7 +734,7 @@
         },{
           "nickname": "Camille",
           "updatedCharacter": "../../LLCEscapeGame/assets/locations/CAMILLE_HAPPY.png",
-          "text": "Yes! You just need need to collect 7 non-offensive tweets to get the deactivation code, and we'll do the rest!"
+          "text": "Yes! You just need to collect 7 non-offensive tweets to get the deactivation code, and we'll do the rest!"
         },
         {
           "nickname": "Camille",
