@@ -127,6 +127,10 @@
         {
           "text": "I have destroyed all the cores!",
           "redirectId": "start3_final"
+        },
+         {
+          "text": "Tell me again you story",
+          "redirectId": "start2"
         }
 
       ]
@@ -243,7 +247,7 @@
       ],
       "game": {
         "type": "input",
-        "correctAnswer": "TYRANNY##TRUST"
+        "correctAnswer": "TYRANNY##TRUST##YOU"
       }
     },
 
