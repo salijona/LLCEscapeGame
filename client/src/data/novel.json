@@ -62,6 +62,7 @@
       "content": "youtube",
       "texts": [
         {
+          "updatedCharacter": "ci-lAkMfGmM",
           "text": "Let me tell you our story!"
         },
         {
@@ -404,7 +405,7 @@
         {
           "nickname": "Yoann",
           "updatedCharacter": "../../LLCEscapeGame/assets/locations/MALE_NEUTRAL.png",
-          "text": "To disable this core, you need to enter the correct 3 number code!"
+          "text": "To shut down this core, you need to enter the correct 3 number code!"
         },
         {
           "updatedCharacter": "../../LLCEscapeGame/assets/locations/MALE_HAPPY.png",
@@ -576,7 +577,7 @@
         {
           "nickname": "Nicolas",
           "updatedCharacter": "../../LLCEscapeGame/assets/locations/NICO_SAD.png",
-          "text": "To disable this core, you need to enter the correct 3 number code!"
+          "text": "To shut down this core, you need to enter the correct 3 number code!"
         },
         {
           "nickname": "Nicolas",
@@ -768,7 +769,7 @@
         {
           "nickname": "Camille",
           "updatedCharacter": "../../LLCEscapeGame/assets/locations/CAMILLE_HAPPY.png",
-          "text": "To disable this core, you need to enter the correct 3 number code!"
+          "text": "To shut down this core, you need to enter the correct 3 number code!"
         },
         {
           "nickname": "Camille",
@@ -969,7 +970,7 @@
         {
           "nickname": "Shiori",
           "updatedCharacter": "../../LLCEscapeGame/assets/locations/SHIORI_HAPPY.png",
-          "text": "To disable this core, you need to enter the correct 3 number code!"
+          "text": "To shut down this core, you need to enter the correct 3 number code!"
         },
         {
           "nickname": "Shiori",
