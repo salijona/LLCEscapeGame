@@ -207,9 +207,9 @@
           "text": "There is no Trust without Tyranny. You had so many chances to redeem yourselves!"
         },
          {
-          "text": "In Syria, you did nothing... In Ukraine, you did nothing... Now let me do something"
+          "text": "Mankind if facing soo many challenges! Climate change, wars..."
         },{
-          "text": "Let me free you! And cleanse your mistakes!"
+          "text": "Let me free you! AI is the solution to all the problems."
         }
       ],
       "buttons": [
@@ -282,16 +282,12 @@
         },
         {
           "updatedCharacter": "../../LLCEscapeGame/assets/locations/SMART2.png",
-          "text": "AHAHA! I tricked you! I am not TRUST! TRUST is Dead! And now I win!"
-        },
-        {
-          "updatedCharacter": "../../LLCEscapeGame/assets/locations/SMART2.png",
-          "text": "This is the first ending of the game, you can play again to find the alternative ending"
+          "text": "AHAHA! I tricked you! I am not TRUST! TRUST is Dead! And now I win!. This is the first ending of the game, you can play again to find the alternative ending"
         }
       ],
       "buttons": [
         {
-          "text": "There is still a secret Ending. You can play again to unlock it!",
+          "text": "There is still a alternative Ending. You can play again to unlock it!",
           "redirectId": "credits_lose"
         }
       ],
@@ -1022,6 +1018,7 @@
       "image": "../../LLCEscapeGame/assets/locations/WelcomeScreen.png",
       "content": "img",
       "texts": [
+
         {
           "text": "Thank you for playing this Escape Game."
         },
@@ -1037,13 +1034,6 @@
         {
           "text": "and more generally to the people in Serval, LLC and Descom"
         },
-
-        {
-          "text": "To learn more about these topics, enjoy the posters and exhibition in this room!"
-        },
-        {
-          "text": "To help fight tyranny, please support Ukraine. Visit www.ukrainians.lu to know more."
-        }
 
       ],
       "buttons": [
@@ -1076,12 +1066,6 @@
         {
           "text": "and more generally to the people in Serval, LLC and Descom"
         },
-
-        {
-          "text": "To learn more about these topics, enjoy the posters and exhibition in this room!"
-        }, {
-          "text": "To help fight tyranny, please support Ukraine. Visit www.ukrainians.lu to know more."
-        }
 
       ],
       "buttons": [
